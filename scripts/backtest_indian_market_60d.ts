@@ -3,9 +3,9 @@ import fs from 'fs';
 import path from 'path';
 import {
   IndianMarketMasterEngine,
-  IndianCandle,
-  SeatCategory,
-} from '../lib/indianMarket/indianMarketMasterEngine';
+  type IndianCandle,
+  type SeatCategory,
+} from '../lib/indianMarket/indianMarketMasterEngine.ts';
 
 interface CachedIndianCandle extends IndianCandle {
   dateStr?: string;
@@ -39,6 +39,9 @@ interface ActiveTrade {
   setupName: string;
   stage: number;
   barsHeld: number;
+  peakPnlInr: number;
+  lockedPnlInr: number;
+  openedAtTimestamp: number;
 }
 
 interface ClosedTradeRecord {
@@ -143,6 +146,8 @@ async function runIndianMarketBacktest() {
 
   // Daily performance tracker
   const dailyPnlMap: Map<string, { date: string; pnl: number; trades: number; wins: number; losses: number }> = new Map();
+  const symbolSlCircuitBreaker: Set<string> = new Set();
+  let lastProcessedDate = '';
 
   // Sliding candle buffer per symbol
   const candleHistory: Map<string, CachedIndianCandle[]> = new Map();
@@ -164,7 +169,14 @@ async function runIndianMarketBacktest() {
 
     if (tIdx < 45) continue; // Warm-up period
 
-    // 1. Process Open Positions First (TP, SL, Trailing Bracket, Auto Square-Off)
+    // Daily reset for 1-SL Directional Circuit Breaker
+    const currentMasterCandle = symbolTimeMap.get('NIFTY')?.get(currentTs);
+    if (currentMasterCandle?.dateStr && currentMasterCandle.dateStr !== lastProcessedDate) {
+      lastProcessedDate = currentMasterCandle.dateStr;
+      symbolSlCircuitBreaker.clear();
+    }
+
+    // 1. Process Open Positions First (TP, SL, 8-Stage Ladder, Auto Square-Off)
     const sessionInfo = IndianMarketMasterEngine.checkMarketSessionIST(currentTs);
 
     for (let pIdx = activePositions.length - 1; pIdx >= 0; pIdx--) {
@@ -172,74 +184,85 @@ async function runIndianMarketBacktest() {
       const currentCandle = symbolTimeMap.get(pos.symbol)?.get(currentTs);
       if (!currentCandle) continue;
 
+      // STRICT ZERO LOOK-AHEAD: Position opened at close of openedAtTimestamp.
+      // Evaluation MUST ONLY begin on candles strictly AFTER openedAtTimestamp!
+      if (currentTs <= pos.openedAtTimestamp) {
+        continue;
+      }
+
       pos.barsHeld++;
 
       let exitPrice = 0;
       let exitReason: ClosedTradeRecord['exitReason'] | null = null;
+      let realizedRawPnl = 0;
 
       // A. Mandatory Intraday Auto Square-Off at 03:18 PM IST
       if (sessionInfo.mustSquareOffAll) {
         exitPrice = currentCandle.close;
         exitReason = 'INTRADAY_AUTO_SQUARE_OFF';
+        const delta = pos.isOption ? 0.60 : 1.0;
+        const diff = pos.action === 'BUY' ? exitPrice - pos.entryPrice : pos.entryPrice - exitPrice;
+        realizedRawPnl = Math.round(diff * pos.quantity * delta);
       } else {
-        // Evaluate 2-stage ladder (BE scratch lock at 35%, profit lock at 70%)
-        const bracket = IndianMarketMasterEngine.evaluateLiveTrailingBracket({
-          action: pos.action,
-          entryPrice: pos.entryPrice,
-          currentLtp: currentCandle.close,
-          currentSlPrice: pos.currentSlPrice,
-          tpPrice: pos.tpPrice,
-          tickSize: 0.05,
-          stage: pos.stage,
-        });
+        // B. Realistic Intra-Bar Tick Sequence
+        // Bearish (close < open): open -> high -> low -> close
+        // Bullish (close >= open): open -> low -> high -> close
+        const isBearish = currentCandle.close < currentCandle.open;
+        const tickPath = isBearish
+          ? [currentCandle.open, currentCandle.high, currentCandle.low, currentCandle.close]
+          : [currentCandle.open, currentCandle.low, currentCandle.high, currentCandle.close];
 
-        if (bracket.shouldModifySl) {
-          pos.currentSlPrice = bracket.newSlPrice;
-          pos.stage = bracket.newStage;
-        }
+        const delta = pos.isOption ? 0.60 : 1.0;
 
-        // B. Check TP / SL hit inside the candle
-        if (pos.action === 'BUY') {
-          if (currentCandle.high >= pos.tpPrice) {
-            exitPrice = pos.tpPrice;
-            exitReason = 'TARGET_TP_HIT';
-          } else if (currentCandle.low <= pos.currentSlPrice) {
-            exitPrice = pos.currentSlPrice;
-            if (pos.stage === 2) exitReason = 'PROFIT_LOCKED_EXIT';
-            else if (pos.stage === 1) exitReason = 'BREAKEVEN_SCRATCH_EXIT';
-            else exitReason = 'STOP_LOSS_HIT';
-          }
-        } else {
-          // SELL
-          if (currentCandle.low <= pos.tpPrice) {
-            exitPrice = pos.tpPrice;
-            exitReason = 'TARGET_TP_HIT';
-          } else if (currentCandle.high >= pos.currentSlPrice) {
-            exitPrice = pos.currentSlPrice;
-            if (pos.stage === 2) exitReason = 'PROFIT_LOCKED_EXIT';
-            else if (pos.stage === 1) exitReason = 'BREAKEVEN_SCRATCH_EXIT';
-            else exitReason = 'STOP_LOSS_HIT';
+        for (const tick of tickPath) {
+          const diff = pos.action === 'BUY' ? tick - pos.entryPrice : pos.entryPrice - tick;
+          const currentPnl = Math.round(diff * pos.quantity * delta);
+
+          // Evaluate 8-Stage Rupee Profit Ladder & Hard SL (-₹1,800)
+          const ladderResult = IndianMarketMasterEngine.evaluateEightStageRupeeLadder({
+            peakPnlInr: Math.max(pos.peakPnlInr, currentPnl),
+            currentPnlInr: currentPnl,
+            currentLockedInr: pos.lockedPnlInr,
+            currentStage: pos.stage,
+            hardSlInr: -1800,
+          });
+
+          pos.peakPnlInr = Math.max(pos.peakPnlInr, currentPnl);
+          pos.lockedPnlInr = ladderResult.newLockedInr;
+          pos.stage = ladderResult.newStage;
+
+          if (ladderResult.shouldExit) {
+            exitPrice = tick;
+            if (ladderResult.exitPnlInr >= 8000) {
+              exitReason = 'TARGET_TP_HIT';
+            } else if (ladderResult.newStage >= 1) {
+              exitReason = 'PROFIT_LOCKED_EXIT';
+            } else {
+              exitReason = 'STOP_LOSS_HIT';
+            }
+            realizedRawPnl = ladderResult.exitPnlInr;
+            break; // Exit intra-candle tick simulation
           }
         }
       }
 
       // If position closed
       if (exitReason && exitPrice > 0) {
-        const delta = pos.isOption ? 0.60 : 1.0;
-        const priceDiff = pos.action === 'BUY' ? exitPrice - pos.entryPrice : pos.entryPrice - exitPrice;
-        let pnlInr = Math.round(priceDiff * pos.quantity * delta);
-        // Strict ₹1,600 Max Risk per Trade Cap
-        if (pnlInr < -1800) {
-          pnlInr = -1600;
-        }
-        const roePct = Number(((priceDiff / pos.entryPrice) * 100 * (pos.isOption ? 5 : 1)).toFixed(2));
+        // Deduct ₹55/trade statutory friction (brokerage + STT + exchange fees)
+        const netPnlInr = realizedRawPnl - 55;
+        const roePct = Number((((exitPrice - pos.entryPrice) / pos.entryPrice) * 100 * (pos.isOption ? 5 : 1)).toFixed(2));
 
-        capitalInr += pnlInr;
+        capitalInr += netPnlInr;
         if (capitalInr > peakCapitalInr) peakCapitalInr = capitalInr;
         const ddInr = peakCapitalInr - capitalInr;
         const ddPct = (ddInr / peakCapitalInr) * 100;
         if (ddInr > maxDrawdownInr) maxDrawdownInr = ddInr;
         if (ddPct > maxDrawdownPct) maxDrawdownPct = ddPct;
+
+        // 1-SL Per-Symbol Directional Circuit Breaker
+        if (realizedRawPnl <= -1500 || exitReason === 'STOP_LOSS_HIT') {
+          symbolSlCircuitBreaker.add(`${pos.symbol}:${pos.action}`);
+        }
 
         // Daily PnL tracking
         const dateKey = currentCandle.dateStr || 'UnknownDate';
@@ -247,9 +270,9 @@ async function runIndianMarketBacktest() {
           dailyPnlMap.set(dateKey, { date: dateKey, pnl: 0, trades: 0, wins: 0, losses: 0 });
         }
         const dStat = dailyPnlMap.get(dateKey)!;
-        dStat.pnl += pnlInr;
+        dStat.pnl += netPnlInr;
         dStat.trades++;
-        if (pnlInr >= 0) dStat.wins++;
+        if (netPnlInr >= 0) dStat.wins++;
         else dStat.losses++;
 
         // Add to closed ledger
@@ -272,7 +295,7 @@ async function runIndianMarketBacktest() {
           exitDateStr: currentCandle.dateStr || '',
           exitTimeStr: currentCandle.timeStr || '',
           exitReason,
-          pnlInr,
+          pnlInr: netPnlInr,
           roePct,
           barsHeld: pos.barsHeld,
           setupName: pos.setupName,
@@ -313,6 +336,11 @@ async function runIndianMarketBacktest() {
       });
 
       if (!sig.approved || sig.action === 'WAIT') continue;
+
+      // 1-SL Per-Symbol Directional Circuit Breaker
+      if (symbolSlCircuitBreaker.has(`${sym}:${sig.action}`)) {
+        continue;
+      }
 
       // 2+2+2 Seat Allocation Router
       let targetSeat: SeatCategory = 'NONE';
@@ -355,6 +383,9 @@ async function runIndianMarketBacktest() {
         setupName: sig.setupName,
         stage: 0,
         barsHeld: 0,
+        peakPnlInr: 0,
+        lockedPnlInr: 0,
+        openedAtTimestamp: currentTs,
       };
 
       activePositions.push(newPos);
@@ -426,6 +457,25 @@ async function runIndianMarketBacktest() {
     console.log(`📅 ${d.date} | Trades: ${String(d.trades).padStart(2)} | Wins: ${d.wins} | Losses: ${d.losses} | WR: ${wr.padStart(3)}% | Day PnL: ₹${d.pnl.toLocaleString('en-IN').padStart(8)}`);
   }
   console.log('='.repeat(80));
+
+  // Write updated 60-day audit JSON to backend and frontend
+  const auditOutput = {
+    generatedAt: new Date().toISOString(),
+    startingCapital: STARTING_CAPITAL,
+    finalCapital: capitalInr,
+    netPnlInr,
+    totalTrades,
+    winRate,
+    profitFactor,
+    maxDrawdownPct,
+    closedTrades,
+  };
+
+  const backendPath = path.resolve(process.cwd(), 'backend/indian_market_60d_backtest_audit.json');
+  const frontendPath = path.resolve(process.cwd(), 'frontend/indian_market_60d_backtest_audit.json');
+  fs.writeFileSync(backendPath, JSON.stringify(auditOutput, null, 2), 'utf-8');
+  fs.writeFileSync(frontendPath, JSON.stringify(auditOutput, null, 2), 'utf-8');
+  console.log(`✅ Saved updated honest 8-Stage Ladder audit to:\n  - ${backendPath}\n  - ${frontendPath}`);
 
   return {
     totalTrades,

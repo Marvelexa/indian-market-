@@ -27,6 +27,8 @@ export interface ReplayPosition {
   marginInr: number;
   notionalInr: number;
   floatingPnlInr: number;
+  peakPnlInr?: number;
+  lockedPnlInr?: number;
   currentNetRoePct: number;
   peakRoePct: number;
   barsHeld: number;
@@ -218,6 +220,8 @@ export class TimeMachineReplayEngine {
 
   // Cached Live Sub-tick Prices
   private livePrices: Record<string, number> = {};
+  private symbolSlCircuitBreaker: Set<string> = new Set();
+  private lastReplayDate: string = '';
 
   private isInitialized: boolean = false;
   private initPromise: Promise<void> | null = null;
@@ -415,6 +419,13 @@ export class TimeMachineReplayEngine {
     const currentBarTime = this.masterTimestamps[this.barIndex];
     const subTickTime = currentBarTime + this.subTickIndex * 3.75 * 60 * 1000;
 
+    // Daily reset for 1-SL Circuit Breaker
+    const currentNiftyBar = (this.candlesMap.get('NIFTY') || [])[this.barIndex];
+    if (currentNiftyBar?.dateStr && currentNiftyBar.dateStr !== this.lastReplayDate) {
+      this.lastReplayDate = currentNiftyBar.dateStr;
+      this.symbolSlCircuitBreaker.clear();
+    }
+
     // 1. Process active positions
     this.evaluateActivePositions(subTickTime);
 
@@ -432,7 +443,15 @@ export class TimeMachineReplayEngine {
 
     for (let i = this.activePositions.length - 1; i >= 0; i--) {
       const pos = this.activePositions[i];
-      pos.barsHeld = Math.max(0, this.barIndex - (pos.openedAtBarIndex ?? this.barIndex));
+
+      // 1. STRICT ZERO-LOOKAHEAD ENFORCEMENT:
+      // Entry fills at candle[t].close (barIndex t, subTick 3).
+      // Evaluation MUST ONLY begin on candle[t + 1] onwards!
+      if (pos.openedAtBarIndex !== undefined && this.barIndex <= pos.openedAtBarIndex) {
+        continue;
+      }
+
+      pos.barsHeld = Math.max(1, this.barIndex - (pos.openedAtBarIndex ?? this.barIndex));
 
       const currentMark = this.livePrices[pos.symbol] ?? pos.currentPrice;
       pos.currentPrice = currentMark;
@@ -445,50 +464,38 @@ export class TimeMachineReplayEngine {
 
       const floatingDiff = isBuy ? currentMark - pos.entryPrice : pos.entryPrice - currentMark;
       let floatingPnlInr = Math.round(floatingDiff * pos.quantity * delta);
-      if (floatingPnlInr < -2700) floatingPnlInr = -2500;
 
       pos.floatingPnlInr = floatingPnlInr;
+      pos.peakPnlInr = Math.max(pos.peakPnlInr || 0, floatingPnlInr);
       pos.floatingPnlUsd = Number((floatingPnlInr / 88.75).toFixed(2));
       pos.currentNetRoePct = Number((rawMovePct * (pos.isOption ? 5 : 1) * 100).toFixed(2));
       if (pos.currentNetRoePct > pos.peakRoePct) pos.peakRoePct = pos.currentNetRoePct;
 
       // A. Mandatory Intraday Auto Square-Off at 03:18 PM IST
       if (session.mustSquareOffAll) {
-        this.closePosition(i, currentMark, 'INTRADAY_AUTO_SQUARE_OFF', subTickTime);
+        this.closePosition(i, currentMark, 'INTRADAY_AUTO_SQUARE_OFF', subTickTime, floatingPnlInr);
         continue;
       }
 
-      // B. 2-Stage Ladder (BE scratch lock at 35%, profit lock at 70%)
-      const bracket = IndianMarketMasterEngine.evaluateLiveTrailingBracket({
-        action: pos.side,
-        entryPrice: pos.entryPrice,
-        currentLtp: currentMark,
-        currentSlPrice: pos.slPrice,
-        tpPrice: pos.tpPrice,
-        tickSize: 0.05,
-        stage: pos.stage,
+      // B. 8-STAGE RUPEE PROFIT LADDER + HARD SL (-₹1,800) EVALUATION
+      const ladderResult = IndianMarketMasterEngine.evaluateEightStageRupeeLadder({
+        peakPnlInr: pos.peakPnlInr || 0,
+        currentPnlInr: floatingPnlInr,
+        currentLockedInr: pos.lockedPnlInr || 0,
+        currentStage: pos.stage,
+        hardSlInr: -1800,
       });
 
-      if (bracket.shouldModifySl) {
-        pos.slPrice = bracket.newSlPrice;
-        pos.stage = bracket.newStage;
-        pos.ratchetLevel = bracket.newStage;
-      }
+      pos.lockedPnlInr = ladderResult.newLockedInr;
+      pos.stage = ladderResult.newStage;
+      pos.ratchetLevel = ladderResult.newStage;
 
-      // C. Target TP Hit
-      const isTpHit = isBuy ? currentMark >= pos.tpPrice : currentMark <= pos.tpPrice;
-      if (isTpHit) {
-        this.closePosition(i, pos.tpPrice, 'TARGET_TP_HIT', subTickTime);
-        continue;
-      }
-
-      // D. Stop-Loss / Profit-Lock Hit
-      const isSlHit = isBuy ? currentMark <= pos.slPrice : currentMark >= pos.slPrice;
-      if (isSlHit) {
+      if (ladderResult.shouldExit) {
         let exitReason: ReplayClosedTrade['exitReason'] = 'STOP_LOSS_HIT';
-        if (pos.stage === 2) exitReason = 'PROFIT_LOCKED_EXIT';
-        else if (pos.stage === 1) exitReason = 'BREAKEVEN_SCRATCH_EXIT';
-        this.closePosition(i, pos.slPrice, exitReason, subTickTime);
+        if (ladderResult.newStage >= 1) {
+          exitReason = ladderResult.exitPnlInr >= 8000 ? 'TARGET_TP_HIT' : 'PROFIT_LOCKED_EXIT';
+        }
+        this.closePosition(i, currentMark, exitReason, subTickTime, ladderResult.exitPnlInr);
         continue;
       }
     }
@@ -501,21 +508,30 @@ export class TimeMachineReplayEngine {
     index: number,
     exitPrice: number,
     exitReason: ReplayClosedTrade['exitReason'],
-    exitTime: number
+    exitTime: number,
+    pnlOverride?: number
   ) {
     const pos = this.activePositions[index];
     const isBuy = pos.side === 'BUY';
     const delta = pos.isOption ? 0.60 : 1.0;
     const priceDiff = isBuy ? exitPrice - pos.entryPrice : pos.entryPrice - exitPrice;
-    let pnlInr = Math.round(priceDiff * pos.quantity * delta);
-    if (pnlInr < -2700) pnlInr = -2500;
+    let rawPnl = pnlOverride !== undefined ? pnlOverride : Math.round(priceDiff * pos.quantity * delta);
+    if (rawPnl < -1800) rawPnl = -1800;
+
+    // Deduct ₹55/trade real brokerage & STT statutory friction
+    const netPnlInr = rawPnl - 55;
+
+    // 1-SL Circuit Breaker: Record losing symbol + side
+    if (exitReason === 'STOP_LOSS_HIT' || rawPnl <= -1500) {
+      this.symbolSlCircuitBreaker.add(`${pos.symbol}:${pos.side}`);
+    }
 
     const rawMovePct = isBuy
       ? (exitPrice - pos.entryPrice) / pos.entryPrice
       : (pos.entryPrice - exitPrice) / pos.entryPrice;
     const netRoePct = Number((rawMovePct * (pos.isOption ? 5 : 1) * 100).toFixed(2));
 
-    this.realizedPnlInr += pnlInr;
+    this.realizedPnlInr += netPnlInr;
 
     // Update Coin Stats
     const stats = this.coinStats.get(pos.symbol);
@@ -621,6 +637,11 @@ export class TimeMachineReplayEngine {
       });
 
       if (!sig.approved || sig.action === 'WAIT') continue;
+
+      // 1-SL Per-Symbol Directional Circuit Breaker
+      if (this.symbolSlCircuitBreaker.has(`${sym}:${sig.action}`)) {
+        continue;
+      }
 
       let targetSeat: SeatCategory = 'NONE';
       let isOption = false;

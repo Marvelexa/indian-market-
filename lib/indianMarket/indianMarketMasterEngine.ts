@@ -443,6 +443,92 @@ export class IndianMarketMasterEngine {
     };
   }
 
+  public static readonly EIGHT_STAGE_LADDER = [
+    { targetInr: 8000, lockInr: 8000, stage: 8, name: 'STAGE 8: FULL MARKET TARGET (+₹8,000)' },
+    { targetInr: 6000, lockInr: 4800, stage: 7, name: 'STAGE 7: TRAILING LOCK (+₹4,800)' },
+    { targetInr: 4500, lockInr: 3600, stage: 6, name: 'STAGE 6: TRAILING LOCK (+₹3,600)' },
+    { targetInr: 3000, lockInr: 2400, stage: 5, name: 'STAGE 5: TRAILING LOCK (+₹2,400)' },
+    { targetInr: 2000, lockInr: 1600, stage: 4, name: 'STAGE 4: TRAILING LOCK (+₹1,600)' },
+    { targetInr: 1500, lockInr: 1150, stage: 3, name: 'STAGE 3: TRAILING LOCK (+₹1,150)' },
+    { targetInr: 1000, lockInr: 700,  stage: 2, name: 'STAGE 2: TRAILING LOCK (+₹700)' },
+    { targetInr: 600,  lockInr: 300,  stage: 1, name: 'STAGE 1: TRAILING LOCK (+₹300)' },
+  ];
+
+  /**
+   * 8-Stage Rupee Profit Ladder Evaluator (Zero-Lookahead):
+   * Evaluates profit hurdles and moves hard/trailing stop upward.
+   */
+  public static evaluateEightStageRupeeLadder(params: {
+    peakPnlInr: number;
+    currentPnlInr: number;
+    currentLockedInr: number;
+    currentStage: number;
+    hardSlInr?: number; // default -1800
+  }): {
+    shouldExit: boolean;
+    exitReason: string;
+    exitPnlInr: number;
+    newLockedInr: number;
+    newStage: number;
+  } {
+    const hardSl = params.hardSlInr ?? -1800;
+
+    // 1. Check Hard SL if no profit locked yet
+    if (params.currentLockedInr <= 0 && params.currentPnlInr <= hardSl) {
+      return {
+        shouldExit: true,
+        exitReason: `HARD_SL_HIT (-₹${Math.abs(hardSl)})`,
+        exitPnlInr: hardSl,
+        newLockedInr: params.currentLockedInr,
+        newStage: params.currentStage,
+      };
+    }
+
+    // 2. Advance the ladder
+    let updatedLockedInr = params.currentLockedInr;
+    let updatedStage = params.currentStage;
+    let stageExitReason = '';
+
+    for (const step of this.EIGHT_STAGE_LADDER) {
+      if (params.peakPnlInr >= step.targetInr) {
+        if (step.stage === 8) {
+          return {
+            shouldExit: true,
+            exitReason: step.name,
+            exitPnlInr: 8000,
+            newLockedInr: 8000,
+            newStage: 8,
+          };
+        }
+        if (step.lockInr > updatedLockedInr) {
+          updatedLockedInr = step.lockInr;
+          updatedStage = step.stage;
+          stageExitReason = step.name;
+        }
+        break;
+      }
+    }
+
+    // 3. Check if current P&L dipped down to locked profit floor
+    if (updatedLockedInr > 0 && params.currentPnlInr <= updatedLockedInr) {
+      return {
+        shouldExit: true,
+        exitReason: stageExitReason || `STAGE_${updatedStage}_LOCK_HIT (+₹${updatedLockedInr})`,
+        exitPnlInr: updatedLockedInr,
+        newLockedInr: updatedLockedInr,
+        newStage: updatedStage,
+      };
+    }
+
+    return {
+      shouldExit: false,
+      exitReason: 'IN_TRADE_HOLDING',
+      exitPnlInr: params.currentPnlInr,
+      newLockedInr: updatedLockedInr,
+      newStage: updatedStage,
+    };
+  }
+
   private static roundToTick(price: number, tickSize: number): number {
     return tickSize > 0
       ? Number((Math.round(price / tickSize) * tickSize).toFixed(2))
