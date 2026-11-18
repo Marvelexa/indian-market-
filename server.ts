@@ -40,6 +40,7 @@ import {
   type PersistentClosedTrade
 } from './lib/bharat/nexusPermanentCore.ts';
 import { StrictRealOptionChainFeed } from './lib/bharat/strictRealOptionChainFeed.ts';
+import { TimeMachineReplayEngine } from './lib/replay/timeMachineReplayEngine.ts';
 
 const PY_BACKEND_URL = 'http://127.0.0.1:8000';
 const PORT = 3005;
@@ -743,6 +744,11 @@ async function startDaemon(): Promise<void> {
 
   console.log(`[Daemon] Ready with ${Object.keys(stockCandles5m).length} stocks loaded. Starting cycle loop.`);
 
+  // Initialize unified TimeMachineReplayEngine in background
+  TimeMachineReplayEngine.getInstance().initialize().catch((err: any) => {
+    console.error('[Daemon] TimeMachineReplayEngine initialization error:', err);
+  });
+
   // Run first cycle immediately
   await runCycle();
 
@@ -795,6 +801,45 @@ const server = http.createServer((req, res) => {
     pushState();
     const intervalId = setInterval(pushState, 1000);
     req.on('close', () => clearInterval(intervalId));
+    return;
+  }
+
+  if (req.url?.startsWith('/api/replay/state')) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(TimeMachineReplayEngine.getInstance().getState()));
+    return;
+  }
+
+  if (req.url === '/api/replay/days') {
+    const replayState = TimeMachineReplayEngine.getInstance().getState();
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      days: replayState.availableMonths || [],
+      currentDate: replayState.currentDateFormatted,
+    }));
+    return;
+  }
+
+  if (req.url === '/api/replay/control' && req.method === 'POST') {
+    let body = '';
+    req.on('data', (chunk) => { body += chunk; });
+    req.on('end', () => {
+      try {
+        const payload = JSON.parse(body || '{}');
+        const replay = TimeMachineReplayEngine.getInstance();
+        if (payload.action === 'PLAY') replay.play();
+        else if (payload.action === 'PAUSE') replay.pause();
+        else if (payload.action === 'RESET') replay.reset();
+        else if (payload.action === 'SET_SPEED' && payload.speed) replay.setSpeed(payload.speed);
+        else if (payload.action === 'JUMP_TO_BAR' && typeof payload.barIndex === 'number') replay.jumpToBar(payload.barIndex);
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ status: 'ok', state: replay.getState() }));
+      } catch (err: any) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+      }
+    });
     return;
   }
 
