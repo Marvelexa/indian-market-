@@ -4,6 +4,13 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __commonJS = (cb, mod) => function __require() {
+  try {
+    return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+  } catch (e) {
+    throw mod = 0, e;
+  }
+};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -26,13 +33,214 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
+// node_modules/dotenv/dist/index.cjs
+var require_dist = __commonJS({
+  "node_modules/dotenv/dist/index.cjs"(exports2, module2) {
+    var j = (e, n) => () => {
+      try {
+        return n || e((n = { exports: {} }).exports, n), n.exports;
+      } catch (t) {
+        throw n = 0, t;
+      }
+    };
+    var R = j((Z, N) => {
+      function T(e) {
+        return typeof e == "string" ? !["false", "0", "no", "off", ""].includes(e.toLowerCase()) : !!e;
+      }
+      function U(e = process.env) {
+        let n = {};
+        for (let t of ["ENCODING", "PATH", "QUIET", "DEBUG", "OVERRIDE", "FAST"]) {
+          let r = e[`DOTENV_${t}`] != null ? e[`DOTENV_${t}`] : e[`DOTENV_CONFIG_${t}`];
+          r != null && (n[t.toLowerCase()] = t === "ENCODING" || t === "PATH" ? r : T(r));
+        }
+        return n;
+      }
+      N.exports = { parseBoolean: T, optionsFromEnv: U };
+    });
+    var P = j((ee, b) => {
+      var F = require("fs"), _ = require("path"), B = require("os"), { URL: L, fileURLToPath: Q } = require("url"), { parseBoolean: $, optionsFromEnv: I } = R(), G = /(?:^|^)\s*(?:export\s+)?([\w.-]+)(?:\s*=\s*?|:\s+?)(\s*'(?:\\'|[^'])*'|\s*"(?:\\"|[^"])*"|\s*`(?:\\`|[^`])*`|[^#\r\n]+)?\s*(?:#.*)?(?:$|$)/mg, y = new Uint8Array(256);
+      for (let e = 48; e <= 57; e++) y[e] = 1;
+      for (let e = 65; e <= 90; e++) y[e] = 1;
+      for (let e = 97; e <= 122; e++) y[e] = 1;
+      y[45] = 1;
+      y[46] = 1;
+      y[95] = 1;
+      function H(e) {
+        let n = {}, t = e.toString();
+        t = t.replace(/\r\n?/mg, `
+`);
+        let r;
+        for (; (r = G.exec(t)) != null; ) {
+          let o = r[1], i = r[2] || "";
+          i = i.trim();
+          let c = i[0];
+          i = i.replace(/^(['"`])([\s\S]*)\1$/mg, "$2"), c === '"' && (i = i.replace(/\\n/g, `
+`), i = i.replace(/\\r/g, "\r")), n[o] = i;
+        }
+        return n;
+      }
+      function g(e) {
+        return e <= 32 ? e === 32 || e >= 9 && e <= 13 : e >= 160 && (e === 160 || e === 5760 || e >= 8192 && e <= 8202 || e === 8232 || e === 8233 || e === 8239 || e === 8287 || e === 12288 || e === 65279);
+      }
+      function O(e) {
+        return e === 10 || e === 8232 || e === 8233;
+      }
+      function V(e) {
+        let n = {}, t = typeof e == "string" ? e : e.toString();
+        t.indexOf("\r") !== -1 && (t = t.replace(/\r\n?/g, `
+`));
+        let r = t.length, o = 0;
+        for (; o < r; ) {
+          let i = t.charCodeAt(o);
+          for (; o < r && g(i); ) o++, i = t.charCodeAt(o);
+          if (o >= r) break;
+          if (i === 35) {
+            for (; o < r && !O(t.charCodeAt(o)); ) o++;
+            continue;
+          }
+          let c = -1;
+          if (i === 101 && o + 6 < r && t.charCodeAt(o + 1) === 120 && t.charCodeAt(o + 2) === 112 && t.charCodeAt(o + 3) === 111 && t.charCodeAt(o + 4) === 114 && t.charCodeAt(o + 5) === 116) {
+            let u = t.charCodeAt(o + 6);
+            if (g(u)) {
+              let s = o + 7;
+              for (; s < r && g(t.charCodeAt(s)); ) s++;
+              y[t.charCodeAt(s)] && (c = o + 6, o = s);
+            } else i = t.charCodeAt(o);
+          }
+          let E = o, p = 0;
+          for (; o < r && (p = t.charCodeAt(o), y[p]); ) o++;
+          if (o === E) {
+            for (; o < r && !O(t.charCodeAt(o)); ) o++;
+            continue;
+          }
+          let k = t.slice(E, o), D = o;
+          if (o >= r && (p = 0), g(p)) do
+            o++, p = o < r ? t.charCodeAt(o) : 0;
+          while (g(p));
+          if (p === 61) o++;
+          else if (p === 58 && o === D && o + 1 < r && g(t.charCodeAt(o + 1))) o += 2;
+          else {
+            for (o = c === -1 ? D : c; o < r && !O(t.charCodeAt(o)); ) o++;
+            continue;
+          }
+          let d = o, l = o;
+          for (; l < r && g(t.charCodeAt(l)); ) l++;
+          let C = t.charCodeAt(l), a, q = false;
+          if (C === 39 || C === 34 || C === 96) {
+            let u = t[l], s = t.indexOf(u, l + 1), f = -1, h = -1;
+            for (; s !== -1; ) {
+              let x = t.charCodeAt(s - 1) === 92, w = s + 1;
+              for (; w < r && !O(t.charCodeAt(w)) && g(t.charCodeAt(w)); ) w++;
+              if ((w === r || O(t.charCodeAt(w)) || t.charCodeAt(w) === 35) && (f = s, h = w), !x) break;
+              s = t.indexOf(u, s + 1);
+            }
+            if (f !== -1) {
+              if (a = t.slice(l + 1, f), o = h, t.charCodeAt(o) === 35) for (; o < r && !O(t.charCodeAt(o)); ) o++;
+              q = true;
+            }
+          }
+          if (!q) {
+            let u = t.indexOf(`
+`, d);
+            u === -1 && (u = r);
+            let s;
+            if (r < 4096) s = t.indexOf("#", d), (s === -1 || s > u) && (s = u);
+            else for (s = d; s < u && t.charCodeAt(s) !== 35; ) s++;
+            let f = d, h = s;
+            for (; f < h && g(t.charCodeAt(f)); ) f++;
+            for (; h > f && g(t.charCodeAt(h - 1)); ) h--;
+            let x = t.charCodeAt(f);
+            if (a = t.slice(f, h), a.includes("\u2028") || a.includes("\u2029") ? a = a.replace(/^(['"`])([\s\S]*)\1$/mg, "$2") : h - f >= 2 && (x === 39 || x === 34 || x === 96) && t.charCodeAt(h - 1) === x && (a = t.slice(f + 1, h - 1)), o = s, s < u) for (; o < r && !O(t.charCodeAt(o)); ) o++;
+          }
+          C === 34 && (q || l < o) && a.indexOf("\\") !== -1 && (a = a.replace(/\\n/g, `
+`).replace(/\\r/g, "\r")), n[k] = a;
+        }
+        return n;
+      }
+      function J(e, n) {
+        return n && $(n.fast) ? V(e) : H(e);
+      }
+      function v(e) {
+        console.log(`\u2506 ${e}`);
+      }
+      function W(e) {
+        console.error(`\u25C7 ${e}`);
+      }
+      function S(e) {
+        return e[0] === "~" ? _.join(B.homedir(), e.slice(1)) : e;
+      }
+      function K(e = {}) {
+        let n = { ...e };
+        for (let t of Object.keys(n)) n[t] === void 0 && delete n[t];
+        return { ...I(), ...n };
+      }
+      function M(e) {
+        e = K(e);
+        let n = _.resolve(process.cwd(), ".env"), t = "utf8", r = process.env;
+        e && e.processEnv != null && (r = e.processEnv);
+        let o = $(e && e.debug);
+        e && e.encoding ? t = e.encoding : o && v("no encoding is specified (UTF-8 is used by default)");
+        let i = [n];
+        if (e && e.path) if (!Array.isArray(e.path)) i = [S(e.path)];
+        else {
+          i = [];
+          for (let d of e.path) i.push(S(d));
+        }
+        let c, E = {}, p = { fast: e.fast };
+        for (let d of i) try {
+          let l = A.parse(F.readFileSync(d, { encoding: t }), p);
+          A.populate(E, l, e);
+        } catch (l) {
+          o && v(`failed to load ${d} ${l.message}`), c = l;
+        }
+        let k = A.populate(r, E, e), D = $(Object.prototype.hasOwnProperty.call(e, "quiet") ? e.quiet : I(r).quiet);
+        if (o || !D) {
+          let d = Object.keys(k).length, l = [];
+          for (let C of i) try {
+            let a = _.relative(process.cwd(), C instanceof L ? Q(C) : C);
+            l.push(a);
+          } catch (a) {
+            o && v(`failed to load ${C} ${a.message}`), c = a;
+          }
+          W(`injected env (${d}) from ${l.join(",")}`);
+        }
+        return c ? { parsed: E, error: c } : { parsed: E };
+      }
+      function Y(e) {
+        return A.configDotenv(e);
+      }
+      function z(e, n, t = {}) {
+        let r = $(t && t.debug), o = $(t && t.override), i = {};
+        if (e === null || typeof e != "object" || n === null || typeof n != "object") {
+          let c = new Error("OBJECT_REQUIRED: Please check the processEnv argument being passed to populate");
+          throw c.code = "OBJECT_REQUIRED", c;
+        }
+        for (let c of Object.keys(n)) Object.prototype.hasOwnProperty.call(e, c) ? (o === true && (e[c] = n[c], i[c] = n[c]), r && v(o === true ? `"${c}" is already defined and WAS overwritten` : `"${c}" is already defined and was NOT overwritten`)) : (e[c] = n[c], i[c] = n[c]);
+        return i;
+      }
+      var A = { configDotenv: M, config: Y, parse: J, populate: z };
+      b.exports.configDotenv = A.configDotenv;
+      b.exports.config = A.config;
+      b.exports.parse = A.parse;
+      b.exports.populate = A.populate;
+      b.exports = A;
+    });
+    var m = P();
+    module2.exports = m;
+    module2.exports.config = m.config;
+    module2.exports.configDotenv = m.configDotenv;
+    module2.exports.parse = m.parse;
+    module2.exports.populate = m.populate;
+  }
+});
+
 // server.ts
 var server_exports = {};
 __export(server_exports, {
   aggregate5mTo15m: () => aggregate5mTo15m
 });
 module.exports = __toCommonJS(server_exports);
-var import_http = __toESM(require("http"));
+var import_http = __toESM(require("http"), 1);
 
 // lib/bharat/institutionalStrikeSelector2026.ts
 var InstitutionalStrikeSelector2026 = class {
@@ -1462,8 +1670,8 @@ var DiamondHandsHoldManager = class {
 };
 
 // lib/bharat/nexusPermanentCore.ts
-var import_fs = __toESM(require("fs"));
-var import_path = __toESM(require("path"));
+var import_fs = __toESM(require("fs"), 1);
+var import_path = __toESM(require("path"), 1);
 
 // lib/bharat/unlimitedBreathingTrailEngine.ts
 var UnlimitedBreathingTrailEngine = class {
@@ -1581,9 +1789,117 @@ var UnlimitedBreathingTrailEngine = class {
   }
 };
 
+// lib/paper/openalgoClient.ts
+var import_dotenv = __toESM(require_dist(), 1);
+import_dotenv.default.config();
+var OpenAlgoClient = class {
+  static get baseUrl() {
+    return process.env.OPENALGO_HOST_URL || "http://localhost:5000";
+  }
+  static get apiKey() {
+    return process.env.OPENALGO_API_KEY || "";
+  }
+  static get strategy() {
+    return process.env.OPENALGO_STRATEGY_NAME || "NexusBharat";
+  }
+  /**
+   * Place a paper trade in OpenAlgo Analyzer mode
+   */
+  static async placeOrder(order) {
+    const url = `${this.baseUrl}/api/v1/placeorder`;
+    const payload = {
+      apikey: this.apiKey,
+      strategy: this.strategy,
+      symbol: order.symbol,
+      action: order.action,
+      exchange: order.exchange,
+      pricetype: order.priceType,
+      product: order.product || "MIS",
+      quantity: order.quantity,
+      price: order.priceType === "LIMIT" ? order.price : 0,
+      trigger_price: order.triggerPrice || 0
+    };
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const json = await res.json();
+      if (!res.ok || json.status === "error") {
+        console.error("\u274C [OpenAlgo] Order Placement Failed:", json.message || res.statusText);
+        return { status: "error", message: json.message || "API request failed", data: json };
+      }
+      console.log(
+        `\u2705 [OpenAlgo Paper] Order Placed: ${order.action} ${order.quantity}x ${order.symbol} @ \u20B9${order.price || "MKT"} (ID: ${json.orderid})`
+      );
+      return { status: "success", orderid: json.orderid, data: json };
+    } catch (err) {
+      console.error("\u26A0\uFE0F [OpenAlgo] Network connection error:", err.message);
+      return { status: "error", message: err.message };
+    }
+  }
+  /**
+   * Close or Square-off an open position
+   */
+  static async closePosition(symbol, exchange, quantity) {
+    const url = `${this.baseUrl}/api/v1/closeposition`;
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          apikey: this.apiKey,
+          strategy: this.strategy,
+          symbol,
+          exchange,
+          quantity
+        })
+      });
+      const json = await res.json();
+      if (res.ok && json.status !== "error") {
+        console.log(`\u2705 [OpenAlgo Paper] Position Closed: ${quantity}x ${symbol} on ${exchange}`);
+        return { status: "success", message: json.message, data: json };
+      }
+      return { status: "error", message: json.message || res.statusText, data: json };
+    } catch (err) {
+      console.error("\u26A0\uFE0F [OpenAlgo] Close position error:", err.message);
+      return { status: "error", message: err.message };
+    }
+  }
+  /**
+   * Fetch current virtual open positions and P&L from OpenAlgo
+   */
+  static async getOpenPositions() {
+    const url = `${this.baseUrl}/api/v1/positions?apikey=${encodeURIComponent(this.apiKey)}`;
+    try {
+      const res = await fetch(url);
+      if (!res.ok) return [];
+      const json = await res.json();
+      return json.data || [];
+    } catch {
+      return [];
+    }
+  }
+  /**
+   * Health check to confirm OpenAlgo is running
+   */
+  static async checkConnection() {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2e3);
+      const res = await fetch(`${this.baseUrl}/api/v1/ping`, { signal: controller.signal });
+      clearTimeout(timeoutId);
+      return res.ok;
+    } catch {
+      return false;
+    }
+  }
+};
+
 // lib/bharat/nexusPermanentCore.ts
 var STATE_FILE_PATH = import_path.default.join(process.cwd(), ".nexus_persistent_state.json");
-var NexusPermanentCore = class {
+var NexusPermanentCore = class _NexusPermanentCore {
   /**
    * 1. COMPLETE OFFICIAL NSE/BSE/MCX STRIKE STEP, LOT SIZE & REAL PRICE GUARD
    * Prevents impossible strikes like INFY 1114 CE, KOTAKBANK 495 PE, BAJFINANCE 1100 PE!
@@ -1749,6 +2065,17 @@ var NexusPermanentCore = class {
     return Number(rawStrike.toFixed(2));
   }
   /**
+   * Helper to format standard OpenAlgo option symbol (e.g. "AXISBANK26NOV1370PE")
+   */
+  static formatOpenAlgoSymbol(symbol, strike, optionType) {
+    const sym = symbol.toUpperCase().replace(".NS", "").replace("^", "");
+    const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    const now = new Date(Date.now() + 5.5 * 60 * 60 * 1e3);
+    const yr = String(now.getUTCFullYear()).slice(-2);
+    const mon = months[now.getUTCMonth()];
+    return `${sym}${yr}${mon}${strike}${optionType}`;
+  }
+  /**
    * 5. OPEN POSITION (Persisted Immediately to Disk — Never Lost on Code Update!)
    */
   static openPosition(params) {
@@ -1771,11 +2098,15 @@ var NexusPermanentCore = class {
       spec.lotSize,
       2500
     );
+    const openalgoEx = params.openalgoExchange || (sym === "SENSEX" ? "BFO" : ["CRUDEOIL", "NATURALGAS", "GOLDM", "SILVERM"].includes(sym) ? "MCX" : "NFO");
+    const resolvedTradingSymbol = params.tradingSymbol || this.formatOpenAlgoSymbol(sym, strike, params.optionType);
     const newPos = {
       id: `${sym}-${strike}-${params.optionType}-${Date.now()}`,
       symbol: sym,
+      tradingSymbol: resolvedTradingSymbol,
       contractDisplay: `${sym} ${strike} ${params.optionType}`,
       exchange: ["CRUDEOIL", "NATURALGAS", "GOLDM", "SILVERM"].includes(sym) ? "MCX" : sym === "SENSEX" ? "BSE" : "NSE",
+      openalgoExchange: openalgoEx,
       optionType: params.optionType,
       strike,
       side: "BUY",
@@ -1794,8 +2125,29 @@ var NexusPermanentCore = class {
       peakFloatingPnl: 0,
       ladderStage: 0,
       openedAtIst: this.getIstTimeString(),
-      openedTimestampMs: Date.now()
+      openedTimestampMs: Date.now(),
+      openalgoOrderId: params.openalgoOrderId
     };
+    if (!params.openalgoOrderId) {
+      const limitPrice = params.protectedLimitBuyPrice ?? params.entryPremium;
+      OpenAlgoClient.placeOrder({
+        symbol: resolvedTradingSymbol,
+        action: "BUY",
+        exchange: openalgoEx,
+        priceType: limitPrice > 0 ? "LIMIT" : "MARKET",
+        product: "MIS",
+        quantity: spec.lotSize,
+        price: limitPrice > 0 ? Number(limitPrice.toFixed(2)) : void 0
+      }).then((res) => {
+        if (res.status === "success" && res.orderid) {
+          newPos.openalgoOrderId = res.orderid;
+          _NexusPermanentCore.saveDatabaseToDisk();
+          console.log(`\u{1F4E1} [OpenAlgo Synced] Order ID ${res.orderid} stored in persistent state for ${resolvedTradingSymbol}`);
+        }
+      }).catch((err) => {
+        console.warn(`\u26A0\uFE0F [OpenAlgo Notice] Paper order dispatch notice for ${resolvedTradingSymbol}:`, err.message);
+      });
+    }
     this.db.openPositions.unshift(newPos);
     this.recalculateTotals(this.db);
     this.saveDatabaseToDisk(this.db);
@@ -1888,6 +2240,23 @@ var NexusPermanentCore = class {
     this.db.closedTrades.unshift(closedRecord);
     this.recalculateTotals(this.db);
     this.saveDatabaseToDisk(this.db);
+    const exExchange = pos.openalgoExchange || (pos.symbol === "SENSEX" ? "BFO" : ["CRUDEOIL", "NATURALGAS", "GOLDM", "SILVERM"].includes(pos.symbol) ? "MCX" : "NFO");
+    const symToClose = pos.tradingSymbol || _NexusPermanentCore.formatOpenAlgoSymbol(pos.symbol, pos.strike, pos.optionType);
+    OpenAlgoClient.closePosition(symToClose, exExchange, pos.qty).then((res) => {
+      if (res.status === "error") {
+        OpenAlgoClient.placeOrder({
+          symbol: symToClose,
+          action: "SELL",
+          exchange: exExchange,
+          priceType: "MARKET",
+          product: "MIS",
+          quantity: pos.qty
+        }).catch(() => {
+        });
+      }
+    }).catch((err) => {
+      console.warn(`\u26A0\uFE0F [OpenAlgo Notice] Close position notice for ${symToClose}:`, err.message);
+    });
     console.log(
       `\u{1F4B0} [TRADE CLOSED] ${closedRecord.contractDisplay} | P&L: \u20B9${netRealizedPnl} (${resultStatus}) | Updated Capital: \u20B9${this.db.currentCapital}`
     );
@@ -3023,6 +3392,24 @@ var FoOptionSniperEngine = class _FoOptionSniperEngine {
       entrySpot: params.spotPrice
     };
     this.activePositions.set(config.symbol, position);
+    try {
+      const buyPrice = decision.protectedLimitBuyPrice ?? optionPremium;
+      const openalgoRes = await OpenAlgoClient.placeOrder({
+        symbol: optionSymbol,
+        action: "BUY",
+        exchange: "NFO",
+        priceType: buyPrice > 0 ? "LIMIT" : "MARKET",
+        product: "MIS",
+        quantity: lotQty,
+        price: buyPrice > 0 ? Number(buyPrice.toFixed(2)) : void 0
+      });
+      if (openalgoRes.status === "success" && openalgoRes.orderid) {
+        position.openalgoOrderId = openalgoRes.orderid;
+        console.log(`\u{1F4E1} [OpenAlgo Synced] Order ID ${openalgoRes.orderid} stored for ${optionSymbol}`);
+      }
+    } catch (err) {
+      console.warn(`\u26A0\uFE0F [OpenAlgo Notice] Order dispatch notice for ${optionSymbol}:`, err.message);
+    }
     await params.executeBrokerOrder({
       optionSymbol,
       side: "BUY",
@@ -3030,7 +3417,8 @@ var FoOptionSniperEngine = class _FoOptionSniperEngine {
       price: optionPremium,
       tag: `ATM_${optionType}_${decision.sebiAlgoTag}`,
       sebiAlgoTag: decision.sebiAlgoTag,
-      orderSlices: decision.orderSlices
+      orderSlices: decision.orderSlices,
+      openalgoOrderId: position.openalgoOrderId
     });
     return { status: "ORDER_FIRED", position };
   }
@@ -3109,6 +3497,21 @@ var FoOptionSniperEngine = class _FoOptionSniperEngine {
       qty: pos.qty,
       price: exitPremium,
       tag: exitReason
+    });
+    OpenAlgoClient.closePosition(pos.optionSymbol, "NFO", pos.qty).then((res) => {
+      if (res.status === "error") {
+        OpenAlgoClient.placeOrder({
+          symbol: pos.optionSymbol,
+          action: "SELL",
+          exchange: "NFO",
+          priceType: "MARKET",
+          product: "MIS",
+          quantity: pos.qty
+        }).catch(() => {
+        });
+      }
+    }).catch((err) => {
+      console.warn(`\u26A0\uFE0F [OpenAlgo Notice] Close position notice for ${pos.optionSymbol}:`, err.message);
     });
   }
   getActivePositions() {
@@ -3658,8 +4061,8 @@ var DummyTraderBroker = class _DummyTraderBroker {
 };
 
 // lib/replay/timeMachineReplayEngine.ts
-var import_fs2 = __toESM(require("fs"));
-var import_path2 = __toESM(require("path"));
+var import_fs2 = __toESM(require("fs"), 1);
+var import_path2 = __toESM(require("path"), 1);
 
 // lib/indianMarket/indianMarketMasterEngine.ts
 var IndianMarketMasterEngine = class {
@@ -4985,11 +5388,16 @@ async function executeBrokerOrder(order) {
       const isOpt = order.symbol.includes("CE") || order.symbol.includes("PE");
       if (isOpt) {
         const oType = order.symbol.includes("PE") ? "PE" : "CE";
+        const openalgoEx = underlying === "SENSEX" ? "BFO" : ["CRUDEOIL", "NATURALGAS", "GOLDM", "SILVERM"].includes(underlying) ? "MCX" : "NFO";
         NexusPermanentCore.openPosition({
           symbol: underlying,
           optionType: oType,
           realSpotPrice: underlyingPrice,
-          entryPremium: order.price
+          entryPremium: order.price,
+          tradingSymbol: order.symbol,
+          openalgoExchange: openalgoEx,
+          protectedLimitBuyPrice: order.price,
+          openalgoOrderId: order.openalgoOrderId
         });
       }
       return true;
@@ -5086,7 +5494,8 @@ async function runCycle() {
               qty: order.qty,
               price: order.price,
               seatId: "TREND_1",
-              tag: order.tag
+              tag: order.tag,
+              openalgoOrderId: order.openalgoOrderId
             });
           }
         });
@@ -5150,7 +5559,8 @@ async function runCycle() {
                   qty: order.qty,
                   price: order.price,
                   seatId: targetSeat,
-                  tag: order.tag
+                  tag: order.tag,
+                  openalgoOrderId: order.openalgoOrderId
                 });
               }
             });

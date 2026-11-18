@@ -264,6 +264,7 @@ async function executeBrokerOrder(order: {
   tag: string;
   sebiAlgoTag?: string;
   orderSlices?: number[];
+  openalgoOrderId?: string;
 }): Promise<boolean> {
   const isClose = order.tag.includes('HIT') || order.tag.includes('CUT') || order.tag.includes('AUTO_SQUARE_OFF');
   console.log(
@@ -370,11 +371,16 @@ async function executeBrokerOrder(order: {
       const isOpt = order.symbol.includes('CE') || order.symbol.includes('PE');
       if (isOpt) {
         const oType: 'CE' | 'PE' = order.symbol.includes('PE') ? 'PE' : 'CE';
+        const openalgoEx = underlying === 'SENSEX' ? 'BFO' : ['CRUDEOIL', 'NATURALGAS', 'GOLDM', 'SILVERM'].includes(underlying) ? 'MCX' : 'NFO';
         NexusPermanentCore.openPosition({
           symbol: underlying,
           optionType: oType,
           realSpotPrice: underlyingPrice,
           entryPremium: order.price,
+          tradingSymbol: order.symbol,
+          openalgoExchange: openalgoEx,
+          protectedLimitBuyPrice: order.price,
+          openalgoOrderId: order.openalgoOrderId,
         });
       }
 
@@ -494,6 +500,7 @@ async function runCycle(): Promise<void> {
               price: order.price,
               seatId: 'TREND_1',
               tag: order.tag,
+              openalgoOrderId: order.openalgoOrderId,
             });
           },
         });
@@ -569,6 +576,7 @@ async function runCycle(): Promise<void> {
                   price: order.price,
                   seatId: targetSeat,
                   tag: order.tag,
+                  openalgoOrderId: order.openalgoOrderId,
                 });
               },
             });

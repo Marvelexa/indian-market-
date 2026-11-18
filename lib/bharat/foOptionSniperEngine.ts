@@ -18,6 +18,7 @@ import {
 import { DiamondHandsHoldManager } from './diamondHandsHoldManager.ts';
 import { NexusPermanentCore } from './nexusPermanentCore.ts';
 import { StrictRealOptionChainFeed } from './strictRealOptionChainFeed.ts';
+import { OpenAlgoClient } from '../paper/openalgoClient.ts';
 
 export interface StockOptionConfig {
   symbol: string;
@@ -44,6 +45,7 @@ export interface ActiveFoOptionPosition {
   openedAtIst: string;
   openedEpochMs?: number;
   entrySpot?: number;
+  openalgoOrderId?: string;
 }
 
 export interface ClosedFoTrade {
@@ -168,6 +170,7 @@ export class FoOptionSniperEngine {
       tag: string;
       sebiAlgoTag?: string;
       orderSlices?: number[];
+      openalgoOrderId?: string;
     }) => Promise<void>;
   }): Promise<{ status: string; position?: ActiveFoOptionPosition }> {
     const cleanSym = params.stockSymbol.replace('.NS', '').replace('^', '');
@@ -296,6 +299,26 @@ export class FoOptionSniperEngine {
 
     this.activePositions.set(config.symbol, position);
 
+    // Dispatch Paper Order to OpenAlgo Gateway (Analyzer Mode)
+    try {
+      const buyPrice = decision.protectedLimitBuyPrice ?? optionPremium;
+      const openalgoRes = await OpenAlgoClient.placeOrder({
+        symbol: optionSymbol,
+        action: 'BUY',
+        exchange: 'NFO',
+        priceType: buyPrice > 0 ? 'LIMIT' : 'MARKET',
+        product: 'MIS',
+        quantity: lotQty,
+        price: buyPrice > 0 ? Number(buyPrice.toFixed(2)) : undefined,
+      });
+      if (openalgoRes.status === 'success' && openalgoRes.orderid) {
+        position.openalgoOrderId = openalgoRes.orderid;
+        console.log(`📡 [OpenAlgo Synced] Order ID ${openalgoRes.orderid} stored for ${optionSymbol}`);
+      }
+    } catch (err: any) {
+      console.warn(`⚠️ [OpenAlgo Notice] Order dispatch notice for ${optionSymbol}:`, err.message);
+    }
+
     // Fire Broker Order with SEBI Algo Compliance Tag and Slices
     await params.executeBrokerOrder({
       optionSymbol,
@@ -305,6 +328,7 @@ export class FoOptionSniperEngine {
       tag: `ATM_${optionType}_${decision.sebiAlgoTag}`,
       sebiAlgoTag: decision.sebiAlgoTag,
       orderSlices: decision.orderSlices,
+      openalgoOrderId: position.openalgoOrderId,
     });
 
     return { status: 'ORDER_FIRED', position };
@@ -420,6 +444,22 @@ export class FoOptionSniperEngine {
       qty: pos.qty,
       price: exitPremium,
       tag: exitReason,
+    });
+
+    // Dispatch position exit to OpenAlgo Gateway
+    OpenAlgoClient.closePosition(pos.optionSymbol, 'NFO', pos.qty).then((res) => {
+      if (res.status === 'error') {
+        OpenAlgoClient.placeOrder({
+          symbol: pos.optionSymbol,
+          action: 'SELL',
+          exchange: 'NFO',
+          priceType: 'MARKET',
+          product: 'MIS',
+          quantity: pos.qty,
+        }).catch(() => {});
+      }
+    }).catch((err) => {
+      console.warn(`⚠️ [OpenAlgo Notice] Close position notice for ${pos.optionSymbol}:`, err.message);
     });
   }
 

@@ -1,0 +1,8 @@
+{
+  "name": "nexus-bharat-trading-system",
+  "version": "2.0.0",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^18.0.10"
+  }
+}

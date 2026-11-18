@@ -18,12 +18,15 @@ import {
   UnlimitedBreathingTrailEngine,
   type DualShieldTrailState,
 } from './unlimitedBreathingTrailEngine.ts';
+import { OpenAlgoClient } from '../paper/openalgoClient.ts';
 
 export interface PersistentOpenPosition {
   id: string;
   symbol: string; // e.g. "AXISBANK"
+  tradingSymbol?: string; // Exact exchange trading symbol, e.g. "AXISBANK26NOV1370PE"
   contractDisplay: string; // e.g. "AXISBANK 1370 CE"
   exchange: 'NSE' | 'BSE' | 'MCX';
+  openalgoExchange?: 'NFO' | 'BFO' | 'MCX' | 'NSE' | 'BSE';
   optionType: 'CE' | 'PE';
   strike: number;
   side: 'BUY';
@@ -43,6 +46,7 @@ export interface PersistentOpenPosition {
   hardSlPremium?: number;
   openedAtIst: string;
   openedTimestampMs: number;
+  openalgoOrderId?: string;
 }
 
 export interface PersistentClosedTrade {
@@ -274,6 +278,18 @@ export class NexusPermanentCore {
   }
 
   /**
+   * Helper to format standard OpenAlgo option symbol (e.g. "AXISBANK26NOV1370PE")
+   */
+  public static formatOpenAlgoSymbol(symbol: string, strike: number, optionType: 'CE' | 'PE'): string {
+    const sym = symbol.toUpperCase().replace('.NS', '').replace('^', '');
+    const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const now = new Date(Date.now() + 5.5 * 60 * 60 * 1000);
+    const yr = String(now.getUTCFullYear()).slice(-2);
+    const mon = months[now.getUTCMonth()];
+    return `${sym}${yr}${mon}${strike}${optionType}`;
+  }
+
+  /**
    * 5. OPEN POSITION (Persisted Immediately to Disk — Never Lost on Code Update!)
    */
   public static openPosition(params: {
@@ -281,6 +297,10 @@ export class NexusPermanentCore {
     optionType: 'CE' | 'PE';
     realSpotPrice: number;
     entryPremium: number;
+    tradingSymbol?: string;
+    openalgoExchange?: 'NFO' | 'BFO' | 'MCX' | 'NSE' | 'BSE';
+    protectedLimitBuyPrice?: number;
+    openalgoOrderId?: string;
   }): PersistentOpenPosition | null {
     const sym = params.symbol.toUpperCase();
     const spec = this.OFFICIAL_SPECS[sym];
@@ -307,15 +327,28 @@ export class NexusPermanentCore {
       2500
     );
 
+    const openalgoEx: 'NFO' | 'BFO' | 'MCX' | 'NSE' | 'BSE' =
+      params.openalgoExchange ||
+      (sym === 'SENSEX'
+        ? 'BFO'
+        : ['CRUDEOIL', 'NATURALGAS', 'GOLDM', 'SILVERM'].includes(sym)
+        ? 'MCX'
+        : 'NFO');
+
+    const resolvedTradingSymbol =
+      params.tradingSymbol || this.formatOpenAlgoSymbol(sym, strike, params.optionType);
+
     const newPos: PersistentOpenPosition = {
       id: `${sym}-${strike}-${params.optionType}-${Date.now()}`,
       symbol: sym,
+      tradingSymbol: resolvedTradingSymbol,
       contractDisplay: `${sym} ${strike} ${params.optionType}`,
       exchange: ['CRUDEOIL', 'NATURALGAS', 'GOLDM', 'SILVERM'].includes(sym)
         ? 'MCX'
         : sym === 'SENSEX'
         ? 'BSE'
         : 'NSE',
+      openalgoExchange: openalgoEx,
       optionType: params.optionType,
       strike,
       side: 'BUY',
@@ -335,7 +368,30 @@ export class NexusPermanentCore {
       ladderStage: 0,
       openedAtIst: this.getIstTimeString(),
       openedTimestampMs: Date.now(),
+      openalgoOrderId: params.openalgoOrderId,
     };
+
+    // Dispatch to OpenAlgo Paper Trading Gateway (Analyzer Mode) if not already placed
+    if (!params.openalgoOrderId) {
+      const limitPrice = params.protectedLimitBuyPrice ?? params.entryPremium;
+      OpenAlgoClient.placeOrder({
+        symbol: resolvedTradingSymbol,
+        action: 'BUY',
+        exchange: openalgoEx,
+        priceType: limitPrice > 0 ? 'LIMIT' : 'MARKET',
+        product: 'MIS',
+        quantity: spec.lotSize,
+        price: limitPrice > 0 ? Number(limitPrice.toFixed(2)) : undefined,
+      }).then((res) => {
+        if (res.status === 'success' && res.orderid) {
+          newPos.openalgoOrderId = res.orderid;
+          NexusPermanentCore.saveDatabaseToDisk();
+          console.log(`📡 [OpenAlgo Synced] Order ID ${res.orderid} stored in persistent state for ${resolvedTradingSymbol}`);
+        }
+      }).catch((err) => {
+        console.warn(`⚠️ [OpenAlgo Notice] Paper order dispatch notice for ${resolvedTradingSymbol}:`, err.message);
+      });
+    }
 
     this.db.openPositions.unshift(newPos);
     this.recalculateTotals(this.db);
@@ -459,6 +515,33 @@ export class NexusPermanentCore {
     this.db.closedTrades.unshift(closedRecord);
     this.recalculateTotals(this.db);
     this.saveDatabaseToDisk(this.db);
+
+    // Dispatch position exit to OpenAlgo Paper Trading Gateway (Analyzer Mode)
+    const exExchange: 'NFO' | 'BFO' | 'MCX' | 'NSE' | 'BSE' =
+      pos.openalgoExchange ||
+      (pos.symbol === 'SENSEX'
+        ? 'BFO'
+        : ['CRUDEOIL', 'NATURALGAS', 'GOLDM', 'SILVERM'].includes(pos.symbol)
+        ? 'MCX'
+        : 'NFO');
+
+    const symToClose =
+      pos.tradingSymbol || NexusPermanentCore.formatOpenAlgoSymbol(pos.symbol, pos.strike, pos.optionType);
+
+    OpenAlgoClient.closePosition(symToClose, exExchange, pos.qty).then((res) => {
+      if (res.status === 'error') {
+        OpenAlgoClient.placeOrder({
+          symbol: symToClose,
+          action: 'SELL',
+          exchange: exExchange,
+          priceType: 'MARKET',
+          product: 'MIS',
+          quantity: pos.qty,
+        }).catch(() => {});
+      }
+    }).catch((err) => {
+      console.warn(`⚠️ [OpenAlgo Notice] Close position notice for ${symToClose}:`, err.message);
+    });
 
     console.log(
       `💰 [TRADE CLOSED] ${closedRecord.contractDisplay} | P&L: ₹${netRealizedPnl} (${resultStatus}) | Updated Capital: ₹${this.db.currentCapital}`
