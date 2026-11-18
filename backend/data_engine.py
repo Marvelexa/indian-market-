@@ -330,51 +330,8 @@ class IndianMarketEngine:
         self.cache_ttl = 0.5  # sub-second live refresh from TradingView
         self.history_cache_ttl = 30  # seconds
         self.last_batch_fetch_time = 0.0
-        self._preload_cache_from_disk()
-
-    def _preload_cache_from_disk(self):
-        """Pre-populates quote_cache from local 60-day cached files for instant offline responsiveness."""
-        try:
-            cache_dir = os.path.join(os.path.dirname(__file__), "..", ".cache_indian_market_60d")
-            if not os.path.exists(cache_dir):
-                return
-            for sym, meta in TICKER_METADATA.items():
-                clean = meta["clean_symbol"]
-                fn = os.path.join(cache_dir, f"{clean}_5m.json")
-                if os.path.exists(fn):
-                    with open(fn, "r", encoding="utf-8") as f:
-                        bars = json.load(f)
-                    if bars:
-                        last_bar = bars[-1]
-                        ltp = float(last_bar.get("close", 1000.0))
-                        prev_close = float(last_bar.get("previousDayClose", ltp))
-                        change = round(ltp - prev_close, 2)
-                        change_pct = round((change / prev_close * 100.0) if prev_close else 0.0, 2)
-                        sparkline = [round(float(b.get("close", ltp)), 2) for b in bars[-15:]]
-                        self.quote_cache[sym] = {
-                            "symbol": sym,
-                            "clean_symbol": meta["clean_symbol"],
-                            "name": meta["name"],
-                            "exchange": meta["exchange"],
-                            "type": meta["type"],
-                            "sector": meta["sector"],
-                            "lot_size": meta["lot_size"],
-                            "ltp": ltp,
-                            "prev_close": prev_close,
-                            "change": change,
-                            "change_pct": change_pct,
-                            "high": float(last_bar.get("high", ltp)),
-                            "low": float(last_bar.get("low", ltp)),
-                            "volume": int(last_bar.get("volume", 0)),
-                            "turnover_cr": round((ltp * int(last_bar.get("volume", 0))) / 10000000.0, 2),
-                            "sparkline": sparkline,
-                            "is_positive": change >= 0
-                        }
-            if self.quote_cache:
-                self.last_batch_fetch_time = 0.0  # Force immediate real-time sync with Port 3005 on first call
-                print(f"[DataEngine] Preloaded {len(self.quote_cache)} instruments from local 60-day cache.")
-        except Exception as e:
-            print(f"[DataEngine] Local cache preload warning: {e}")
+        # Disallow loading stale/corrupted offline cache for live quotes
+        print("[DataEngine] Initialized with pure unadjusted live multi-exchange connector.")
 
     def get_market_status(self) -> Dict[str, Any]:
         """Calculates exact Indian Market session status based on IST."""

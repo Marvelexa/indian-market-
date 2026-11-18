@@ -16,6 +16,7 @@ import {
   type ExchangeContractMaster
 } from './universalIndianMarketConnector.ts';
 import { DiamondHandsHoldManager } from './diamondHandsHoldManager.ts';
+import { NexusPermanentCore } from './nexusPermanentCore.ts';
 
 export interface StockOptionConfig {
   symbol: string;
@@ -223,6 +224,15 @@ export class FoOptionSniperEngine {
 
     const optionSymbol = decision.tradingSymbol;
     const atmStrike = decision.selectedStrike;
+
+    // Enforce NexusPermanentCore: Block impossible strikes or split-corrupted spot prices (e.g. INFY 1114, KOTAK 495, BAJFINANCE 1100)
+    if (!NexusPermanentCore.isContractRealAndValid(config.symbol, atmStrike, params.spotPrice)) {
+      console.warn(`🚫 [VETO - CORRUPTED PRICE BLOCKED] ${config.symbol} rejected: Spot=₹${params.spotPrice}, Strike=${atmStrike}`);
+      return {
+        status: `STRICT_VETO: Spot ₹${params.spotPrice} or Strike ${atmStrike} for ${config.symbol} failed real-exchange validity check.`,
+      };
+    }
+
     const lotQty = decision.lotSize;
     // Mandatory Protected Limit Order Price (@ Ask + 0.2%)
     const optionPremium = decision.protectedLimitBuyPrice;

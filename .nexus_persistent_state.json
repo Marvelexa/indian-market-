@@ -1,0 +1,13 @@
+{
+  "initialCapital": 100000,
+  "currentCapital": 100000,
+  "totalRealizedPnl": 0,
+  "totalFloatingPnl": 0,
+  "liveEquity": 100000,
+  "winsCount": 0,
+  "lossesCount": 0,
+  "winRatePct": 0,
+  "openPositions": [],
+  "closedTrades": [],
+  "lastUpdatedMs": 1795017269689
+}

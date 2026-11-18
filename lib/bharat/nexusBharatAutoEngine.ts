@@ -19,6 +19,7 @@ import {
   type ExchangeContractMaster
 } from './universalIndianMarketConnector.ts';
 import { DiamondHandsHoldManager } from './diamondHandsHoldManager.ts';
+import { NexusPermanentCore } from './nexusPermanentCore.ts';
 
 export interface NseCandle5m {
   timestamp: number; // Epoch ms
@@ -478,6 +479,13 @@ export class NexusBharatAutoEngine {
 
       const lotQty = decision.lotSize;
       const atmStrike = decision.selectedStrike;
+
+      // Enforce NexusPermanentCore: Block impossible strikes or split-corrupted spot prices (e.g. INFY 1114, KOTAK 495, BAJFINANCE 1100)
+      if (!NexusPermanentCore.isContractRealAndValid(sig.symbol, atmStrike, sig.entryPrice)) {
+        console.warn(`[Stock Option VETO - CORRUPTED PRICE] ${sig.symbol}: Spot=₹${sig.entryPrice}, Strike=${atmStrike}`);
+        continue;
+      }
+
       const optionSymbol = decision.tradingSymbol;
       const realPremium = decision.protectedLimitBuyPrice; // Mandatory Protected Limit Order Price
 

@@ -15,6 +15,8 @@
  * ============================================================================
  */
 
+import { NexusPermanentCore } from './nexusPermanentCore.ts';
+
 export interface Candle {
   timestamp: number;
   open: number;
@@ -126,6 +128,12 @@ export class Mtf15mSupportResistanceOptionEngine {
     const c0_5m = candles5m[candles5m.length - 1];
     const c1_5m = candles5m[candles5m.length - 2];
     const spotPrice = c0_5m.close;
+
+    // Reject corrupted spot prices (like KOTAK 495, BAJFINANCE 1100, INFY 1114)
+    const validAtm = NexusPermanentCore.getValidAtmStrike(symbol, spotPrice);
+    if (!NexusPermanentCore.isContractRealAndValid(symbol, validAtm, spotPrice)) {
+      return this.reject(symbol, `SPOT_PRICE_CORRUPTED_OR_OUT_OF_BOUNDS (Spot: ₹${spotPrice})`);
+    }
 
     // STEP 1: Compute 15-Minute Support & Resistance
     const sr15m = this.calculate15mSupportResistance(candles15m);
