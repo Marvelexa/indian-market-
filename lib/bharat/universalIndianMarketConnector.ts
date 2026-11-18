@@ -596,6 +596,7 @@ export class UniversalIndianMarketConnector {
       const ask = realTick.askPrice;
       const oi = realTick.openInterest || Math.max(10000, c.lotSize * 50);
       const volume = realTick.volume || 1000;
+      const iv = (realTick as any).iv ?? 20.0;
 
       result.push({
         symbol: normSym,
