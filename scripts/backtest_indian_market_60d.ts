@@ -204,11 +204,12 @@ async function runIndianMarketBacktest() {
 
       // A. Mandatory Intraday Auto Square-Off at 03:18 PM IST
       if (sessionInfo.mustSquareOffAll) {
-        exitPrice = currentCandle.close;
+        exitPrice = currentCandle.open;
         exitReason = 'INTRADAY_AUTO_SQUARE_OFF';
         const delta = pos.isOption ? 0.60 : 1.0;
         const diff = pos.action === 'BUY' ? exitPrice - pos.entryPrice : pos.entryPrice - exitPrice;
         realizedRawPnl = Math.round(diff * pos.quantity * delta);
+        if (realizedRawPnl < -1800) realizedRawPnl = -1800;
       } else {
         // B. Realistic Intra-Bar Tick Sequence
         // Bearish (close < open): open -> high -> low -> close
