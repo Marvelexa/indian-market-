@@ -148,6 +148,9 @@ async function runIndianMarketBacktest() {
   const dailyPnlMap: Map<string, { date: string; pnl: number; trades: number; wins: number; losses: number }> = new Map();
   const symbolSlCircuitBreaker: Set<string> = new Set();
   let lastProcessedDate = '';
+  let dailyTradeCount = 0;
+  let dailyRealizedNetPnl = 0;
+  const dailySymbolTradeCounts: Map<string, number> = new Map();
 
   // Sliding candle buffer per symbol
   const candleHistory: Map<string, CachedIndianCandle[]> = new Map();
@@ -169,11 +172,14 @@ async function runIndianMarketBacktest() {
 
     if (tIdx < 45) continue; // Warm-up period
 
-    // Daily reset for 1-SL Directional Circuit Breaker
+    // Daily reset for 1-SL Directional Circuit Breaker & Hard Daily Risk Guards
     const currentMasterCandle = symbolTimeMap.get('NIFTY')?.get(currentTs);
     if (currentMasterCandle?.dateStr && currentMasterCandle.dateStr !== lastProcessedDate) {
       lastProcessedDate = currentMasterCandle.dateStr;
       symbolSlCircuitBreaker.clear();
+      dailyTradeCount = 0;
+      dailyRealizedNetPnl = 0;
+      dailySymbolTradeCounts.clear();
     }
 
     // 1. Process Open Positions First (TP, SL, 8-Stage Ladder, Auto Square-Off)
@@ -218,13 +224,13 @@ async function runIndianMarketBacktest() {
           const diff = pos.action === 'BUY' ? tick - pos.entryPrice : pos.entryPrice - tick;
           const currentPnl = Math.round(diff * pos.quantity * delta);
 
-          // Evaluate 8-Stage Rupee Profit Ladder & Hard SL (-₹2,500)
+          // Evaluate 8-Stage Rupee Profit Ladder & Hard SL (-₹1,800)
           const ladderResult = IndianMarketMasterEngine.evaluateEightStageRupeeLadder({
             peakPnlInr: Math.max(pos.peakPnlInr, currentPnl),
             currentPnlInr: currentPnl,
             currentLockedInr: pos.lockedPnlInr,
             currentStage: pos.stage,
-            hardSlInr: -2500,
+            hardSlInr: -1800,
           });
 
           pos.peakPnlInr = Math.max(pos.peakPnlInr, currentPnl);
@@ -250,6 +256,7 @@ async function runIndianMarketBacktest() {
       if (exitReason && exitPrice > 0) {
         // Deduct ₹55/trade statutory friction (brokerage + STT + exchange fees)
         const netPnlInr = realizedRawPnl - 55;
+        dailyRealizedNetPnl += netPnlInr;
         const roePct = Number((((exitPrice - pos.entryPrice) / pos.entryPrice) * 100 * (pos.isOption ? 5 : 1)).toFixed(2));
 
         capitalInr += netPnlInr;
@@ -308,6 +315,16 @@ async function runIndianMarketBacktest() {
     // 2. Evaluate Fresh Signals across 14 symbols (within Active Sniper Window)
     if (!sessionInfo.canOpenNewTrade) continue;
 
+    // Hard Risk Guard: Daily Drawdown Circuit Breaker (-₹4,500 limit) & Max Daily Trades Cap (18)
+    const dailyCheck = IndianMarketMasterEngine.canOpenTradeToday({
+      dailyCompletedTradesCount: dailyTradeCount,
+      dailyOpenTradesCount: activePositions.length,
+      dailyRealizedNetPnl,
+      symbolDailyTradeCount: 0,
+      confluenceScore: 100,
+    });
+    if (!dailyCheck.allowed) continue;
+
     // Count currently occupied seats in 2+2+2 architecture
     const chopOccupied = activePositions.filter((p) => p.seatCategory === 'CHOP_PING_PONG_SEAT').length;
     const trendOccupied = activePositions.filter((p) => p.seatCategory === 'NORMAL_TREND_RUNNER_SEAT').length;
@@ -316,6 +333,12 @@ async function runIndianMarketBacktest() {
     for (const sym of NSE_SYMBOLS) {
       if (activePositions.length >= 6) break;
       if (activePositions.some((p) => p.symbol === sym)) continue;
+
+      // Hard Risk Guard: Max 2 trades per symbol per day
+      const symCount = dailySymbolTradeCounts.get(sym) || 0;
+      if (symCount >= IndianMarketMasterEngine.MAX_TRADES_PER_SYMBOL_DAILY) {
+        continue;
+      }
 
       const hist = candleHistory.get(sym)!;
       if (hist.length < 40) continue;
@@ -336,6 +359,11 @@ async function runIndianMarketBacktest() {
       });
 
       if (!sig.approved || sig.action === 'WAIT') continue;
+
+      // Hard Risk Guard: Highest-conviction only (Score >= 88)
+      if (sig.confluenceScore < IndianMarketMasterEngine.MIN_CONFLUENCE_SCORE) {
+        continue;
+      }
 
       // 1-SL Per-Symbol Directional Circuit Breaker
       if (symbolSlCircuitBreaker.has(`${sym}:${sig.action}`)) {
@@ -389,6 +417,8 @@ async function runIndianMarketBacktest() {
       };
 
       activePositions.push(newPos);
+      dailyTradeCount++;
+      dailySymbolTradeCounts.set(sym, symCount + 1);
     }
   }
 

@@ -3,10 +3,9 @@ import fs from 'fs';
 import path from 'path';
 import {
   IndianMarketMasterEngine,
-  IndianCandle,
-  SeatCategory,
-} from '../indianMarket/indianMarketMasterEngine';
-import { KlinePoint } from '../../src/types';
+  type IndianCandle,
+  type SeatCategory,
+} from '../indianMarket/indianMarketMasterEngine.ts';
 
 export interface ReplayPosition {
   id: string;
@@ -222,6 +221,9 @@ export class TimeMachineReplayEngine {
   private livePrices: Record<string, number> = {};
   private symbolSlCircuitBreaker: Set<string> = new Set();
   private lastReplayDate: string = '';
+  private dailyTradeCount: number = 0;
+  private dailyRealizedNetPnl: number = 0;
+  private dailySymbolTradeCount: Map<string, number> = new Map();
 
   private isInitialized: boolean = false;
   private initPromise: Promise<void> | null = null;
@@ -419,11 +421,14 @@ export class TimeMachineReplayEngine {
     const currentBarTime = this.masterTimestamps[this.barIndex];
     const subTickTime = currentBarTime + this.subTickIndex * 3.75 * 60 * 1000;
 
-    // Daily reset for 1-SL Circuit Breaker
+    // Daily reset for 1-SL Circuit Breaker & Hard Daily Risk Guards
     const currentNiftyBar = (this.candlesMap.get('NIFTY') || [])[this.barIndex];
     if (currentNiftyBar?.dateStr && currentNiftyBar.dateStr !== this.lastReplayDate) {
       this.lastReplayDate = currentNiftyBar.dateStr;
       this.symbolSlCircuitBreaker.clear();
+      this.dailyTradeCount = 0;
+      this.dailyRealizedNetPnl = 0;
+      this.dailySymbolTradeCount.clear();
     }
 
     // 1. Process active positions
@@ -477,13 +482,13 @@ export class TimeMachineReplayEngine {
         continue;
       }
 
-      // B. 8-STAGE RUPEE PROFIT LADDER + HARD SL (-₹2,500) EVALUATION
+      // B. 8-STAGE RUPEE PROFIT LADDER + HARD SL (-₹1,800) EVALUATION
       const ladderResult = IndianMarketMasterEngine.evaluateEightStageRupeeLadder({
         peakPnlInr: pos.peakPnlInr || 0,
         currentPnlInr: floatingPnlInr,
         currentLockedInr: pos.lockedPnlInr || 0,
         currentStage: pos.stage,
-        hardSlInr: -2500,
+        hardSlInr: -1800,
       });
 
       pos.lockedPnlInr = ladderResult.newLockedInr;
@@ -516,10 +521,12 @@ export class TimeMachineReplayEngine {
     const delta = pos.isOption ? 0.60 : 1.0;
     const priceDiff = isBuy ? exitPrice - pos.entryPrice : pos.entryPrice - exitPrice;
     let rawPnl = pnlOverride !== undefined ? pnlOverride : Math.round(priceDiff * pos.quantity * delta);
-    if (rawPnl < -2500) rawPnl = -2500;
+    if (rawPnl < -1800) rawPnl = -1800;
 
     // Deduct ₹55/trade real brokerage & STT statutory friction
     const netPnlInr = rawPnl - 55;
+    const pnlInr = netPnlInr;
+    this.dailyRealizedNetPnl += netPnlInr;
 
     // 1-SL Circuit Breaker: Record losing symbol + side
     if (exitReason === 'STOP_LOSS_HIT' || rawPnl <= -1500) {
@@ -608,6 +615,16 @@ export class TimeMachineReplayEngine {
     const session = IndianMarketMasterEngine.checkMarketSessionIST(currentTimeMs);
     if (!session.canOpenNewTrade) return;
 
+    // Hard Risk Guard: Daily Drawdown Circuit Breaker (-₹4,500 limit) & Max Daily Trades Cap (18)
+    const dailyCheck = IndianMarketMasterEngine.canOpenTradeToday({
+      dailyCompletedTradesCount: this.dailyTradeCount,
+      dailyOpenTradesCount: this.activePositions.length,
+      dailyRealizedNetPnl: this.dailyRealizedNetPnl,
+      symbolDailyTradeCount: 0,
+      confluenceScore: 100,
+    });
+    if (!dailyCheck.allowed) return;
+
     const chopOccupied = this.activePositions.filter(
       (p) => p.seatBucket === 'CHOP_PING_PONG_SEAT'
     ).length;
@@ -622,9 +639,18 @@ export class TimeMachineReplayEngine {
       if (this.activePositions.length >= 6) break;
       if (this.activePositions.some((p) => p.symbol === sym)) continue;
 
+      // Hard Risk Guard: Max 2 trades per symbol per day
+      const symDailyCount = this.dailySymbolTradeCount.get(sym) || 0;
+      if (symDailyCount >= IndianMarketMasterEngine.MAX_TRADES_PER_SYMBOL_DAILY) {
+        continue;
+      }
+
       const symCandles = this.candlesMap.get(sym) || [];
-      if (this.barIndex < 40) continue;
-      const window15m = symCandles.slice(0, this.barIndex + 1);
+      const window15m = symCandles.filter((c) => c.timestamp <= currentTimeMs);
+      if (window15m.length < 40) continue;
+
+      const lastCandle = window15m[window15m.length - 1];
+      if (lastCandle.timestamp !== currentTimeMs) continue;
 
       const isIndex = INDEX_SET.has(sym);
       const sig = IndianMarketMasterEngine.evaluateSymbol({
@@ -632,11 +658,16 @@ export class TimeMachineReplayEngine {
         candles: window15m,
         isIndex,
         tickSize: 0.05,
-        previousDayHigh: window15m[window15m.length - 1]?.previousDayHigh,
-        previousDayLow: window15m[window15m.length - 1]?.previousDayLow,
+        previousDayHigh: lastCandle.previousDayHigh,
+        previousDayLow: lastCandle.previousDayLow,
       });
 
       if (!sig.approved || sig.action === 'WAIT') continue;
+
+      // Hard Risk Guard: Highest-conviction only (Score >= 88)
+      if (sig.confluenceScore < IndianMarketMasterEngine.MIN_CONFLUENCE_SCORE) {
+        continue;
+      }
 
       // 1-SL Per-Symbol Directional Circuit Breaker
       if (this.symbolSlCircuitBreaker.has(`${sym}:${sig.action}`)) {
@@ -664,14 +695,7 @@ export class TimeMachineReplayEngine {
 
       if (targetSeat === 'NONE') continue;
 
-      let quantity = 1;
-      if (sym === 'NIFTY') quantity = 25;
-      else if (sym === 'BANKNIFTY') quantity = 15;
-      else if (sym === 'FINNIFTY') quantity = 25;
-      else if (sym === 'SENSEX') quantity = 10;
-      else {
-        quantity = Math.max(1, Math.round(75000 / sig.entryPrice));
-      }
+      const quantity = sig.quantityLotsOrShares;
 
       const notionalInr = Math.round(quantity * sig.entryPrice);
       const marginInr = isOption ? Math.round(notionalInr * 0.008) : Math.round(notionalInr / 5);
@@ -713,6 +737,8 @@ export class TimeMachineReplayEngine {
       };
 
       this.activePositions.push(newPos);
+      this.dailyTradeCount++;
+      this.dailySymbolTradeCount.set(sym, symDailyCount + 1);
     }
   }
 

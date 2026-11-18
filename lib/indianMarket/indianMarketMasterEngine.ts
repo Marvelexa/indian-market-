@@ -49,7 +49,51 @@ export interface IndianTradeSignal {
 export class IndianMarketMasterEngine {
   public static readonly TOTAL_CAPITAL_INR = 100000; // ₹1,00,000
   public static readonly DAILY_TARGET_INR = 20000;   // ₹20,000+ goal
-  public static readonly MAX_RISK_PER_TRADE_INR = 2500; // Strict ₹2,500 max loss per lot (Rules 3 & 5)
+  public static readonly MAX_RISK_PER_TRADE_INR = 1800; // Strict -₹1,800 max loss per trade
+  public static readonly MAX_DAILY_TRADES_CAP = 18;    // Max 15 to 18 highest-conviction trades per day
+  public static readonly MAX_TRADES_PER_SYMBOL_DAILY = 2; // Max 2 trades per symbol per day
+  public static readonly DAILY_DRAWDOWN_LIMIT_INR = -4500; // -₹4,500 (-4.5% of capital) Daily Circuit Breaker
+  public static readonly MIN_CONFLUENCE_SCORE = 88;    // Score >= 88 required
+
+  /**
+   * Hard Risk Guard Validator:
+   * Enforces Max Daily Trades Cap (<=18), Max Symbol Daily Trades (<=2),
+   * Daily Drawdown Circuit Breaker (-₹4,500), and Minimum Confluence Score (>=88).
+   */
+  public static canOpenTradeToday(params: {
+    dailyCompletedTradesCount: number;
+    dailyOpenTradesCount: number;
+    dailyRealizedNetPnl: number;
+    symbolDailyTradeCount: number;
+    confluenceScore: number;
+  }): { allowed: boolean; reason?: string } {
+    if (params.dailyRealizedNetPnl <= this.DAILY_DRAWDOWN_LIMIT_INR) {
+      return {
+        allowed: false,
+        reason: `DAILY_DRAWDOWN_CIRCUIT_BREAKER_TRIPPED (Realized: ₹${params.dailyRealizedNetPnl} <= -₹4,500 limit)`,
+      };
+    }
+    const totalToday = params.dailyCompletedTradesCount + params.dailyOpenTradesCount;
+    if (totalToday >= this.MAX_DAILY_TRADES_CAP) {
+      return {
+        allowed: false,
+        reason: `MAX_DAILY_TRADES_CAP_REACHED (${totalToday} >= ${this.MAX_DAILY_TRADES_CAP})`,
+      };
+    }
+    if (params.symbolDailyTradeCount >= this.MAX_TRADES_PER_SYMBOL_DAILY) {
+      return {
+        allowed: false,
+        reason: `MAX_SYMBOL_DAILY_TRADES_REACHED (${params.symbolDailyTradeCount} >= ${this.MAX_TRADES_PER_SYMBOL_DAILY})`,
+      };
+    }
+    if (params.confluenceScore < this.MIN_CONFLUENCE_SCORE) {
+      return {
+        allowed: false,
+        reason: `CONFLUENCE_SCORE_BELOW_THRESHOLD (${params.confluenceScore} < ${this.MIN_CONFLUENCE_SCORE})`,
+      };
+    }
+    return { allowed: true };
+  }
 
   /**
    * Checks if current timestamp is within NSE Active Trading Window (09:25 AM - 03:10 PM IST)
@@ -71,8 +115,8 @@ export class IndianMarketMasterEngine {
 
     const marketOpenMin = 9 * 60 + 15;   // 09:15 AM
     const entryStartMin = 9 * 60 + 25;   // 09:25 AM (After 10-min ORB stabilization)
-    const entryCutoffMin = 15 * 60 + 10; // 03:10 PM (No fresh entries in last 20 mins)
-    const squareOffMin = 15 * 60 + 18;   // 03:18 PM (Mandatory intraday exit)
+    const entryCutoffMin = 15 * 60 + 10; // 03:10 PM (No fresh entries after 03:10–03:15 PM IST)
+    const squareOffMin = 15 * 60 + 15;   // 03:15 PM (Mandatory intraday exit before 03:18 PM IST)
     const marketCloseMin = 15 * 60 + 30; // 03:30 PM
 
     if (totalMinutes < marketOpenMin || totalMinutes > marketCloseMin) {
@@ -463,7 +507,7 @@ export class IndianMarketMasterEngine {
     currentPnlInr: number;
     currentLockedInr: number;
     currentStage: number;
-    hardSlInr?: number; // default -2500
+    hardSlInr?: number; // default -1800
   }): {
     shouldExit: boolean;
     exitReason: string;
@@ -471,7 +515,7 @@ export class IndianMarketMasterEngine {
     newLockedInr: number;
     newStage: number;
   } {
-    const hardSl = params.hardSlInr ?? -2500;
+    const hardSl = params.hardSlInr ?? -1800;
 
     // 1. Check Hard SL if no profit locked yet
     if (params.currentLockedInr <= 0 && params.currentPnlInr <= hardSl) {
