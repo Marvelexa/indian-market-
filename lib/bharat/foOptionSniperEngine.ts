@@ -17,6 +17,7 @@ import {
 } from './universalIndianMarketConnector.ts';
 import { DiamondHandsHoldManager } from './diamondHandsHoldManager.ts';
 import { NexusPermanentCore } from './nexusPermanentCore.ts';
+import { StrictRealOptionChainFeed } from './strictRealOptionChainFeed.ts';
 
 export interface StockOptionConfig {
   symbol: string;
@@ -233,16 +234,36 @@ export class FoOptionSniperEngine {
       };
     }
 
+    // 2. FETCH 100% REAL LIVE NSE OPTION CHAIN QUOTE (ZERO SYNTHETIC PRICING ALLOWED!)
+    const realQuote = await StrictRealOptionChainFeed.getRealOptionQuote({
+      symbol: config.symbol,
+      strikePrice: atmStrike,
+      optionType,
+    });
+
+    if (!realQuote || realQuote.realOptionLtp <= 0) {
+      return {
+        status: `STRICT_VETO: Real Live NSE Option LTP unavailable for ${config.symbol} ${atmStrike} ${optionType}. Synthetic pricing strictly forbidden!`,
+      };
+    }
+
+    // 3. OPTION PREMIUM MOMENTUM CONFIRMATION (Never Buy a Crashing Option!)
+    const momentumCheck = StrictRealOptionChainFeed.verifyOptionMomentum(realQuote);
+    if (!momentumCheck.approved) {
+      console.warn(`🚫 [MOMENTUM VETO] ${momentumCheck.vetoReason}`);
+      return {
+        status: `STRICT_VETO: ${momentumCheck.vetoReason}`,
+      };
+    }
+
     const lotQty = decision.lotSize;
-    // Mandatory Protected Limit Order Price (@ Ask + 0.2%)
-    const optionPremium = decision.protectedLimitBuyPrice;
+    const optionPremium = realQuote.realOptionLtp;
 
     console.log(
-      `🏛️ [5-Guardrail Stock Option Selected] ${config.symbol} | Spot: ₹${params.spotPrice} | ` +
-      `Strike: ${atmStrike} ${optionType} (${optionSymbol}) | Protected Limit Buy: ₹${optionPremium} (Ask: ₹${decision.ask}) | ` +
-      `Spread: ₹${decision.spreadInr} (${decision.spreadPct}%) | OI: ${decision.openInterest.toLocaleString('en-IN')} | ` +
-      `DTE: ${decision.daysToExpiry} (Rolled Next Month: ${decision.rolledToNextMonthForPhysicalGuard ? 'YES' : 'NO'}) | ` +
-      `Order: ${decision.orderType} | Slices: [${decision.orderSlices.join(', ')}] | SEBI Tag: ${decision.sebiAlgoTag}`
+      `🏛️ [Real NSE Stock Option Selected] ${config.symbol} | Spot: ₹${params.spotPrice} | ` +
+      `Strike: ${atmStrike} ${optionType} (${optionSymbol}) | Real Exchange LTP: ₹${optionPremium} (Bid: ₹${realQuote.bidPrice}, Ask: ₹${realQuote.askPrice}) | ` +
+      `OI: ${realQuote.openInterest.toLocaleString('en-IN')} | Vol: ${realQuote.volume.toLocaleString('en-IN')} | ` +
+      `Change: ${realQuote.changePct.toFixed(2)}% | SEBI Tag: ${decision.sebiAlgoTag}`
     );
 
     // MAX RISK RULE: Strictly Capped at -₹2,500 hard Stop Loss per lot for Stocks

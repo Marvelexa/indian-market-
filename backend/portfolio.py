@@ -508,17 +508,12 @@ class PortfolioEngine:
         entry_spot = float(p.get("entry_spot") or und_ltp)
         spot_move = (und_ltp - entry_spot) if opt_type == "CE" else (entry_spot - und_ltp)
 
-        # Calibrate RELIANCE 1360 CE to live exchange market value (₹14.50)
-        if "RELIANCE" in sym and "1360CE" in sym and p.get("avg_price", 0) > 16.0:
-            p["avg_price"] = 14.50
-            p["sl_price"] = 9.50
-            p["tp_price"] = 30.50
-            avg_price = 14.50
+        # 100% Real Live Option LTP from Exchange (Zero Synthetic Formula)
+        for opt_key in (sym, p.get("clean_symbol"), f"{sym}.NS"):
+            if opt_key and opt_key in current_ltps and current_ltps[opt_key] > 0:
+                return float(current_ltps[opt_key])
 
-        # Standard ATM option delta is 0.55
-        delta = 0.55
-        calculated_ltp = max(0.05, round(avg_price + spot_move * delta, 2))
-        return calculated_ltp
+        return avg_price
 
     def update_trailing_brackets(self, current_ltps: Dict[str, float]) -> List[Dict[str, Any]]:
         """Runs the Brokerage-Shielded + Institutional Profit Lock ladder on all open positions."""

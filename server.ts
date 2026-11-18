@@ -39,6 +39,7 @@ import {
   type PersistentOpenPosition,
   type PersistentClosedTrade
 } from './lib/bharat/nexusPermanentCore.ts';
+import { StrictRealOptionChainFeed } from './lib/bharat/strictRealOptionChainFeed.ts';
 
 const PY_BACKEND_URL = 'http://127.0.0.1:8000';
 const PORT = 3005;
@@ -398,30 +399,30 @@ async function runCycle(): Promise<void> {
     await refresh5mCandles();
   }
 
-  // Dynamically update Option Premiums across all active seats based on underlying spot moves (0.55 delta)
+  // 100% REAL LIVE NSE OPTION CHAIN TICK UPDATER (ZERO SYNTHETIC FORMULAS ALLOWED!)
   if (lastCycleResult && lastCycleResult.activePositions) {
     for (const pos of lastCycleResult.activePositions) {
       if (pos.isOption) {
         const undSym = pos.underlyingSymbol || dummyBroker.cleanSymbol(pos.symbol);
-        // Calibrate RELIANCE 1360 CE to live exchange market value (₹14.50)
-        if (pos.symbol.includes('RELIANCE') && pos.symbol.includes('1360CE') && pos.entryPrice > 16) {
-          pos.entryPrice = 14.50;
-          pos.initialSlPrice = 9.50;
-          pos.currentSlPrice = 9.50;
-          pos.targetPrice = 30.50;
-        }
-        const undPrice = liveLtpMap[undSym] || liveLtpMap[`${undSym}.NS`] || liveLtpMap[`NSE:${undSym}`];
-        if (undPrice && undPrice > 0) {
-          const delta = 0.55;
-          const refSpot = pos.currentVwap || undPrice;
-          const isCall = pos.optionType === 'CE' || pos.symbol.endsWith('CE');
-          const spotMove = isCall ? undPrice - refSpot : refSpot - undPrice;
-          const dynamicPremium = Math.max(0.05, Number((pos.entryPrice + spotMove * delta).toFixed(2)));
-          liveLtpMap[pos.symbol] = dynamicPremium;
-          liveLtpMap[`${pos.symbol}.NS`] = dynamicPremium;
-          pos.currentPrice = dynamicPremium;
-          const pnlPoints = pos.side === 'BUY' ? dynamicPremium - pos.entryPrice : pos.entryPrice - dynamicPremium;
-          pos.unrealizedPnlInr = Number((pnlPoints * pos.qty).toFixed(2));
+        const match = pos.symbol.match(/(\d+)(CE|PE)$/i);
+        const strike = match ? parseFloat(match[1]) : (pos as any).strike || 0;
+        const optType = (match ? match[2].toUpperCase() : pos.optionType || 'CE') as 'CE' | 'PE';
+
+        if (strike > 0) {
+          const realTick = await StrictRealOptionChainFeed.getRealOptionQuote({
+            symbol: undSym,
+            strikePrice: strike,
+            optionType: optType,
+          });
+
+          if (realTick && realTick.realOptionLtp > 0) {
+            const realLtp = realTick.realOptionLtp;
+            liveLtpMap[pos.symbol] = realLtp;
+            liveLtpMap[`${pos.symbol}.NS`] = realLtp;
+            pos.currentPrice = realLtp;
+            const pnlPoints = pos.side === 'BUY' ? realLtp - pos.entryPrice : pos.entryPrice - realLtp;
+            pos.unrealizedPnlInr = Number((pnlPoints * pos.qty).toFixed(2));
+          }
         }
       }
     }
@@ -603,20 +604,16 @@ async function runCycle(): Promise<void> {
       }
     }
 
-    // 4. Update synthetic tick prices for open FO option positions based on underlying moves (0.55 Delta)
+    // 4. Update 100% Real Live Option LTP for open FO option positions directly from NSE Option Chain
     for (const pos of foSniperEngine.getActivePositions()) {
-      const underlyingPrice = liveLtpMap[pos.stockSymbol] || liveLtpMap[`${pos.stockSymbol}.NS`];
-      if (underlyingPrice) {
-        const delta = 0.55;
-        const refSpot = pos.entrySpot || pos.strike;
-        const spotMove =
-          pos.optionType === 'CE' ? underlyingPrice - refSpot : refSpot - underlyingPrice;
-        const dynamicPremium = Math.max(
-          0.05,
-          Number((pos.entryPremium + spotMove * delta).toFixed(2))
-        );
-        // Continuously update live option LTP so Floating PnL is always active and dynamic
-        liveLtpMap[pos.optionSymbol] = dynamicPremium;
+      const realTick = await StrictRealOptionChainFeed.getRealOptionQuote({
+        symbol: pos.stockSymbol,
+        strikePrice: pos.strike,
+        optionType: pos.optionType,
+      });
+
+      if (realTick && realTick.realOptionLtp > 0) {
+        liveLtpMap[pos.optionSymbol] = realTick.realOptionLtp;
       }
     }
 
