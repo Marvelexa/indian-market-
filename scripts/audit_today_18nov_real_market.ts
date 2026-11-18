@@ -404,7 +404,7 @@ async function runAudit() {
       const initialDualShield = UnlimitedBreathingTrailEngine.createInitialState(
         entryOptionPrice,
         item.lotSize,
-        2200
+        2500
       );
 
       openPositions.push({

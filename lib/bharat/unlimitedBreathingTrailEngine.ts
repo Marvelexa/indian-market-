@@ -47,7 +47,7 @@ export class UnlimitedBreathingTrailEngine {
   public static createInitialState(
     entryPremium: number,
     lotSize: number,
-    maxInitialLossInr = 2200
+    maxInitialLossInr = 2500
   ): DualShieldTrailState {
     const hardFloorInr = -Math.abs(maxInitialLossInr);
     const hardSlPremium = Number(

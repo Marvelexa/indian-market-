@@ -300,11 +300,11 @@ export class NexusPermanentCore {
       return null;
     }
 
-    const maxLossDropPts = 2200 / spec.lotSize;
+    const maxLossDropPts = 2500 / spec.lotSize;
     const initialDualShield = UnlimitedBreathingTrailEngine.createInitialState(
       params.entryPremium,
       spec.lotSize,
-      2200
+      2500
     );
 
     const newPos: PersistentOpenPosition = {
