@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nexus Bharat - Real-Time P&L Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased p-6">
+
+  <div class="max-w-7xl mx-auto space-y-6">
+    <!-- Header & Summary Cards -->
+    <header class="flex justify-between items-center border-b border-slate-800 pb-4">
+      <h1 class="text-2xl font-bold tracking-tight text-emerald-400">⚡ NEXUS BHARAT — Live P&L Terminal</h1>
+      <div id="connection-status" class="px-3 py-1 text-xs rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">Connecting...</div>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+        <p class="text-xs text-slate-400 uppercase tracking-wider">Realized P&L</p>
+        <p id="total-realized" class="text-2xl font-semibold mt-1 text-slate-100">₹0.00</p>
+      </div>
+      <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+        <p class="text-xs text-slate-400 uppercase tracking-wider">Floating P&L (Live)</p>
+        <p id="total-floating" class="text-2xl font-semibold mt-1 text-slate-100">₹0.00</p>
+      </div>
+      <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+        <p class="text-xs text-slate-400 uppercase tracking-wider">Active Seats</p>
+        <p id="active-count" class="text-2xl font-semibold mt-1 text-sky-400">0 / 6</p>
+      </div>
+      <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+        <p class="text-xs text-slate-400 uppercase tracking-wider">Win Rate</p>
+        <p id="win-rate" class="text-2xl font-semibold mt-1 text-indigo-400">0.0%</p>
+      </div>
+    </div>
+
+    <!-- Open Positions Table -->
+    <section class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-800 flex justify-between items-center">
+        <h2 class="font-semibold text-slate-200">Active Positions (Floating P&L)</h2>
+        <span class="text-xs text-slate-400">Real-time Tick Stream</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-800 text-xs text-slate-400 uppercase bg-slate-950/50">
+              <th class="p-4">Symbol</th>
+              <th class="p-4">Side</th>
+              <th class="p-4">Qty</th>
+              <th class="p-4">Entry Price</th>
+              <th class="p-4">LTP</th>
+              <th class="p-4">Floating P&L</th>
+            </tr>
+          </thead>
+          <tbody id="open-positions-tbody" class="divide-y divide-slate-800 text-sm">
+            <tr><td colspan="6" class="p-6 text-center text-slate-500">No active positions open.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Trade History Table (Persistent Across Reloads) -->
+    <section class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-800 flex justify-between items-center">
+        <h2 class="font-semibold text-slate-200">Trade Ledger (Saved History)</h2>
+        <button onclick="clearLocalStorageHistory()" class="text-xs text-rose-400 hover:underline">Clear View</button>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-800 text-xs text-slate-400 uppercase bg-slate-950/50">
+              <th class="p-4">Time</th>
+              <th class="p-4">Symbol</th>
+              <th class="p-4">Side</th>
+              <th class="p-4">Qty</th>
+              <th class="p-4">Entry</th>
+              <th class="p-4">Exit</th>
+              <th class="p-4">Realized P&L</th>
+              <th class="p-4">Reason</th>
+            </tr>
+          </thead>
+          <tbody id="trade-history-tbody" class="divide-y divide-slate-800 text-sm">
+            <tr><td colspan="8" class="p-6 text-center text-slate-500">Loading history...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const socket = io('http://localhost:4000');
+    let allTrades = [];
+
+    socket.on('connect', () => {
+      document.getElementById('connection-status').innerText = 'Live Stream Connected';
+      document.getElementById('connection-status').className = 'px-3 py-1 text-xs rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+    });
+
+    socket.on('disconnect', () => {
+      document.getElementById('connection-status').innerText = 'Disconnected';
+      document.getElementById('connection-status').className = 'px-3 py-1 text-xs rounded bg-rose-500/20 text-rose-400 border border-rose-500/30';
+    });
+
+    // Load initial trade ledger on page load (survives reloads via backend storage)
+    socket.on('init_history', (trades) => {
+      allTrades = trades || [];
+      renderHistory();
+    });
+
+    // Listen to real-time tick and position updates
+    socket.on('market_update', (data) => {
+      renderOpenPositions(data.openPositions || []);
+      if (data.closedTrades && data.closedTrades.length > 0) {
+        data.closedTrades.forEach(ct => {
+          if (!allTrades.some(t => t.id === ct.id)) {
+            allTrades.unshift(ct);
+          }
+        });
+        renderHistory();
+      }
+    });
+
+    function clearLocalStorageHistory() {
+      allTrades = [];
+      renderHistory();
+    }
+
+    function renderOpenPositions(positions) {
+      const tbody = document.getElementById('open-positions-tbody');
+      document.getElementById('active-count').innerText = `${positions.length} / 6`;
+      
+      if (positions.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-6 text-center text-slate-500">No active positions open.</td></tr>`;
+        document.getElementById('total-floating').innerText = '₹0.00';
+        document.getElementById('total-floating').className = 'text-2xl font-semibold mt-1 text-slate-100';
+        return;
+      }
+
+      let totalFloat = 0;
+      tbody.innerHTML = positions.map(p => {
+        totalFloat += p.floatingPnl;
+        const colorClass = p.floatingPnl >= 0 ? 'text-emerald-400' : 'text-rose-400';
+        return `
+          <tr class="hover:bg-slate-800/50 transition-colors">
+            <td class="p-4 font-medium">${p.symbol}</td>
+            <td class="p-4"><span class="px-2 py-0.5 rounded text-xs font-bold ${p.side === 'BUY' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'}">${p.side}</span></td>
+            <td class="p-4 text-slate-300">${p.qty}</td>
+            <td class="p-4 text-slate-300">₹${p.entryPrice.toFixed(2)}</td>
+            <td class="p-4 text-slate-300">₹${p.currentPrice.toFixed(2)}</td>
+            <td class="p-4 font-semibold ${colorClass}">₹${p.floatingPnl.toFixed(2)}</td>
+          </tr>
+        `;
+      }).join('');
+
+      const floatEl = document.getElementById('total-floating');
+      floatEl.innerText = `₹${totalFloat.toFixed(2)}`;
+      floatEl.className = `text-2xl font-semibold mt-1 ${totalFloat >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+    }
+
+    function renderHistory() {
+      const tbody = document.getElementById('trade-history-tbody');
+      let totalRealized = 0;
+      let wins = 0;
+
+      if (allTrades.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" class="p-6 text-center text-slate-500">No closed trades recorded yet.</td></tr>`;
+        document.getElementById('total-realized').innerText = '₹0.00';
+        document.getElementById('win-rate').innerText = '0.0%';
+        return;
+      }
+
+      tbody.innerHTML = allTrades.map(t => {
+        totalRealized += t.realizedPnl || 0;
+        if ((t.realizedPnl || 0) > 0) wins++;
+        const isWin = (t.realizedPnl || 0) >= 0;
+        
+        return `
+          <tr class="hover:bg-slate-800/50 transition-colors">
+            <td class="p-4 text-xs text-slate-400">${t.closedAt || t.openedAt}</td>
+            <td class="p-4 font-medium">${t.symbol}</td>
+            <td class="p-4"><span class="px-2 py-0.5 rounded text-xs font-bold ${t.side === 'BUY' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'}">${t.side}</span></td>
+            <td class="p-4 text-slate-300">${t.qty}</td>
+            <td class="p-4 text-slate-300">₹${t.entryPrice.toFixed(2)}</td>
+            <td class="p-4 text-slate-300">₹${t.exitPrice ? t.exitPrice.toFixed(2) : '-'}</td>
+            <td class="p-4 font-semibold ${isWin ? 'text-emerald-400' : 'text-rose-400'}">₹${(t.realizedPnl || 0).toFixed(2)}</td>
+            <td class="p-4 text-xs text-slate-400">${t.exitReason || 'CLOSED'}</td>
+          </tr>
+        `;
+      }).join('');
+
+      document.getElementById('total-realized').innerText = `₹${totalRealized.toFixed(2)}`;
+      document.getElementById('total-realized').className = `text-2xl font-semibold mt-1 ${totalRealized >= 0 ? 'text-emerald-400' : 'text-rose-400'}`;
+      
+      const winRate = allTrades.length > 0 ? (wins / allTrades.length) * 100 : 0;
+      document.getElementById('win-rate').innerText = `${winRate.toFixed(1)}%`;
+    }
+  </script>
+</body>
+</html>

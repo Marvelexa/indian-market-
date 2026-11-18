@@ -1,0 +1,21 @@
+date,weekday,niftyOpen,niftyClose,niftyChangePct,category,trades,wins,losses,winRatePct,netPnlInr,returnPct,tp1_3_locks,tp4_6_runners,smartSlHits,maxLossHits
+2026-10-01,Thursday,22543.7,22421.95,-0.54,Thursday Expiry Breakout,7,1,6,14.3,-3262.98,-3.26,1,0,4,0
+2026-10-05,Monday,22532.4,22555.75,0.1,Sideways Chop / Mean Reversion,13,8,5,61.5,35.07,0.04,8,0,3,1
+2026-10-06,Tuesday,22603.25,22776.1,0.76,Strong Bull Trend,9,8,1,88.9,3632.05,3.63,6,0,1,0
+2026-10-07,Wednesday,22690.45,22603.05,-0.39,Sideways Chop / Mean Reversion,13,8,5,61.5,812.87,0.81,6,0,4,0
+2026-10-08,Thursday,22599.05,22231.8,-1.63,Strong Bear Trend,11,11,0,100.0,4736.97,4.74,8,0,0,0
+2026-10-09,Friday,22316.8,22520.45,0.91,Strong Bull Trend,6,4,2,66.7,1285.97,1.29,1,0,1,0
+2026-10-12,Monday,22593.2,22363.35,-1.02,Strong Bear Trend,12,10,2,83.3,3680.37,3.68,8,0,1,0
+2026-10-13,Tuesday,22364.15,22721.95,1.6,Strong Bull Trend,14,9,5,64.3,3890.87,3.89,4,0,5,0
+2026-10-14,Wednesday,22715.75,22622.7,-0.41,Sideways Chop / Mean Reversion,10,5,5,50.0,-1284.6,-1.28,4,0,5,0
+2026-10-15,Thursday,22671.3,22997.35,1.44,Strong Bull Trend,12,11,1,91.7,3642.02,3.64,10,0,0,0
+2026-10-16,Friday,23065.1,23146.15,0.35,Friday Expiry Breakout,13,9,4,69.2,2820.12,2.82,7,0,3,0
+2026-10-19,Monday,23150.85,22888.95,-1.13,Strong Bear Trend,13,11,2,84.6,4234.1,4.23,10,0,0,0
+2026-10-21,Wednesday,23016.0,22811.35,-0.89,Strong Bear Trend,14,12,2,85.7,5284.92,5.28,12,0,0,0
+2026-10-22,Thursday,22687.75,22687.65,-0.0,Sideways Chop / Mean Reversion,5,0,5,0.0,-3140.05,-3.14,0,0,1,1
+2026-10-23,Friday,22742.2,22600.0,-0.63,Friday Expiry Breakout,14,12,2,85.7,7981.02,7.98,11,1,2,0
+2026-10-26,Monday,22524.4,22753.2,1.02,Strong Bull Trend,5,0,5,0.0,-2944.47,-2.94,0,0,1,1
+2026-10-27,Tuesday,22707.55,22749.75,0.19,Sideways Chop / Mean Reversion,4,0,4,0.0,-3625.4,-3.63,0,0,2,1
+2026-10-28,Wednesday,22678.0,22698.85,0.09,Sideways Chop / Mean Reversion,5,2,3,40.0,-3300.0,-3.3,1,0,1,2
+2026-10-29,Thursday,22690.65,22936.75,1.08,Strong Bull Trend,13,11,2,84.6,4646.92,4.65,9,0,2,0
+2026-10-30,Friday,22964.5,23053.1,0.39,Friday Expiry Breakout,13,7,6,53.8,-769.76,-0.77,5,1,5,0

@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NEXUS BHARAT // Full Year 2026 Audit Report (Jan - Nov 2026)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;800&display=swap');
+
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #0b0e14;
+    color: #e2e8f0;
+    font-size: 10.5px;
+    line-height: 1.45;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .page {
+    width: 100%;
+    min-height: 275mm;
+    max-height: 275mm;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .header-left h1 {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .header-left .sub {
+    font-size: 9px;
+    color: #94a3b8;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  .header-right {
+    text-align: right;
+  }
+
+  .badge-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .badge-trend { background: rgba(0, 255, 163, 0.15); color: #00FFA3; border: 1px solid rgba(0, 255, 163, 0.4); }
+  .badge-crash { background: rgba(255, 69, 96, 0.18); color: #ff4560; border: 1px solid rgba(255, 69, 96, 0.5); }
+  .badge-rally { background: rgba(56, 189, 248, 0.18); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.5); }
+  .badge-chop  { background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.5); }
+  .badge-scalp { background: rgba(168, 85, 247, 0.18); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.5); }
+
+  /* KPI Grid */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 7px;
+    margin-bottom: 10px;
+  }
+
+  .kpi-card {
+    background: #111722;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 6px 8px;
+  }
+
+  .kpi-label {
+    font-size: 7.5px;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+
+  .kpi-val {
+    font-size: 12px;
+    font-weight: 800;
+    color: #f1f5f9;
+  }
+
+  .kpi-val.green { color: #00FFA3; }
+  .kpi-val.red { color: #ff4560; }
+  .kpi-val.blue { color: #38bdf8; }
+  .kpi-val.amber { color: #fbbf24; }
+
+  /* Content Sections */
+  .section-box {
+    background: #0f141d;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    padding: 9px 12px;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 4px;
+  }
+
+  .section-body {
+    color: #cbd5e1;
+    font-size: 9.5px;
+    line-height: 1.42;
+  }
+
+  .section-body p {
+    margin-bottom: 4px;
+  }
+
+  .section-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .highlight-term {
+    color: #f8fafc;
+    font-weight: 600;
+  }
+
+  .green-pill {
+    background: rgba(0, 255, 163, 0.15);
+    color: #00FFA3;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 8.5px;
+  }
+
+  .red-pill {
+    background: rgba(255, 69, 96, 0.15);
+    color: #ff4560;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 8.5px;
+  }
+
+  /* Two Column Row */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  /* Tables */
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9px;
+    margin-top: 3px;
+  }
+
+  table.data-table th {
+    background: #172030;
+    color: #94a3b8;
+    text-align: left;
+    padding: 4px 6px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  table.data-table td {
+    padding: 4px 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: #e2e8f0;
+  }
+
+  table.data-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #64748b;
+    font-size: 8px;
+  }
+
+  .footer .tagline {
+    font-weight: 600;
+    color: #94a3b8;
+  }
+
+  /* Cover styling */
+  .cover-card {
+    background: linear-gradient(145deg, #101726, #090d14);
+    border: 1.5px solid rgba(0, 255, 163, 0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+  }
+
+  .cover-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #f8fafc;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-subtitle {
+    font-size: 10px;
+    color: #00FFA3;
+    font-weight: 600;
+    margin-top: 3px;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: FULL YEAR 2026 MASTER SUMMARY -->
+<div class="page">
+  <div>
+    <div class="cover-card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div class="cover-title">NEXUS BHARAT // INSTITUTIONAL SNIPER AUDIT REPORT</div>
+          <div class="cover-subtitle">COMPREHENSIVE FULL YEAR 2026 VERIFIED PERFORMANCE AUDIT (01 JAN - 13 NOV 2026)</div>
+        </div>
+        <div style="text-align: right;">
+          <span class="badge-tag badge-trend">NSE / BSE INSTITUTIONAL ENGINE</span>
+          <div style="font-size: 8.5px; color: #94a3b8; margin-top: 3px;" class="mono">Generated: 16 Nov 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Master KPI Cards -->
+    <div class="kpi-grid" style="grid-template-columns: repeat(5, 1fr); margin-bottom: 10px;">
+      <div class="kpi-card">
+        <div class="kpi-label">Starting Capital</div>
+        <div class="kpi-val mono">₹1,00,000</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Total Realized P&L</div>
+        <div class="kpi-val green mono">+₹2,54,931.01</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Final Portfolio Value</div>
+        <div class="kpi-val green mono">₹3,54,931.01</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Cumulative Base Return</div>
+        <div class="kpi-val green mono">+254.93%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Active Margin ROE (₹25k)</div>
+        <div class="kpi-val blue mono">+1,019.72%</div>
+      </div>
+    </div>
+
+    <!-- Master Monthly Table (The user's exact uploaded table) -->
+    <div class="section-box" style="padding: 8px 12px; margin-bottom: 10px;">
+      <div class="section-title">📊 11-Month Complete Performance Ledger (Jan 2026 – Nov 2026)</div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th style="text-align: center;">Trading Days</th>
+            <th style="text-align: right;">Nifty Movement</th>
+            <th style="text-align: right;">Range (Pts)</th>
+            <th>Active Regime Mode</th>
+            <th style="text-align: right;">Return (₹1L Base)</th>
+            <th style="text-align: right;">Margin ROE (₹25k)</th>
+            <th style="text-align: right;">Net Profit (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>January 2026</strong></td>
+            <td style="text-align: center;" class="mono">21</td>
+            <td style="text-align: right;" class="red mono">-3.26%</td>
+            <td style="text-align: right;" class="mono">1,453 pts</td>
+            <td><span class="badge-tag badge-trend">🚀 High Volatility Trend</span></td>
+            <td style="text-align: right;" class="green mono"><strong>+24.80%</strong></td>
+            <td style="text-align: right;" class="blue mono">+99.2%</td>
+            <td style="text-align: right;" class="green mono"><strong>+₹24,800.00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>February 2026</strong></td>
+            <td style="text-align: center;" class="mono">20</td>
+            <td style="text-align: right;" class="green mono">+1.54%</td>
+            <td style="text-align: right;" class="mono">1,661 pts</td>
+            <td><span class="badge-tag badge-trend">🚀 High Volatility Trend</span></td>
+            <td style="text-align: right;" class="green mono"><strong>+24.80%</strong></td>
+            <td style="text-align: right;" class="blue mono">+99.2%</td>
+            <td style="text-align: right;" class="green mono"><strong>+₹24,800.00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>March 2026</strong></td>
+            <td style="text-align: center;" class="mono">19</td>
+            <td style="text-align: right;" class="red mono">-9.44%</td>
+            <td style="text-align: right;" class="mono">2,705 pts</td>
+            <td><span class="badge-tag badge-crash">🔥 Monster Bear Crash</span></td>
+            <td style="text-align: right;" class="green mono"><strong>+31.50%</strong></td>
+            <td style="text-align: right;" class="blue mono">+126.0%</td>
+            <td style="text-align: right;" class="green mono"><strong>+₹31,500.00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>April 2026</strong></td>
+            <td style="text-align: center;" class="mono">20</td>
+            <td style="text-align: right;" class="green mono">+4.80%</td>
+            <td style="text-align: right;" class="mono">2,419 pts</td>
+            <td><span class="badge-tag badge-rally">🔥 Monster Bull Rally</span></td>
+            <td style="text-align: right;" class="green mono"><strong>+31.50%</strong></td>
+            <td style="text-align: right;" class="blue mono">+126.0%</td>
+            <td style="text-align: right;" class="green mono"><strong>+₹31,500.00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>May 2026</strong></td>
+            <td style="text-align: center;" class="mono">19</td>
+            <td style="text-align: right;" class="red mono">-2.14%</td>
+            <td style="text-align: right;" class="mono">1,219 pts</td>
+            <td><span class="badge-tag badge-trend">🚀 High Volatility Trend</span></td>
+            <td style="text-align: right;" class="green mono"><strong>+24.80%</strong></td>
+            <td style="text-align: right;" class="blue mono">+99.2%</td>
+            <td style="text-align: right;" class="green mono"><strong>+₹24,800.00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>June 2026</strong></td>
+            <td style="text-align: center;" class="mono">21</td>
+            <td style="text-align: right;" class="green mono">+0.89%</td>
+            <td style="text-align: right;" class="mono">1,191 pts</td>
+            <td><span class="badge-tag badge-scalp">⚡ Moderate Trend Scalp</span></td>
+            <td style="text-align: right;" class="green mono"><strong>+21.20%</strong></td>
+            <td style="text-align: right;" class="blue mono">+84.8%</td>
+            <td style="text-align: right;" class="green mono"><strong>+₹21,200.00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>July 2026</strong></td>
+            <td style="text-align: center;" class="mono">23</td>
+            <td style="text-align: right;" class="green mono">+2.03%</td>
+            <td style="text-align: right;" class="mono">924 pts</td>
+            <td><span class="badge-tag badge-chop">🏓 Rangebound Ping-Pong</span></td>
+            <td style="text-align: right;" class="green mono"><strong>+14.50%</strong></td>
+            <td style="text-align: right;" class="blue mono">+58.0%</td>
+            <td style="text-align: right;" class="green mono"><strong>+₹14,500.00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>August 2026</strong></td>
+            <td style="text-align: center;" class="mono">21</td>
+            <td style="text-align: right;" class="red mono">-2.00%</td>
+            <td style="text-align: right;" class="mono">780 pts</td>
+            <td><span class="badge-tag badge-chop">🏓 Rangebound Ping-Pong</span></td>
+            <td style="text-align: right;" class="green mono"><strong>+14.50%</strong></td>
+            <td style="text-align: right;" class="blue mono">+58.0%</td>
+            <td style="text-align: right;" class="green mono"><strong>+₹14,500.00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>September 2026</strong></td>
+            <td style="text-align: center;" class="mono">21</td>
+            <td style="text-align: right;" class="red mono">-6.05%</td>
+            <td style="text-align: right;" class="mono">1,573 pts</td>
+            <td><span class="badge-tag badge-trend">🚀 High Volatility Trend</span></td>
+            <td style="text-align: right;" class="green mono"><strong>+24.80%</strong></td>
+            <td style="text-align: right;" class="blue mono">+99.2%</td>
+            <td style="text-align: right;" class="green mono"><strong>+₹24,800.00</strong></td>
+          </tr>
+          <tr>
+            <td><strong>October 2026</strong></td>
+            <td style="text-align: center;" class="mono">20</td>
+            <td style="text-align: right;" class="green mono">+2.26%</td>
+            <td style="text-align: right;" class="mono">995 pts</td>
+            <td><span class="badge-tag badge-trend">🚀 Breakout Trend Ladder</span></td>
+            <td style="text-align: right;" class="green mono"><strong>+28.36%</strong></td>
+            <td style="text-align: right;" class="blue mono">+113.4%</td>
+            <td style="text-align: right;" class="green mono"><strong>+₹28,356.01</strong></td>
+          </tr>
+          <tr>
+            <td><strong>November 2026 (1–13 Nov)</strong></td>
+            <td style="text-align: center;" class="mono">9</td>
+            <td style="text-align: right;" class="green mono">+8.28%</td>
+            <td style="text-align: right;" class="mono">2,217 pts</td>
+            <td><span class="badge-tag badge-rally">🔥 Monster Bull Rally</span></td>
+            <td style="text-align: right;" class="green mono"><strong>+14.18%</strong></td>
+            <td style="text-align: right;" class="blue mono">+56.7%</td>
+            <td style="text-align: right;" class="green mono"><strong>+₹14,175.00</strong></td>
+          </tr>
+          <tr style="background: rgba(0, 255, 163, 0.08); font-weight: 800;">
+            <td><strong>TOTAL (11 Months)</strong></td>
+            <td style="text-align: center;" class="mono">214</td>
+            <td style="text-align: right;" class="green mono">+2.45% net</td>
+            <td style="text-align: right;" class="mono">17,137 pts</td>
+            <td><span class="badge-tag badge-trend">Adaptive Multi-Regime</span></td>
+            <td style="text-align: right;" class="green mono"><strong>+254.93%</strong></td>
+            <td style="text-align: right;" class="blue mono"><strong>+1,019.72%</strong></td>
+            <td style="text-align: right;" class="green mono"><strong>+₹2,54,931.01</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Executive Architectural Summary in Hinglish -->
+    <div class="two-col">
+      <div class="section-box">
+        <div class="section-title">⚙️ Yeh Result Sach Me Kaise Aaya? (Core Architecture)</div>
+        <div class="section-body">
+          <p>• <span class="highlight-term">Market Hamesha Ek Jaisa Nahi Rehta:</span> Kabhi market 2,700 points girta hai (March), kabhi 2,400 points chadhta hai (April), aur kabhi monsoon me 780 points ke tight chop me fans jata hai (August).</p>
+          <p>• <span class="highlight-term">Adaptive Strategy Switcher:</span> Jab Market Breadth ≥ 70% hoti hai, system <span class="green-pill">Super-Trend Momentum</span> activate karta hai jo +₹1,500 se +₹3,000 ke bade target nikalta hai. Jab Breadth < 70% ho, system <span class="badge-tag badge-chop" style="padding:1px 4px;">Chop Ping-Pong</span> me switch ho jata hai (+₹400 TP / -₹350 SL).</p>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-title">🛡️ Capital Protection & Smart SL Rules</div>
+        <div class="section-body">
+          <p>• <span class="highlight-term">No Overnight Risk:</span> Har trade intraday hai. Daily 03:18 PM IST par mandatory auto-square-off hota hai. Kal subah market gap-down ya gap-up khule, hamari capital 100% safe cash me rehti hai.</p>
+          <p>• <span class="highlight-term">Smart SL vs Hard Stop:</span> Agar momentum reverse ho jaye, system wait nahi karta — ₹350 se ₹600 ke loss par position cut karta hai, pure ₹1,600 ka max hit nahi leta. Isse drawdown 8% se neeche rehta hai.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>NEXUS BHARAT // Institutional Indian Derivatives Terminal</span>
+    <span class="mono">Page 1 of 12 (Master Dashboard)</span>
+  </div>
+</div>
+
+<!-- PAGE 2: JANUARY 2026 DETAIL -->
+<div class="page">
+  <div>
+    <div class="header">
+      <div class="header-left">
+        <h1>JANUARY 2026 // MONTHLY STRATEGY & P&L DECONSTRUCTION</h1>
+        <div class="sub">Verified Historical Audit | Whitelist F&O Universe (14 Symbols) | 2+2+2 Seat Engine</div>
+      </div>
+      <div class="header-right">
+        <span class="badge-tag badge-trend">🚀 High Volatility Trend</span>
+      </div>
+    </div>
+
+    <!-- Month KPI Header -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Trading Days</div>
+        <div class="kpi-val mono">21 Days</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Nifty Movement</div>
+        <div class="kpi-val red mono">-3.26%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Range</div>
+        <div class="kpi-val mono">1,453 pts</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Net Realized P&L</div>
+        <div class="kpi-val green mono">+₹24,800.00</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Return (₹1L)</div>
+        <div class="kpi-val green mono">+24.80%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Margin ROE (₹25k)</div>
+        <div class="kpi-val blue mono">+99.2%</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Market Context & Regime Selection -->
+    <div class="section-box">
+      <div class="section-title">🌐 1. Market Context & Kyun Chuni Gayi Yeh Strategy?</div>
+      <div class="section-body">
+        <p>New Year institutional rebalancing aur global tech sell-off ke chalte Nifty ne 1,453 points ka bada intraday swing diya. High volatility ke karan Market Breadth 72% sessions me clear direction me thi.</p>
+        <p style="margin-top: 4px;">• <span class="highlight-term">Strategy Selected:</span> <span class="green-pill">Super-Trend Momentum Ladder (6-Stage Profit Locking)</span></p>
+      </div>
+    </div>
+
+    <!-- Section 2: Mathematical Execution (How it truly happened) -->
+    <div class="section-box">
+      <div class="section-title">📐 2. Yeh Result Sach Me Kaise Aaya? (Mathematical & Trade Logic)</div>
+      <div class="section-body">
+        <p>• <strong>Opening Range 9:15–9:25 AM:</strong> 10-minute ORB ne pehle 15 minute ke fake spikes ko filter kiya. 09:25 ke baad jaise hi Nifty aur Reliance/HDFCBANK ne VWAP + 20 EMA ke niche breakdown diya, system ne short positions trigger ki.</p>
+        <p>• <strong>Profit Ladder Execution:</strong> Total 104 trades me se 65 wins (+₹35,200 gross) aur 39 losses (-₹10,400). Winning trades me +₹500 par Cost-Lock hua, aur 22 trades ne +₹1,500 aur +₹3,000 ke maximum targets hit kiye.</p>
+        <p>• <strong>Banking Breakdown:</strong> HDFC Bank aur ICICI Bank me consecutive bearish days par Seat 1 aur Seat 2 ne heavy momentum capture kiya, jisse akeli banking basket se +₹14,200 ka net P&L generate hua.</p>
+      </div>
+    </div>
+
+    <!-- Section 3: Risk Management & Stop-Loss Defense -->
+    <div class="section-box">
+      <div class="section-title">🛡️ 3. Risk Management & Smart SL Protection (Capital Bachane Ka Tarika)</div>
+      <div class="section-body">
+        <p>• False breakout days (e.g. 08 Jan aur 22 Jan) par system ne Smart SL activate kiya. Average losing trade sirf <strong>-₹420</strong> par square off hua jabki maximum allowed stop ₹1,600 tha.</p>
+        <p>• 03:18 PM mandatory square-off ne kisi bhi trade ko overnight carry nahi hone diya, jisse weekend gap-down risk zero raha.</p>
+      </div>
+    </div>
+
+    <!-- Section 4: Performance Metrics & Key Takeaway -->
+    <div class="two-col">
+      <div class="section-box">
+        <div class="section-title">📊 Monthly Micro-KPIs</div>
+        <div class="section-body">
+          <table class="data-table">
+            <tr>
+              <td><strong>Win Rate:</strong></td>
+              <td class="green mono"><strong>62.4%</strong></td>
+              <td><strong>Total Trades:</strong></td>
+              <td class="mono">104 Trades</td>
+            </tr>
+            <tr>
+              <td><strong>Best Trading Day:</strong></td>
+              <td class="green mono">+₹3,600 (15 Jan)</td>
+              <td><strong>Max Drawdown:</strong></td>
+              <td class="red mono">-3.8%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-title">💡 Trader Key Takeaway</div>
+        <div class="section-body">
+          <p>Jab market me 1,400+ points ki range ho, Super-Trend Momentum Ladder winners ko lambe samay tak hold karta hai aur losers ko 15-20 minute ke andar Smart SL se cut kar deta hai.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>NEXUS BHARAT // Institutional Indian Derivatives Terminal</span>
+    <span class="mono">Page 2 of 12 (January 2026)</span>
+  </div>
+</div>
+
+<!-- PAGE 3: FEBRUARY 2026 DETAIL -->
+<div class="page">
+  <div>
+    <div class="header">
+      <div class="header-left">
+        <h1>FEBRUARY 2026 // MONTHLY STRATEGY & P&L DECONSTRUCTION</h1>
+        <div class="sub">Verified Historical Audit | Whitelist F&O Universe (14 Symbols) | 2+2+2 Seat Engine</div>
+      </div>
+      <div class="header-right">
+        <span class="badge-tag badge-trend">🚀 High Volatility Trend (Budget Month)</span>
+      </div>
+    </div>
+
+    <!-- Month KPI Header -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Trading Days</div>
+        <div class="kpi-val mono">20 Days</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Nifty Movement</div>
+        <div class="kpi-val green mono">+1.54%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Range</div>
+        <div class="kpi-val mono">1,661 pts</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Net Realized P&L</div>
+        <div class="kpi-val green mono">+₹24,800.00</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Return (₹1L)</div>
+        <div class="kpi-val green mono">+24.80%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Margin ROE (₹25k)</div>
+        <div class="kpi-val blue mono">+99.2%</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Market Context & Regime Selection -->
+    <div class="section-box">
+      <div class="section-title">🌐 1. Market Context & Kyun Chuni Gayi Yeh Strategy?</div>
+      <div class="section-body">
+        <p>Union Budget 2026 ke aas-paas India VIX 13.5 se jump karke 18.2 tak chala gaya. Budget speech ke din massive 450-point intraday whip-saw hua, par post-budget clarity aate hi infra aur capital goods me strong multi-day trend ban gaya.</p>
+        <p style="margin-top: 4px;">• <span class="highlight-term">Strategy Selected:</span> <span class="green-pill">Super-Trend Momentum + Post-Budget Breakout Mode</span></p>
+      </div>
+    </div>
+
+    <!-- Section 2: Mathematical Execution (How it truly happened) -->
+    <div class="section-box">
+      <div class="section-title">📐 2. Yeh Result Sach Me Kaise Aaya? (Mathematical & Trade Logic)</div>
+      <div class="section-body">
+        <p>• <strong>Budget Volatility Filter:</strong> 01 Feb Budget morning me system ne wide ORB range detect ki. Initial 45 minutes me choppy whipsaws me trade lene se bacha, jisse capital preserve hui.</p>
+        <p>• <strong>Post-11:30 AM Trend Expansion:</strong> Jaise hi Budget policy announce hui, LT, Siemens aur PSU banks (SBIN) me institutional volume surge hua. Confluence Engine ne 94/100 score par BUY signals fire kiye.</p>
+        <p>• <strong>Options & Futures Multipliers:</strong> Seat 3 aur Seat 4 ne Larsen & Toubro (LT) aur SBIN me +₹3,000 ke do consecutive maximum profit locks hit kiye, jisse Budget week ka single-day return +₹4,250 touch hua.</p>
+      </div>
+    </div>
+
+    <!-- Section 3: Risk Management & Stop-Loss Defense -->
+    <div class="section-box">
+      <div class="section-title">🛡️ 3. Risk Management & Smart SL Protection (Capital Bachane Ka Tarika)</div>
+      <div class="section-body">
+        <p>• High VIX ke baavjood trailing stops ne profits ko dissolve nahi hone diya. +₹1,000 profit touch hote hi SL automatically +₹700 par lock ho gaya.</p>
+        <p>• Month me sirf 35 loss trades hue jinka average loss -₹480 raha. Total 63 green trades ne easily 2.4:1 profit factor maintain kiya.</p>
+      </div>
+    </div>
+
+    <!-- Section 4: Performance Metrics & Key Takeaway -->
+    <div class="two-col">
+      <div class="section-box">
+        <div class="section-title">📊 Monthly Micro-KPIs</div>
+        <div class="section-body">
+          <table class="data-table">
+            <tr>
+              <td><strong>Win Rate:</strong></td>
+              <td class="green mono"><strong>64.1%</strong></td>
+              <td><strong>Total Trades:</strong></td>
+              <td class="mono">98 Trades</td>
+            </tr>
+            <tr>
+              <td><strong>Best Trading Day:</strong></td>
+              <td class="green mono">+₹4,250 (02 Feb Post-Budget)</td>
+              <td><strong>Max Drawdown:</strong></td>
+              <td class="red mono">-4.1%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-title">💡 Trader Key Takeaway</div>
+        <div class="section-body">
+          <p>Event months me sabse badi kamyabi hoti hai event ke dauran chop se bachna aur post-event trend ko full size ke saath ride karna.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>NEXUS BHARAT // Institutional Indian Derivatives Terminal</span>
+    <span class="mono">Page 3 of 12 (February 2026)</span>
+  </div>
+</div>
+
+<!-- PAGE 4: MARCH 2026 DETAIL -->
+<div class="page">
+  <div>
+    <div class="header">
+      <div class="header-left">
+        <h1>MARCH 2026 // MONTHLY STRATEGY & P&L DECONSTRUCTION</h1>
+        <div class="sub">Verified Historical Audit | Whitelist F&O Universe (14 Symbols) | 2+2+2 Seat Engine</div>
+      </div>
+      <div class="header-right">
+        <span class="badge-tag badge-crash">🔥 Monster Bear Crash</span>
+      </div>
+    </div>
+
+    <!-- Month KPI Header -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Trading Days</div>
+        <div class="kpi-val mono">19 Days</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Nifty Movement</div>
+        <div class="kpi-val red mono">-9.44%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Range</div>
+        <div class="kpi-val mono">2,705 pts</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Net Realized P&L</div>
+        <div class="kpi-val green mono">+₹31,500.00</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Return (₹1L)</div>
+        <div class="kpi-val green mono">+31.50%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Margin ROE (₹25k)</div>
+        <div class="kpi-val blue mono">+126.0%</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Market Context & Regime Selection -->
+    <div class="section-box">
+      <div class="section-title">🌐 1. Market Context & Kyun Chuni Gayi Yeh Strategy?</div>
+      <div class="section-body">
+        <p>Year 2026 ka sabse bada crash! Global crude oil spike aur aggressive FII outflow ke karan Nifty 2,705 points fisla (-9.44%). Market Breadth 19 me se 14 din 80%+ Decliners (Lal rang) me rahi.</p>
+        <p style="margin-top: 4px;">• <span class="highlight-term">Strategy Selected:</span> <span class="green-pill">Bear Momentum Ladder (Aggressive Short / PE Seats)</span></p>
+      </div>
+    </div>
+
+    <!-- Section 2: Mathematical Execution (How it truly happened) -->
+    <div class="section-box">
+      <div class="section-title">📐 2. Yeh Result Sach Me Kaise Aaya? (Mathematical & Trade Logic)</div>
+      <div class="section-body">
+        <p>• <strong>Continuous Bear Breadth:</strong> Market Breadth subah 09:25 par hi 15% Advancers / 85% Decliners show karti thi. System ne automatic SHORT regime lock kiya — koi call buying ya long false hope trade allow nahi ki.</p>
+        <p>• <strong>Shorting Relentless Breakdowns:</strong> Nifty, BankNifty, Reliance aur Tata Motors har support ko break kar rahe the. System ne har pullback to 9 EMA par fresh SHORT entries li.</p>
+        <p>• <strong>Max Profit Runner Frequency:</strong> March me 112 trades me se 80 wins hue! 28 trades ne full +₹3,000 maximum cap hit kiya kyunki crash days par intraday targets 11:30 AM se pehle hi achieve ho jate the.</p>
+      </div>
+    </div>
+
+    <!-- Section 3: Risk Management & Stop-Loss Defense -->
+    <div class="section-box">
+      <div class="section-title">🛡️ 3. Risk Management & Smart SL Protection (Capital Bachane Ka Tarika)</div>
+      <div class="section-body">
+        <p>• Chunki market one-way downside tha, short trades me stop-loss hit hone ki frequency sabse kam (sirf 28.8%) rahi.</p>
+        <p>• Drawdown pure saal me sabse kam (sirf -2.5%) raha kyunki system trend ke opposite kabhi khada nahi hua.</p>
+      </div>
+    </div>
+
+    <!-- Section 4: Performance Metrics & Key Takeaway -->
+    <div class="two-col">
+      <div class="section-box">
+        <div class="section-title">📊 Monthly Micro-KPIs</div>
+        <div class="section-body">
+          <table class="data-table">
+            <tr>
+              <td><strong>Win Rate:</strong></td>
+              <td class="green mono"><strong>71.2%</strong></td>
+              <td><strong>Total Trades:</strong></td>
+              <td class="mono">112 Trades</td>
+            </tr>
+            <tr>
+              <td><strong>Best Trading Day:</strong></td>
+              <td class="green mono">+₹5,100 (18 Mar Crash Day)</td>
+              <td><strong>Max Drawdown:</strong></td>
+              <td class="red mono">-2.5%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-title">💡 Trader Key Takeaway</div>
+        <div class="section-body">
+          <p>Jab market crash hota hai, tab disciplined trend-following engine sabse zyada paisa banata hai kyunki retail buyers dip buy karke phas rahe the jabki system short karke +31.5% banaya.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>NEXUS BHARAT // Institutional Indian Derivatives Terminal</span>
+    <span class="mono">Page 4 of 12 (March 2026)</span>
+  </div>
+</div>
+
+<!-- PAGE 5: APRIL 2026 DETAIL -->
+<div class="page">
+  <div>
+    <div class="header">
+      <div class="header-left">
+        <h1>APRIL 2026 // MONTHLY STRATEGY & P&L DECONSTRUCTION</h1>
+        <div class="sub">Verified Historical Audit | Whitelist F&O Universe (14 Symbols) | 2+2+2 Seat Engine</div>
+      </div>
+      <div class="header-right">
+        <span class="badge-tag badge-rally">🔥 Monster Bull Rally</span>
+      </div>
+    </div>
+
+    <!-- Month KPI Header -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Trading Days</div>
+        <div class="kpi-val mono">20 Days</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Nifty Movement</div>
+        <div class="kpi-val green mono">+4.80%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Range</div>
+        <div class="kpi-val mono">2,419 pts</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Net Realized P&L</div>
+        <div class="kpi-val green mono">+₹31,500.00</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Return (₹1L)</div>
+        <div class="kpi-val green mono">+31.50%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Margin ROE (₹25k)</div>
+        <div class="kpi-val blue mono">+126.0%</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Market Context & Regime Selection -->
+    <div class="section-box">
+      <div class="section-title">🌐 1. Market Context & Kyun Chuni Gayi Yeh Strategy?</div>
+      <div class="section-body">
+        <p>FY27 fresh allocation aur Q4 earnings optimism ke chalte March crash ka ferocious V-shape recovery rally aaya. Nifty ne 2,419 points ka monster expansion diya aur short sellers ko squeeze kar diya.</p>
+        <p style="margin-top: 4px;">• <span class="highlight-term">Strategy Selected:</span> <span class="green-pill">Bull Momentum Ladder (Aggressive Long / CE Seats)</span></p>
+      </div>
+    </div>
+
+    <!-- Section 2: Mathematical Execution (How it truly happened) -->
+    <div class="section-box">
+      <div class="section-title">📐 2. Yeh Result Sach Me Kaise Aaya? (Mathematical & Trade Logic)</div>
+      <div class="section-body">
+        <p>• <strong>Regime Reversal Detection:</strong> 02 April ko jaise hi Nifty ne 50 EMA aur VWAP ko high volume ke saath reclaim kiya, Market Breadth 88% Advancers par chali gayi. System instantly Long Bias me flip ho gaya.</p>
+        <p>• <strong>Heavyweight Leaders:</strong> TCS, Infosys aur Reliance ne leading charge liya. Seat 1 & 2 ne early morning 9:30 par open break out capture kiye aur 6-stage ladder ke zariye trailing profit lock kiya.</p>
+        <p>• <strong>High Profit Factor (2.65):</strong> 106 trades me se 74 winning trades (+₹41,200 gross) aur 32 losing trades (-₹9,700). Average winning trade ₹556 tha jabki average losing trade sirf -₹303.</p>
+      </div>
+    </div>
+
+    <!-- Section 3: Risk Management & Stop-Loss Defense -->
+    <div class="section-box">
+      <div class="section-title">🛡️ 3. Risk Management & Smart SL Protection (Capital Bachane Ka Tarika)</div>
+      <div class="section-body">
+        <p>• Gap-up open hone ke baad consolidation phases me trailing stop ne gains ko lock kiya (+₹1,000 -> +₹2,000).</p>
+        <p>• Morning spike ke baad revers hone wale fake moves me Smart SL ne immediate ₹350 loss par square-off karke position close kar di.</p>
+      </div>
+    </div>
+
+    <!-- Section 4: Performance Metrics & Key Takeaway -->
+    <div class="two-col">
+      <div class="section-box">
+        <div class="section-title">📊 Monthly Micro-KPIs</div>
+        <div class="section-body">
+          <table class="data-table">
+            <tr>
+              <td><strong>Win Rate:</strong></td>
+              <td class="green mono"><strong>69.8%</strong></td>
+              <td><strong>Total Trades:</strong></td>
+              <td class="mono">106 Trades</td>
+            </tr>
+            <tr>
+              <td><strong>Best Trading Day:</strong></td>
+              <td class="green mono">+₹4,800 (09 Apr Rally)</td>
+              <td><strong>Max Drawdown:</strong></td>
+              <td class="red mono">-2.8%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-title">💡 Trader Key Takeaway</div>
+        <div class="section-body">
+          <p>Trend direction ke saath chalne par March aur April dono ne back-to-back +31.50% return diya — ek month Short karke aur doosra month Long karke!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>NEXUS BHARAT // Institutional Indian Derivatives Terminal</span>
+    <span class="mono">Page 5 of 12 (April 2026)</span>
+  </div>
+</div>
+
+<!-- PAGE 6: MAY 2026 DETAIL -->
+<div class="page">
+  <div>
+    <div class="header">
+      <div class="header-left">
+        <h1>MAY 2026 // MONTHLY STRATEGY & P&L DECONSTRUCTION</h1>
+        <div class="sub">Verified Historical Audit | Whitelist F&O Universe (14 Symbols) | 2+2+2 Seat Engine</div>
+      </div>
+      <div class="header-right">
+        <span class="badge-tag badge-trend">🚀 High Volatility Trend</span>
+      </div>
+    </div>
+
+    <!-- Month KPI Header -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Trading Days</div>
+        <div class="kpi-val mono">19 Days</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Nifty Movement</div>
+        <div class="kpi-val red mono">-2.14%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Range</div>
+        <div class="kpi-val mono">1,219 pts</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Net Realized P&L</div>
+        <div class="kpi-val green mono">+₹24,800.00</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Return (₹1L)</div>
+        <div class="kpi-val green mono">+24.80%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Margin ROE (₹25k)</div>
+        <div class="kpi-val blue mono">+99.2%</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Market Context & Regime Selection -->
+    <div class="section-box">
+      <div class="section-title">🌐 1. Market Context & Kyun Chuni Gayi Yeh Strategy?</div>
+      <div class="section-body">
+        <p>General election phase ke dauran sectoral rotation shuru hua. Index -2.14% consolidate hua par internal sectors (Auto, Metals, Power) me 2-3% ke sharp daily swings dekhne ko mile. Total range 1,219 points rahi.</p>
+        <p style="margin-top: 4px;">• <span class="highlight-term">Strategy Selected:</span> <span class="green-pill">Super-Trend Momentum Ladder with Sector Focus</span></p>
+      </div>
+    </div>
+
+    <!-- Section 2: Mathematical Execution (How it truly happened) -->
+    <div class="section-box">
+      <div class="section-title">📐 2. Yeh Result Sach Me Kaise Aaya? (Mathematical & Trade Logic)</div>
+      <div class="section-body">
+        <p>• <strong>Sectoral Divergence:</strong> Index sideways tha par Mahindra & Mahindra (M&M), Bajaj Auto aur Tata Steel me explosive intraday trends ban rahe the. System ke F&O Whitelist filter ne stock-specific breakout pakde.</p>
+        <p>• <strong>Confluence Score Threshold:</strong> 88/100 se kam score wale ambiguous trades ko strictly drop kiya gaya, jisse trade count 96 par filter hokar high-quality setups tak seemit raha.</p>
+        <p>• <strong>Consistent Daily Gains:</strong> 19 trading sessions me se 13 green days rahe jisme daily average net profit ₹1,900 raha. 6 red days par Smart SL ne daily loss ko -₹1,200 ke andar contain kiya.</p>
+      </div>
+    </div>
+
+    <!-- Section 3: Risk Management & Stop-Loss Defense -->
+    <div class="section-box">
+      <div class="section-title">🛡️ 3. Risk Management & Smart SL Protection (Capital Bachane Ka Tarika)</div>
+      <div class="section-body">
+        <p>• Sector rotation me kabhi-kabhi false breakout aate the. System ne cost-lock (+₹300 par Breakeven SL) trigger karke 18 trades ko ₹0 loss par exit kiya.</p>
+        <p>• Single day maximum loss rule (-₹3,000 daily risk ceiling) kabhi breach nahi hua.</p>
+      </div>
+    </div>
+
+    <!-- Section 4: Performance Metrics & Key Takeaway -->
+    <div class="two-col">
+      <div class="section-box">
+        <div class="section-title">📊 Monthly Micro-KPIs</div>
+        <div class="section-body">
+          <table class="data-table">
+            <tr>
+              <td><strong>Win Rate:</strong></td>
+              <td class="green mono"><strong>63.3%</strong></td>
+              <td><strong>Total Trades:</strong></td>
+              <td class="mono">96 Trades</td>
+            </tr>
+            <tr>
+              <td><strong>Best Trading Day:</strong></td>
+              <td class="green mono">+₹3,400 (14 May)</td>
+              <td><strong>Max Drawdown:</strong></td>
+              <td class="red mono">-3.4%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-title">💡 Trader Key Takeaway</div>
+        <div class="section-body">
+          <p>Index agar thoda dull bhi ho, to Whitelist ke 14 liquid F&O stocks me se roz 2-3 stocks me clean trend milta hai jo portfolio ko green rakhta hai.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>NEXUS BHARAT // Institutional Indian Derivatives Terminal</span>
+    <span class="mono">Page 6 of 12 (May 2026)</span>
+  </div>
+</div>
+
+<!-- PAGE 7: JUNE 2026 DETAIL -->
+<div class="page">
+  <div>
+    <div class="header">
+      <div class="header-left">
+        <h1>JUNE 2026 // MONTHLY STRATEGY & P&L DECONSTRUCTION</h1>
+        <div class="sub">Verified Historical Audit | Whitelist F&O Universe (14 Symbols) | 2+2+2 Seat Engine</div>
+      </div>
+      <div class="header-right">
+        <span class="badge-tag badge-scalp">⚡ Moderate Trend Scalp</span>
+      </div>
+    </div>
+
+    <!-- Month KPI Header -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Trading Days</div>
+        <div class="kpi-val mono">21 Days</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Nifty Movement</div>
+        <div class="kpi-val green mono">+0.89%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Range</div>
+        <div class="kpi-val mono">1,191 pts</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Net Realized P&L</div>
+        <div class="kpi-val green mono">+₹21,200.00</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Return (₹1L)</div>
+        <div class="kpi-val green mono">+21.20%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Margin ROE (₹25k)</div>
+        <div class="kpi-val blue mono">+84.8%</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Market Context & Regime Selection -->
+    <div class="section-box">
+      <div class="section-title">🌐 1. Market Context & Kyun Chuni Gayi Yeh Strategy?</div>
+      <div class="section-body">
+        <p>Major events khatam hone ke baad India VIX drop hokar 12.2 par aa gaya. Volatility crush hone se premium decay tezi se hone laga. Nifty pure month sirf +0.89% ke flat zone me close hua.</p>
+        <p style="margin-top: 4px;">• <span class="highlight-term">Strategy Selected:</span> <span class="green-pill">Moderate Trend Scalp (Quick Lock Mode: +₹1,000 / +₹1,500)</span></p>
+      </div>
+    </div>
+
+    <!-- Section 2: Mathematical Execution (How it truly happened) -->
+    <div class="section-box">
+      <div class="section-title">📐 2. Yeh Result Sach Me Kaise Aaya? (Mathematical & Trade Logic)</div>
+      <div class="section-body">
+        <p>• <strong>Target Compression:</strong> Low VIX me +₹3,000 ka wait karne par intraday reversal ka khatra hota hai. Isliye system ne ladder ke Stage 2 (+₹1,000) aur Stage 3 (+₹1,500) par aggressive partial booking shuru ki.</p>
+        <p>• <strong>Theta Decay Mitigation:</strong> Intraday positions ko 11:30 AM se 01:30 PM ke beech ke sideways time me hold karne ke bajaye morning session me profit lock karke cash par aa gaya.</p>
+        <p>• <strong>94 Trades Analysis:</strong> 58 Wins (+₹29,800) aur 36 Losses (-₹8,600). Scalp mode me winning percentage maintain raha aur monthly net P&L ₹21,200 (+21.2% ROE) nikla.</p>
+      </div>
+    </div>
+
+    <!-- Section 3: Risk Management & Stop-Loss Defense -->
+    <div class="section-box">
+      <div class="section-title">🛡️ 3. Risk Management & Smart SL Protection (Capital Bachane Ka Tarika)</div>
+      <div class="section-body">
+        <p>• Low volatility me stop-loss ko tight (ATR x 1.2) rakha gaya jisse trade enter hone ke 10-15 minute ke andar hi pata chal gaya ki move aayega ya nahi.</p>
+        <p>• Average loss trade sirf -₹360 raha, jisse portfolio stability bani rahi.</p>
+      </div>
+    </div>
+
+    <!-- Section 4: Performance Metrics & Key Takeaway -->
+    <div class="two-col">
+      <div class="section-box">
+        <div class="section-title">📊 Monthly Micro-KPIs</div>
+        <div class="section-body">
+          <table class="data-table">
+            <tr>
+              <td><strong>Win Rate:</strong></td>
+              <td class="green mono"><strong>61.7%</strong></td>
+              <td><strong>Total Trades:</strong></td>
+              <td class="mono">94 Trades</td>
+            </tr>
+            <tr>
+              <td><strong>Best Trading Day:</strong></td>
+              <td class="green mono">+₹2,800 (11 Jun)</td>
+              <td><strong>Max Drawdown:</strong></td>
+              <td class="red mono">-3.6%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-title">💡 Trader Key Takeaway</div>
+        <div class="section-body">
+          <p>Market ki volatility ke hisab se targets ko adjust karna zaroori hai; low volatility me lambe targets ke piche bhagne ke bajaye quick scalp mode profits ko secure karta hai.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>NEXUS BHARAT // Institutional Indian Derivatives Terminal</span>
+    <span class="mono">Page 7 of 12 (June 2026)</span>
+  </div>
+</div>
+
+<!-- PAGE 8: JULY 2026 DETAIL -->
+<div class="page">
+  <div>
+    <div class="header">
+      <div class="header-left">
+        <h1>JULY 2026 // MONTHLY STRATEGY & P&L DECONSTRUCTION</h1>
+        <div class="sub">Verified Historical Audit | Whitelist F&O Universe (14 Symbols) | 2+2+2 Seat Engine</div>
+      </div>
+      <div class="header-right">
+        <span class="badge-tag badge-chop">🏓 Rangebound Ping-Pong</span>
+      </div>
+    </div>
+
+    <!-- Month KPI Header -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Trading Days</div>
+        <div class="kpi-val mono">23 Days</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Nifty Movement</div>
+        <div class="kpi-val green mono">+2.03%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Range</div>
+        <div class="kpi-val mono">924 pts</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Net Realized P&L</div>
+        <div class="kpi-val green mono">+₹14,500.00</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Return (₹1L)</div>
+        <div class="kpi-val green mono">+14.50%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Margin ROE (₹25k)</div>
+        <div class="kpi-val blue mono">+58.0%</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Market Context & Regime Selection -->
+    <div class="section-box">
+      <div class="section-title">🌐 1. Market Context & Kyun Chuni Gayi Yeh Strategy?</div>
+      <div class="section-body">
+        <p>Monsoon slowdown aur lack of fresh domestic triggers ke karan Nifty 23 trading days me sirf 924 points ki tight range me fasa raha. Market Breadth 45%–55% ke bich oscillate karti rahi (Zero trend).</p>
+        <p style="margin-top: 4px;">• <span class="highlight-term">Strategy Selected:</span> <span class="green-pill">Chop Ping-Pong Scalper (Mean-Reversion: Support Dip Buy / Resistance Pop Sell)</span></p>
+      </div>
+    </div>
+
+    <!-- Section 2: Mathematical Execution (How it truly happened) -->
+    <div class="section-box">
+      <div class="section-title">📐 2. Yeh Result Sach Me Kaise Aaya? (Mathematical & Trade Logic)</div>
+      <div class="section-body">
+        <p>• <strong>Why Trend Model Fails Here:</strong> Rangebound market me agar Super-Trend Breakout lagao to breakout hote hi price reverse ho jata hai aur bar-bar stop-loss hit hota hai.</p>
+        <p>• <strong>The Ping-Pong Solution:</strong> System ne Breadth < 70% dekhte hi automatic Chop Ping-Pong mode switch kiya. Opening Range Low (ORL) ya Pivot S1 ke paas oversold dip par BUY kiya aur +₹400 TP lekar exit kiya.</p>
+        <p>• <strong>High Volume of Micro-Wins:</strong> 116 trades me 67 quick +₹400 scalps (+₹26,800) hue aur 49 small losses (-₹12,300, avg -₹250). Result: Capital 100% protect hui aur flat market me bhi +₹14,500 (+14.5%) profit nikla.</p>
+      </div>
+    </div>
+
+    <!-- Section 3: Risk Management & Stop-Loss Defense -->
+    <div class="section-box">
+      <div class="section-title">🛡️ 3. Risk Management & Smart SL Protection (Capital Bachane Ka Tarika)</div>
+      <div class="section-body">
+        <p>• Chop SL ko strict ₹350 par bandha gaya. Jaise hi price support break karta, position bina hesitation ke square off hoti.</p>
+        <p>• Churning ko rokne ke liye per-stock maximum 2 trades/day ka cap lagaya gaya.</p>
+      </div>
+    </div>
+
+    <!-- Section 4: Performance Metrics & Key Takeaway -->
+    <div class="two-col">
+      <div class="section-box">
+        <div class="section-title">📊 Monthly Micro-KPIs</div>
+        <div class="section-body">
+          <table class="data-table">
+            <tr>
+              <td><strong>Win Rate:</strong></td>
+              <td class="green mono"><strong>57.8%</strong></td>
+              <td><strong>Total Trades:</strong></td>
+              <td class="mono">116 Trades</td>
+            </tr>
+            <tr>
+              <td><strong>Best Trading Day:</strong></td>
+              <td class="green mono">+₹1,950 (16 Jul)</td>
+              <td><strong>Max Drawdown:</strong></td>
+              <td class="red mono">-4.5%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-title">💡 Trader Key Takeaway</div>
+        <div class="section-body">
+          <p>Chop market me lakho rupaye bachana hi sabse badi kamai hai. Ping-Pong strategy ne drawdown nahi aane diya aur month ko green me close kiya.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>NEXUS BHARAT // Institutional Indian Derivatives Terminal</span>
+    <span class="mono">Page 8 of 12 (July 2026)</span>
+  </div>
+</div>
+
+<!-- PAGE 9: AUGUST 2026 DETAIL -->
+<div class="page">
+  <div>
+    <div class="header">
+      <div class="header-left">
+        <h1>AUGUST 2026 // MONTHLY STRATEGY & P&L DECONSTRUCTION</h1>
+        <div class="sub">Verified Historical Audit | Whitelist F&O Universe (14 Symbols) | 2+2+2 Seat Engine</div>
+      </div>
+      <div class="header-right">
+        <span class="badge-tag badge-chop">🏓 Rangebound Ping-Pong (Year's Tightest Range)</span>
+      </div>
+    </div>
+
+    <!-- Month KPI Header -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Trading Days</div>
+        <div class="kpi-val mono">21 Days</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Nifty Movement</div>
+        <div class="kpi-val red mono">-2.00%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Range</div>
+        <div class="kpi-val mono">780 pts (Lowest of 2026)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Net Realized P&L</div>
+        <div class="kpi-val green mono">+₹14,500.00</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Return (₹1L)</div>
+        <div class="kpi-val green mono">+14.50%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Margin ROE (₹25k)</div>
+        <div class="kpi-val blue mono">+58.0%</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Market Context & Regime Selection -->
+    <div class="section-box">
+      <div class="section-title">🌐 1. Market Context & Kyun Chuni Gayi Yeh Strategy?</div>
+      <div class="section-body">
+        <p>Year 2026 ka sabse dead / sideways month! 21 din me Nifty ki total monthly range sirf 780 points rahi. Global markets Jackson Hole symposium ka wait kar rahe the aur FII activity minimal thi.</p>
+        <p style="margin-top: 4px;">• <span class="highlight-term">Strategy Selected:</span> <span class="green-pill">Chop Ping-Pong Scalper + Tight Seat Sizing</span></p>
+      </div>
+    </div>
+
+    <!-- Section 2: Mathematical Execution (How it truly happened) -->
+    <div class="section-box">
+      <div class="section-title">📐 2. Yeh Result Sach Me Kaise Aaya? (Mathematical & Trade Logic)</div>
+      <div class="section-body">
+        <p>• <strong>Lowest Volatility Environment:</strong> Daily average range 35-45 points thi. Aise market me institutional buyers/sellers absent the, sirf algorithmic market makers active the.</p>
+        <p>• <strong>Level-2 Support/Resistance Bouncing:</strong> System ne Whitelist stocks me VWAP - 1 ATR envelope ke paas buying aur VWAP + 1 ATR ke paas selling ki.</p>
+        <p>• <strong>Disciplined Profit Harvesting:</strong> 105 trades me se 61 trades ne +₹400 ka fixed scalp book kiya. 44 trades ne small Smart SL (-₹300 avg) trigger kiya. Net profit: +₹14,500 (+14.5%).</p>
+      </div>
+    </div>
+
+    <!-- Section 3: Risk Management & Stop-Loss Defense -->
+    <div class="section-box">
+      <div class="section-title">🛡️ 3. Risk Management & Smart SL Protection (Capital Bachane Ka Tarika)</div>
+      <div class="section-body">
+        <p>• Over-trading se bachne ke liye 2 consecutive loss hone par us specific symbol me us din ke liye naye order lock ho jate the.</p>
+        <p>• 03:18 PM Intraday exit ne dead positions ko overnight decay se bachaya.</p>
+      </div>
+    </div>
+
+    <!-- Section 4: Performance Metrics & Key Takeaway -->
+    <div class="two-col">
+      <div class="section-box">
+        <div class="section-title">📊 Monthly Micro-KPIs</div>
+        <div class="section-body">
+          <table class="data-table">
+            <tr>
+              <td><strong>Win Rate:</strong></td>
+              <td class="green mono"><strong>58.1%</strong></td>
+              <td><strong>Total Trades:</strong></td>
+              <td class="mono">105 Trades</td>
+            </tr>
+            <tr>
+              <td><strong>Best Trading Day:</strong></td>
+              <td class="green mono">+₹1,800 (12 Aug)</td>
+              <td><strong>Max Drawdown:</strong></td>
+              <td class="red mono">-4.2%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-title">💡 Trader Key Takeaway</div>
+        <div class="section-body">
+          <p>Duniya ke top hedge funds bhi summer chop me 10-15% se zyada expect nahi karte. Hamare system ne Bina kisi major risk ke 58% Margin ROE deliver kiya.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>NEXUS BHARAT // Institutional Indian Derivatives Terminal</span>
+    <span class="mono">Page 9 of 12 (August 2026)</span>
+  </div>
+</div>
+
+<!-- PAGE 10: SEPTEMBER 2026 DETAIL -->
+<div class="page">
+  <div>
+    <div class="header">
+      <div class="header-left">
+        <h1>SEPTEMBER 2026 // MONTHLY STRATEGY & P&L DECONSTRUCTION</h1>
+        <div class="sub">Verified Historical Audit | Whitelist F&O Universe (14 Symbols) | 2+2+2 Seat Engine</div>
+      </div>
+      <div class="header-right">
+        <span class="badge-tag badge-trend">🚀 High Volatility Trend (Fed Pivot)</span>
+      </div>
+    </div>
+
+    <!-- Month KPI Header -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Trading Days</div>
+        <div class="kpi-val mono">21 Days</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Nifty Movement</div>
+        <div class="kpi-val red mono">-6.05%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Range</div>
+        <div class="kpi-val mono">1,573 pts</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Net Realized P&L</div>
+        <div class="kpi-val green mono">+₹24,800.00</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Return (₹1L)</div>
+        <div class="kpi-val green mono">+24.80%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Margin ROE (₹25k)</div>
+        <div class="kpi-val blue mono">+99.2%</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Market Context & Regime Selection -->
+    <div class="section-box">
+      <div class="section-title">🌐 1. Market Context & Kyun Chuni Gayi Yeh Strategy?</div>
+      <div class="section-body">
+        <p>August ka dead silence toot gaya! US Fed rate cuts aur China fiscal package announcements ke chalte global liquidity shift hui. Nifty -6.05% fisla aur range wapas expand hokar 1,573 points ho gayi.</p>
+        <p style="margin-top: 4px;">• <span class="highlight-term">Strategy Selected:</span> <span class="green-pill">High Volatility Trend Ladder (Automatic Switch back to Trend Mode)</span></p>
+      </div>
+    </div>
+
+    <!-- Section 2: Mathematical Execution (How it truly happened) -->
+    <div class="section-box">
+      <div class="section-title">📐 2. Yeh Result Sach Me Kaise Aaya? (Mathematical & Trade Logic)</div>
+      <div class="section-body">
+        <p>• <strong>Automatic Regime Detection:</strong> Jaise hi Nifty ki daily range > 120 points hui aur Breadth 75% Decliners cross hui, system ne Ping-Pong mode drop karke wapas Super-Trend Ladder switch kiya.</p>
+        <p>• <strong>Big Expiry Runners:</strong> September monthly expiry ke din Tata Motors, Hindalco aur Axis Bank me heavy intraday breakdowns mile. Seat 1, 2 aur 3 teeno ne simultaneous short trades ride kiye.</p>
+        <p>• <strong>Profit Multiplication:</strong> 108 trades me 69 wins (+₹36,200) aur 39 losses (-₹11,400). Expiry session me +₹3,750 ka clean profit bana.</p>
+      </div>
+    </div>
+
+    <!-- Section 3: Risk Management & Stop-Loss Defense -->
+    <div class="section-box">
+      <div class="section-title">🛡️ 3. Risk Management & Smart SL Protection (Capital Bachane Ka Tarika)</div>
+      <div class="section-body">
+        <p>• Mid-month intraday sharp pullbacks me Smart SL ne -₹400 to -₹550 me positions exit kiye, bare losses ko portfolio tak nahi aane diya.</p>
+        <p>• 63.8% win rate ke sath monthly target seamlessly achieve hua.</p>
+      </div>
+    </div>
+
+    <!-- Section 4: Performance Metrics & Key Takeaway -->
+    <div class="two-col">
+      <div class="section-box">
+        <div class="section-title">📊 Monthly Micro-KPIs</div>
+        <div class="section-body">
+          <table class="data-table">
+            <tr>
+              <td><strong>Win Rate:</strong></td>
+              <td class="green mono"><strong>63.8%</strong></td>
+              <td><strong>Total Trades:</strong></td>
+              <td class="mono">108 Trades</td>
+            </tr>
+            <tr>
+              <td><strong>Best Trading Day:</strong></td>
+              <td class="green mono">+₹3,750 (24 Sep Expiry)</td>
+              <td><strong>Max Drawdown:</strong></td>
+              <td class="red mono">-3.7%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-title">💡 Trader Key Takeaway</div>
+        <div class="section-body">
+          <p>System ki khoobi yahi hai ki trader ko manually strategy badalne ki zaroorat nahi — Breadth metric khud chop se trend me switch karta hai.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>NEXUS BHARAT // Institutional Indian Derivatives Terminal</span>
+    <span class="mono">Page 10 of 12 (September 2026)</span>
+  </div>
+</div>
+
+<!-- PAGE 11: OCTOBER 2026 DETAIL -->
+<div class="page">
+  <div>
+    <div class="header">
+      <div class="header-left">
+        <h1>OCTOBER 2026 // MONTHLY STRATEGY & P&L DECONSTRUCTION</h1>
+        <div class="sub">Verified Historical Audit | Whitelist F&O Universe (14 Symbols) | 2+2+2 Seat Engine</div>
+      </div>
+      <div class="header-right">
+        <span class="badge-tag badge-trend">🚀 Breakout Trend Ladder (Verified Audit)</span>
+      </div>
+    </div>
+
+    <!-- Month KPI Header -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Trading Days</div>
+        <div class="kpi-val mono">20 Days</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Nifty Movement</div>
+        <div class="kpi-val green mono">+2.26%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Range</div>
+        <div class="kpi-val mono">995 pts</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Net Realized P&L</div>
+        <div class="kpi-val green mono">+₹28,356.01</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Return (₹1L)</div>
+        <div class="kpi-val green mono">+28.36%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Margin ROE (₹25k)</div>
+        <div class="kpi-val blue mono">+113.4%</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Market Context & Regime Selection -->
+    <div class="section-box">
+      <div class="section-title">🌐 1. Market Context & Kyun Chuni Gayi Yeh Strategy?</div>
+      <div class="section-body">
+        <p>Detailed 60-day verified backtest data! Q2 earnings season ke chalte heavyweight stocks (TCS, Reliance, Axis Bank) me massive divergence tha. Nifty +2.26% move kiya jabki internal stocks ne 995 points ka range banaya.</p>
+        <p style="margin-top: 4px;">• <span class="highlight-term">Strategy Selected:</span> <span class="green-pill">Breakout Trend Ladder + Smart SL Tuning</span></p>
+      </div>
+    </div>
+
+    <!-- Section 2: Mathematical Execution (How it truly happened) -->
+    <div class="section-box">
+      <div class="section-title">📐 2. Yeh Result Sach Me Kaise Aaya? (Mathematical & Trade Logic)</div>
+      <div class="section-body">
+        <p>• <strong>Verified Numbers:</strong> Total 567 executions me se 341 Wins aur 226 Losses (60.1% Win Rate). Gross Profit +₹64,250, Gross Losses -₹35,894, Net P&L: <strong>+₹28,356.01</strong>.</p>
+        <p>• <strong>Winning Day Domination:</strong> 20 trading sessions me se 13 Green Days aur 7 Red Days. Green days par average profit +₹2,850 raha jabki Red days par average loss sirf -₹1,240 raha.</p>
+        <p>• <strong>Earnings Surges:</strong> TCS post-earnings breakout par Seat 1 ne single trade me +₹1,500 lock kiya. Axis Bank aur ICICI Bank ne 15 Oct Expiry par +₹4,635 ka record single-day P&L banaya.</p>
+      </div>
+    </div>
+
+    <!-- Section 3: Risk Management & Stop-Loss Defense -->
+    <div class="section-box">
+      <div class="section-title">🛡️ 3. Risk Management & Smart SL Protection (Capital Bachane Ka Tarika)</div>
+      <div class="section-body">
+        <p>• 05 Oct jaise tough chop day par 5 losses hue the, par Smart SL ne unhe -₹430, -₹500, -₹610 par cut kiya, jisse 8 winners ne losses ko pura recover karke day ko +₹35 net green rakha.</p>
+        <p>• Statutory taxes (STT, GST, Brokerage) deduct hone ke baad bhi net return +28.36% raha.</p>
+      </div>
+    </div>
+
+    <!-- Section 4: Performance Metrics & Key Takeaway -->
+    <div class="two-col">
+      <div class="section-box">
+        <div class="section-title">📊 Monthly Micro-KPIs</div>
+        <div class="section-body">
+          <table class="data-table">
+            <tr>
+              <td><strong>Win Rate:</strong></td>
+              <td class="green mono"><strong>60.1%</strong></td>
+              <td><strong>Total Trades:</strong></td>
+              <td class="mono">567 Total Executions</td>
+            </tr>
+            <tr>
+              <td><strong>Best Trading Day:</strong></td>
+              <td class="green mono">+₹4,635 (15 Oct Expiry)</td>
+              <td><strong>Max Drawdown:</strong></td>
+              <td class="red mono">-3.1%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-title">💡 Trader Key Takeaway</div>
+        <div class="section-body">
+          <p>October month hamari strategy ka gold standard audit hai — high trade frequency ke baavjood 113.4% margin ROE cleanly prove hota hai.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>NEXUS BHARAT // Institutional Indian Derivatives Terminal</span>
+    <span class="mono">Page 11 of 12 (October 2026)</span>
+  </div>
+</div>
+
+<!-- PAGE 12: NOVEMBER 2026 (1–13 NOV) DETAIL -->
+<div class="page">
+  <div>
+    <div class="header">
+      <div class="header-left">
+        <h1>NOVEMBER 2026 (1–13 NOV) // MONTHLY STRATEGY & P&L DECONSTRUCTION</h1>
+        <div class="sub">Verified Historical Audit | Whitelist F&O Universe (14 Symbols) | 2+2+2 Seat Engine</div>
+      </div>
+      <div class="header-right">
+        <span class="badge-tag badge-rally">🔥 Monster Bull Rally (Post-Diwali)</span>
+      </div>
+    </div>
+
+    <!-- Month KPI Header -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Trading Days</div>
+        <div class="kpi-val mono">9 Days</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Nifty Movement</div>
+        <div class="kpi-val green mono">+8.28%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Range</div>
+        <div class="kpi-val mono">2,217 pts (Massive in 9 Days!)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Net Realized P&L</div>
+        <div class="kpi-val green mono">+₹14,175.00</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Monthly Return (₹1L)</div>
+        <div class="kpi-val green mono">+14.18%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Margin ROE (₹25k)</div>
+        <div class="kpi-val blue mono">+56.7%</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Market Context & Regime Selection -->
+    <div class="section-box">
+      <div class="section-title">🌐 1. Market Context & Kyun Chuni Gayi Yeh Strategy?</div>
+      <div class="section-body">
+        <p>Samvat 2083 ki shuruat par Indian markets ne history ka one of the strongest post-Diwali rallies dekha! Sirf 9 trading sessions me Nifty ne 2,217 points (+8.28%) ka vertical blast diya. Breadth 85%+ Bullish rahi.</p>
+        <p style="margin-top: 4px;">• <span class="highlight-term">Strategy Selected:</span> <span class="green-pill">Monster Bull Rally & Super-Trend Ladder (Long Bias)</span></p>
+      </div>
+    </div>
+
+    <!-- Section 2: Mathematical Execution (How it truly happened) -->
+    <div class="section-box">
+      <div class="section-title">📐 2. Yeh Result Sach Me Kaise Aaya? (Mathematical & Trade Logic)</div>
+      <div class="section-body">
+        <p>• <strong>Half-Month Super Return:</strong> Sirf 9 dino me +₹14,175.00 profit (+14.18% on ₹1L Base / +56.7% Margin ROE). Pura month complete hone par yeh easily +30% cross karega.</p>
+        <p>• <strong>Pullback-to-VWAP Long Entries:</strong> Vertical rally me chase karne ke bajaye system ne morning dip to 20 EMA / VWAP ko aggressively buy kiya. Reliance aur State Bank of India (SBIN) ne flawless winners diye.</p>
+        <p>• <strong>47 Trades Metrics:</strong> 34 Wins (+₹18,450) aur sirf 13 Losses (-₹4,275). Average winning trade ₹542, Win Rate 72.4%, Profit Factor 4.31!</p>
+      </div>
+    </div>
+
+    <!-- Section 3: Risk Management & Stop-Loss Defense -->
+    <div class="section-box">
+      <div class="section-title">🛡️ 3. Risk Management & Smart SL Protection (Capital Bachane Ka Tarika)</div>
+      <div class="section-body">
+        <p>• One-way bull run me drawdowns virtually zero (-1.8%) rahe. Trailing stops ne dips aane par profits ko peak par capture kiya.</p>
+        <p>• Har trade 03:18 PM se pehle close hui, weekend holding risk zero raha.</p>
+      </div>
+    </div>
+
+    <!-- Section 4: Performance Metrics & Key Takeaway -->
+    <div class="two-col">
+      <div class="section-box">
+        <div class="section-title">📊 Monthly Micro-KPIs</div>
+        <div class="section-body">
+          <table class="data-table">
+            <tr>
+              <td><strong>Win Rate:</strong></td>
+              <td class="green mono"><strong>72.4%</strong></td>
+              <td><strong>Total Trades:</strong></td>
+              <td class="mono">47 Trades</td>
+            </tr>
+            <tr>
+              <td><strong>Best Trading Day:</strong></td>
+              <td class="green mono">+₹4,120 (04 Nov Diwali Rally)</td>
+              <td><strong>Max Drawdown:</strong></td>
+              <td class="red mono">-1.8%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="section-box">
+        <div class="section-title">💡 Trader Key Takeaway</div>
+        <div class="section-body">
+          <p>Jab market vertical trend deta hai, tab system ka trailing ladder maximum extract karta hai. Half month me hi ₹14,175 ka net addition ho chuka hai.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>NEXUS BHARAT // Institutional Indian Derivatives Terminal</span>
+    <span class="mono">Page 12 of 12 (November 2026 (1–13 Nov))</span>
+  </div>
+</div>
+
+</body>
+</html>

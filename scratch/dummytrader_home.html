@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#131722" />
+  <title>DummyTrader — Free Paper Trading Simulator for Stocks &amp; Options</title>
+  <meta name="description" content="DummyTrader is a free paper-trading simulator. Practise buying and selling stocks, futures and options with virtual money against real, delayed market prices — no signup, no risk. Plus free guides to learn trading from scratch." />
+  <link rel="canonical" href="https://dummytrader.in/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/content.css" />
+  <meta property="og:title" content="DummyTrader — Free Paper Trading Simulator" />
+  <meta property="og:description" content="Practise stock, futures and options trading with virtual money against real prices. Free, no signup, no risk." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dummytrader.in/" />
+  <!-- Broker OAuth returns to the site root (origin + "/"). Forward the callback
+       to the app so it can complete the sign-in, without changing any broker
+       redirect-URI registrations. Runs before paint, only when a code is present. -->
+  <script>
+    (function () {
+      try {
+        var p = new URLSearchParams(window.location.search);
+        if (p.has('code') || p.has('state')) {
+          window.location.replace('/app/' + window.location.search + window.location.hash);
+        }
+      } catch (e) { /* no-op */ }
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Is DummyTrader free?","acceptedAnswer":{"@type":"Answer","text":"Yes. DummyTrader is completely free. You trade with virtual money, so there is nothing to pay and nothing to lose."}},
+      {"@type":"Question","name":"Is this real-money trading?","acceptedAnswer":{"@type":"Answer","text":"No. Every trade uses virtual cash against real, delayed market prices. You cannot lose or earn real money — it is a practice simulator for learning."}},
+      {"@type":"Question","name":"Do I need to sign up?","acceptedAnswer":{"@type":"Answer","text":"No account is required to start practising. You can open the simulator and place your first trade in under a minute."}},
+      {"@type":"Question","name":"What can I trade?","acceptedAnswer":{"@type":"Answer","text":"Stocks, index futures and options, including Nifty and Bank Nifty option chains, all with realistic prices and margin behaviour."}},
+      {"@type":"Question","name":"Can paper trading really help me learn?","acceptedAnswer":{"@type":"Answer","text":"Yes. It teaches order types, margin, leverage and risk management with zero financial risk, letting you make and learn from mistakes safely before using real money."}}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://dummytrader.in/#organization",
+        "name": "DummyTrader",
+        "url": "https://dummytrader.in/",
+        "logo": "https://dummytrader.in/favicon.svg"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://dummytrader.in/#website",
+        "name": "DummyTrader",
+        "url": "https://dummytrader.in/",
+        "publisher": { "@id": "https://dummytrader.in/#organization" },
+        "inLanguage": "en-IN"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://dummytrader.in/#simulator",
+        "name": "DummyTrader Paper Trading Simulator",
+        "url": "https://dummytrader.in/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web browser",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+        "description": "A free browser-based paper trading simulator for practising stocks, futures and options with virtual money. Educational use only; trades are simulated.",
+        "featureList": [
+          "Practise stock market trading with virtual money",
+          "Explore futures and options, including Nifty and Bank Nifty",
+          "Learn order types, leverage and risk management without risking real money"
+        ],
+        "publisher": { "@id": "https://dummytrader.in/#organization" },
+        "inLanguage": "en-IN"
+      }
+    ]
+  }
+  </script>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta property="og:site_name" content="DummyTrader" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:image" content="https://dummytrader.in/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DummyTrader — Free Paper Trading Simulator for Stocks &amp; Options" />
+  <meta name="twitter:description" content="DummyTrader is a free paper-trading simulator. Practise buying and selling stocks, futures and options with virtual money against real, delayed market prices — no signup, no risk. Plus free guides to learn trading from scratch." />
+  <meta name="twitter:image" content="https://dummytrader.in/og-image.png" />
+  <script defer src="/consent.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/"><img src="/favicon.svg" alt="DummyTrader logo" /> DummyTrader</a>
+      <nav class="site-nav">
+        <a href="/learn/">Learn</a>
+        <a href="/trading-glossary">Glossary</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a class="cta" href="/app/">Launch Simulator &rarr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Free Paper Trading Simulator to Learn Trading Risk-Free</h1>
+    <p>DummyTrader is a paper-trading simulator. Buy and sell stocks, futures and options against real, delayed market prices using virtual cash — so you can learn how trading actually works without risking a single rupee.</p>
+    <a class="btn" href="/app/">Launch the Simulator &rarr;</a>
+    <a class="btn ghost" href="/learn/">Start learning</a>
+  </section>
+
+  <main class="wide">
+    <p class="lead">Most people learn trading the expensive way — by losing real money while they figure it out. DummyTrader flips that around. You get a virtual balance, real market data, and a full trading interface, so every lesson costs you nothing but time. Read a concept in our <a href="/learn/">guides</a>, then practise it live in the <a href="/app/">simulator</a>.</p>
+
+    <h2>What is DummyTrader?</h2>
+    <p>DummyTrader is a free, browser-based <strong>paper-trading simulator</strong> built for people learning the Indian stock market. "Paper trading" means placing trades with fake money against genuine price movements — a risk-free rehearsal of the real thing. Everything in the app is simulated: the cash is virtual and nothing you do can cost or earn real money. What's <em>real</em> is the mechanics. Order types, margin, leverage, option premiums and expiry all behave the way they do on a live trading platform, so the habits and intuition you build here carry straight over to real trading.</p>
+    <p>It's designed to be instant and open. There's no mandatory signup and no time-limited demo — just open the simulator, search for a stock or index, and place your first practice trade. Blow up the account, reset, and try again as often as you like. That freedom to fail safely is exactly where the learning happens.</p>
+
+    <h2>How it works</h2>
+    <ol>
+      <li><strong>Open the simulator.</strong> You start with a virtual cash balance — no deposit, no card, no signup needed.</li>
+      <li><strong>Pick an instrument.</strong> Search for a stock, or choose an index like Nifty 50 or Bank Nifty and browse its live option chain.</li>
+      <li><strong>Place a trade.</strong> Buy or sell, set quantity, choose a market or limit order — just like a real broker terminal.</li>
+      <li><strong>Watch your P&amp;L move.</strong> Your positions and net worth update in real time as prices change, adjusted for leverage and margin.</li>
+      <li><strong>Learn and repeat.</strong> Review what worked, read the matching <a href="/learn/">guide</a>, and refine your approach — all with zero financial risk.</li>
+    </ol>
+
+    <h2>Why practise with a simulator?</h2>
+    <ul>
+      <li><strong>Zero risk.</strong> Make every beginner mistake without losing money.</li>
+      <li><strong>Learn the mechanics.</strong> Understand orders, margin, leverage and option pricing by doing, not just reading.</li>
+      <li><strong>Test strategies.</strong> Try an idea over days or weeks before committing real capital.</li>
+      <li><strong>Build discipline.</strong> Practise stop-losses and position sizing until they become automatic.</li>
+      <li><strong>No pressure.</strong> No signup wall, no expiry, no salesperson — just a sandbox to explore.</li>
+    </ul>
+
+    <div class="note">
+      <strong>Remember:</strong> simulated results aren't a promise of real-world performance. Real trading adds costs, taxes, slippage and — most of all — emotion. DummyTrader is an educational tool, not investment advice. Never trade real money you can't afford to lose.
+    </div>
+
+    <h2>Start learning</h2>
+    <p>New to all this? These free, beginner-friendly guides explain the ideas behind every trade you'll make:</p>
+    <div class="cards">
+      <article class="card">
+        <span class="tag">Basics</span>
+        <h3><a href="/learn/what-is-paper-trading">What Is Paper Trading?</a></h3>
+        <p>Why practising with virtual money is the smartest first step in trading.</p>
+      </article>
+      <article class="card">
+        <span class="tag">Charts</span>
+        <h3><a href="/learn/how-to-read-candlestick-charts">How to Read Candlestick Charts</a></h3>
+        <p>Decode what each candle tells you about buyers and sellers.</p>
+      </article>
+      <article class="card">
+        <span class="tag">Options</span>
+        <h3><a href="/learn/how-options-trading-works">How Options Trading Works</a></h3>
+        <p>Premiums, strikes and expiry — the moving parts of an option, explained.</p>
+      </article>
+      <article class="card">
+        <span class="tag">Risk</span>
+        <h3><a href="/learn/risk-management-for-beginners">Risk Management for Beginners</a></h3>
+        <p>The boring habits — stops and position sizing — that keep traders alive.</p>
+      </article>
+    </div>
+    <p><a href="/learn/">Browse all guides &rarr;</a></p>
+
+    <h2>Frequently asked questions</h2>
+    <h3>Is DummyTrader really free?</h3>
+    <p>Yes, completely. You trade with virtual money, so there's nothing to pay and nothing to lose.</p>
+    <h3>Is this real-money trading?</h3>
+    <p>No. Every trade uses virtual cash against real, delayed market prices. You can't lose or earn real money — it's a practice simulator for learning only.</p>
+    <h3>Do I need to create an account?</h3>
+    <p>No. You can open the <a href="/app/">simulator</a> and place your first trade without signing up. Signing in (optional) just lets you save progress.</p>
+    <h3>What can I trade?</h3>
+    <p>Stocks, index futures, and options — including <a href="/learn/nifty-and-banknifty-explained">Nifty and Bank Nifty</a> option chains — with realistic prices and margin behaviour.</p>
+    <h3>Can paper trading actually help me improve?</h3>
+    <p>Yes. It lets you learn order types, leverage and <a href="/learn/risk-management-for-beginners">risk management</a> with zero financial risk, so you make your beginner mistakes safely. It can't replicate the emotion of real money, but it builds the foundation.</p>
+    <h3>Is DummyTrader investment advice?</h3>
+    <p>No. Nothing on this site is investment advice or a recommendation to buy or sell any security. It's an educational simulator. For real-money decisions, consult a licensed financial adviser.</p>
+
+    <div class="note" style="margin-top:36px">
+      <strong>Ready to try it?</strong> <a href="/app/">Open the DummyTrader simulator</a> and place a practice trade — no signup, no risk, just learning.
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="col">
+        <h4>DummyTrader</h4>
+        <a href="/app/">Trading Simulator</a>
+        <a href="/learn/">Learn to Trade</a>
+        <a href="/trading-glossary">Glossary</a>
+        <a href="/docs.html">API Docs</a>
+      </div>
+      <div class="col">
+        <h4>Popular guides</h4>
+        <a href="/learn/what-is-paper-trading">Paper Trading</a>
+        <a href="/learn/how-options-trading-works">Options Basics</a>
+        <a href="/learn/intraday-trading-basics">Intraday Trading</a>
+        <a href="/learn/risk-management-for-beginners">Risk Management</a>
+      </div>
+      <div class="col">
+        <h4>Company</h4>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="#cookie-settings" data-consent-settings>Cookie settings</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      DummyTrader is a free paper-trading simulator built for education. All trading is done with virtual money against simulated or delayed prices. Nothing on this site is investment advice. Real trading involves substantial risk of loss. &copy; 2026 DummyTrader.
+    </div>
+  </footer>
+  <script defer src="/nav.js"></script>
+</body>
+</html>

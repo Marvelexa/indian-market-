@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS BHARAT // Indian Institutional Sniper Terminal (NSE 9:15–3:30)</title>
+
+  <!-- Typography: Plus Jakarta Sans for UI + JetBrains Mono for Quotes & Data -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bespoke High-Density Financial Terminal Stylesheet -->
+  <link rel="stylesheet" href="/static/css/terminal.css">
+</head>
+<body>
+  <div class="app-shell">
+    
+    <!-- ======================================================================= -->
+    <!-- TOP TERMINAL NAVIGATION & TELEMETRY HEADER                              -->
+    <!-- ======================================================================= -->
+    <header class="top-header">
+      <div class="brand-section">
+        <div class="brand-logo" onclick="window.terminal && window.terminal.switchView('terminal')" style="cursor: pointer;" title="Nexus Bharat - Indian Institutional Terminal">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: #38bdf8;">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+          </svg>
+          <span>NEXUS <span style="color: #38bdf8;">BHARAT</span></span>
+        </div>
+        <span class="brand-tag">NSE 9:15–3:30</span>
+
+        <!-- Institutional Sniper Session Timing Gates -->
+        <div class="sniper-gate-badge" id="sniper-session-badge">
+          <span class="status-dot live" id="market-status-dot"></span>
+          <span id="sniper-session-text">CHECKING SESSION</span>
+        </div>
+
+        <div class="clock-display" id="live-clock">--:--:-- IST</div>
+      </div>
+
+      <!-- Center Sleek Navigation Tabs (Spacious, Uncluttered Switching) -->
+      <nav class="top-nav-tabs">
+        <button class="nav-tab active" id="nav-btn-terminal" onclick="window.terminal && window.terminal.switchView('terminal')" title="Live Candlestick Chart & Terminal View (Shortcut: 1)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          <span>Terminal</span>
+        </button>
+        <button class="nav-tab" id="nav-btn-positions" onclick="window.terminal && window.terminal.switchView('positions')" title="Dedicated Positions, 2+2+2 Seats & PnL (Shortcut: 2)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+          <span>Positions & Seats</span>
+          <span class="nav-badge" id="nav-pos-count">0</span>
+        </button>
+        <button class="nav-tab" id="nav-btn-radar" onclick="window.terminal && window.terminal.switchView('radar')" title="High-Conviction Institutional Scanner (Shortcut: 3)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="22" y1="12" x2="18" y2="12"></line>
+            <line x1="6" y1="12" x2="2" y2="12"></line>
+            <line x1="12" y1="6" x2="12" y2="2"></line>
+            <line x1="12" y1="22" x2="12" y2="18"></line>
+          </svg>
+          <span>Sniper Radar</span>
+          <span class="nav-badge" id="nav-radar-count">0</span>
+        </button>
+        <button class="nav-tab" id="nav-btn-timemachine" onclick="window.terminal && window.terminal.switchView('timemachine')" title="60-Day Interactive Historical Replay (Shortcut: 4)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>Time-Machine</span>
+        </button>
+      </nav>
+
+      <!-- Right Header Actions: Quick Search, Margin, P&L, Auto-Exit -->
+      <div class="header-actions">
+        <!-- Quick Symbol Search Bar -->
+        <div class="header-search">
+          <svg class="search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="search-input" class="search-input" placeholder="Search (Ctrl K)..." autocomplete="off">
+        </div>
+
+        <!-- Available Margin & P&L Mini Pill (Clickable -> Switches to Positions) -->
+        <div class="portfolio-pill" onclick="window.terminal && window.terminal.switchView('positions')" style="cursor: pointer;" title="Click to view Positions & Seats">
+          <div class="portfolio-item">
+            <span class="portfolio-label">Margin (₹1L)</span>
+            <span class="portfolio-val num" id="header-available-cash">₹1,00,000.00</span>
+          </div>
+          <div style="width: 1px; height: 18px; background: var(--border-medium);"></div>
+          <div class="portfolio-item">
+            <span class="portfolio-label">Sniper P&L</span>
+            <span class="portfolio-val num" id="header-total-pnl">₹0.00</span>
+          </div>
+        </div>
+
+        <!-- 03:18 PM Mandatory Intraday Auto Square-Off -->
+        <button class="action-btn-sm" id="btn-manual-squareoff" onclick="window.terminal && window.terminal.triggerAutoSquareOff()" style="border-color: rgba(255,69,96,0.5); color: #ff4560; font-weight: 700; font-size: 11px; padding: 5px 10px;" title="03:18 PM Mandatory Intraday Auto Square-Off">
+          3:18 Exit
+        </button>
+
+        <!-- Reset Portfolio to ₹1,00,000 Base Capital -->
+        <button class="btn-icon" id="btn-reset-portfolio" onclick="window.terminal && window.terminal.resetPortfolio()" title="Reset Portfolio to ₹1,00,000 Base Capital">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Marquee Ticker Tape (NIFTY 50, SENSEX, BANK NIFTY, INDIA VIX, NIFTY IT) -->
+    <div class="ticker-ribbon" id="ticker-ribbon">
+      <div class="ticker-chip"><span class="ticker-name">CONNECTING TO NSE DATA ENGINE...</span></div>
+    </div>
+
+
+    <!-- ======================================================================= -->
+    <!-- VIEW 1: CLEAN, UNCONGESTED TRADING TERMINAL (#view-terminal)            -->
+    <!-- Full-Height Chart • Clean Watchlist • Rapid Order Execution Desk        -->
+    <!-- ======================================================================= -->
+    <main class="terminal-grid page-view" id="view-terminal">
+      
+      <!-- Column 1: Market Screener & Watchlist (Left) -->
+      <aside class="terminal-panel left-panel">
+        <div class="panel-header">
+          <span class="panel-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            NSE F&O Watchlist
+          </span>
+          <span class="clock-display" style="font-size: 10px;">NSE REAL-TIME</span>
+        </div>
+
+        <!-- Real Market Breadth -->
+        <div class="market-breadth-card">
+          <div class="breadth-meta">
+            <span style="color: var(--bull-green); font-weight: 600;">Adv: <span id="mb-adv">--</span></span>
+            <span style="color: var(--text-muted); font-size: 10px;" id="mb-ratio">A/D: --</span>
+            <span style="color: var(--bear-red); font-weight: 600;">Dec: <span id="mb-dec">--</span></span>
+          </div>
+          <div class="breadth-bar">
+            <div class="breadth-adv" id="mb-bar-adv" style="width: 50%;"></div>
+            <div class="breadth-dec" id="mb-bar-dec" style="width: 50%;"></div>
+          </div>
+        </div>
+
+        <!-- Watchlist Sector Filter Tabs -->
+        <div class="watchlist-tabs">
+          <button class="w-tab active" data-filter="all">All</button>
+          <button class="w-tab" data-filter="nifty">Indices</button>
+          <button class="w-tab" data-filter="banks">Banks</button>
+          <button class="w-tab" data-filter="tech">Tech</button>
+          <button class="w-tab" data-filter="energy">Energy</button>
+          <button class="w-tab" data-filter="auto">Auto</button>
+          <button class="w-tab" data-filter="gainers">Gainers</button>
+          <button class="w-tab" data-filter="losers">Losers</button>
+        </div>
+
+        <!-- Stock Cards List -->
+        <div class="watchlist-list" id="watchlist-container">
+          <div style="padding: 20px; text-align: center; color: var(--text-muted);">
+            Streaming Indian Equities...
+          </div>
+        </div>
+      </aside>
+
+      <!-- Column 2: Full-Height Candlestick Canvas & Technical Engine (Center) -->
+      <section class="terminal-panel center-panel">
+        
+        <!-- Active Instrument Telemetry Header -->
+        <div class="asset-summary-bar">
+          <div class="asset-title-block">
+            <h1 class="asset-symbol-title" id="asset-title">NIFTY 50</h1>
+            <span class="asset-exchange-pill" id="asset-exchange">NSE</span>
+            <span class="asset-ltp-large num" id="asset-ltp">₹25,144.30</span>
+            <span class="asset-chg-badge num up" id="asset-change">▲ +0.00 (0.00%)</span>
+          </div>
+
+          <div class="asset-telemetry-row">
+            <div class="tele-item">
+              <span class="tele-label">24h High</span>
+              <span class="tele-val num" id="tele-high">₹--</span>
+            </div>
+            <div class="tele-item">
+              <span class="tele-label">24h Low</span>
+              <span class="tele-val num" id="tele-low">₹--</span>
+            </div>
+            <div class="tele-item">
+              <span class="tele-label">Volume</span>
+              <span class="tele-val num" id="tele-vol">--</span>
+            </div>
+            <div class="tele-item">
+              <span class="tele-label">Turnover</span>
+              <span class="tele-val num" id="tele-turnover">₹-- Cr</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart Controls Toolbar -->
+        <div class="chart-controls-bar">
+          <div class="control-group">
+            <button class="tf-btn active" data-tf="1D">1D (5m)</button>
+            <button class="tf-btn" data-tf="5D">5D (15m)</button>
+            <button class="tf-btn" data-tf="60D" style="color: #00FFA3; font-weight: 700;">60D (15m)</button>
+            <button class="tf-btn" data-tf="1M">1M (1h)</button>
+            <button class="tf-btn" data-tf="6M">6M (1D)</button>
+            <button class="tf-btn" data-tf="1Y">1Y (1D)</button>
+          </div>
+
+          <div class="tool-sep"></div>
+
+          <div class="control-group">
+            <button class="indicator-toggle active" data-ind="ema20">
+              <span class="ind-dot" style="background: #38bdf8;"></span> EMA 9/21
+            </button>
+            <button class="indicator-toggle active" data-ind="ema50">
+              <span class="ind-dot" style="background: #f59e0b;"></span> EMA 50
+            </button>
+            <button class="indicator-toggle active" data-ind="vwap">
+              <span class="ind-dot" style="background: #c084fc;"></span> VWAP
+            </button>
+            <button class="indicator-toggle active" data-ind="volume">
+              <span class="ind-dot" style="background: #64748b;"></span> Vol (RVOL)
+            </button>
+            <button class="indicator-toggle active" data-ind="rsi">
+              <span class="ind-dot" style="background: #a855f7;"></span> RSI(14)
+            </button>
+          </div>
+        </div>
+
+        <!-- TradingView Lightweight Charts Viewport (Full Vertical Space) -->
+        <div class="chart-container-wrapper">
+          <!-- Floating Legend -->
+          <div class="chart-floating-legend" id="chart-legend">
+            <div><span class="c-item">O:</span> <span class="c-val num" id="leg-open">₹--</span></div>
+            <div><span class="c-item">H:</span> <span class="c-val num" id="leg-high">₹--</span></div>
+            <div><span class="c-item">L:</span> <span class="c-val num" id="leg-low">₹--</span></div>
+            <div><span class="c-item">C:</span> <span class="c-val num" id="leg-close">₹--</span></div>
+            <div><span class="c-item">Vol:</span> <span class="c-val num" id="leg-vol">--</span></div>
+          </div>
+
+          <!-- Main Candlestick Chart Container (Expands to fill height) -->
+          <div id="tv-chart-main"></div>
+
+          <!-- RSI Sub-Chart Container -->
+          <div id="tv-chart-rsi"></div>
+        </div>
+
+        <!-- Terminal Sleek Minimal Footer (No Congested Drawer) -->
+        <footer class="terminal-minimal-footer">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="display: flex; align-items: center; gap: 6px;">
+              <span class="status-dot live"></span>
+              <strong style="color: #fff;">NSE SESSION</strong>: 09:15–03:30 IST
+            </span>
+            <span style="color: var(--border-medium);">|</span>
+            <span>Max Risk Cap: <strong style="color: var(--bear-red);">₹2,500</strong> / lot</span>
+            <span style="color: var(--border-medium);">|</span>
+            <span>2+2+2 Seats Active: <strong style="color: #00FFA3;" id="footer-seats-active-count">0/6</strong></span>
+          </div>
+
+          <button class="action-btn-sm" onclick="window.terminal && window.terminal.switchView('positions')" style="background: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.4); color: #38bdf8; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; padding: 4px 12px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <span>View All Positions & Seats (<span id="footer-pos-count">0</span>)</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </footer>
+      </section>
+
+      <!-- Column 3: Level-2 Market Depth & Order Execution Desk (Right) -->
+      <aside class="terminal-panel right-panel">
+        <div class="right-panel-scroll">
+          
+          <!-- Level-2 Market Depth (Best 5 Bids vs Asks) -->
+          <div class="depth-section">
+            <div class="depth-header-row">
+              <span class="depth-title">NSE Market Depth (L2)</span>
+              <span class="spread-badge num" id="depth-spread">SPREAD: ₹0.05</span>
+            </div>
+
+            <table class="depth-table">
+              <thead>
+                <tr>
+                  <th style="text-align: left;">Ord</th>
+                  <th style="text-align: left;">Bid Qty</th>
+                  <th style="text-align: right; color: var(--bull-green);">Bid (₹)</th>
+                  <th style="text-align: left; color: var(--bear-red);">Ask (₹)</th>
+                  <th style="text-align: right;">Ask Qty</th>
+                  <th style="text-align: right;">Ord</th>
+                </tr>
+              </thead>
+              <tbody id="depth-table-body">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+
+            <!-- Buyer vs Seller Ratio Bar -->
+            <div class="buyer-seller-ratio">
+              <div class="ratio-labels">
+                <span style="color: var(--bull-green);">Buyers: <span id="depth-buyers-pct">50%</span></span>
+                <span style="color: var(--bear-red);">Sellers: <span id="depth-sellers-pct">50%</span></span>
+              </div>
+              <div class="ratio-track">
+                <div class="breadth-adv" id="depth-track-buyer" style="width: 50%;"></div>
+                <div class="breadth-dec" id="depth-track-seller" style="width: 50%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Execution Ticket -->
+          <div class="ticket-section">
+            
+            <!-- Side Toggle -->
+            <div class="side-toggle">
+              <button class="side-btn buy active" id="side-buy" onclick="window.terminal && window.terminal.setSide('BUY')">BUY</button>
+              <button class="side-btn sell" id="side-sell" onclick="window.terminal && window.terminal.setSide('SELL')">SELL</button>
+            </div>
+
+            <!-- Product Type (MIS / CNC) -->
+            <div class="product-toggle">
+              <button class="prod-btn active" data-prod="MIS">MIS (Intraday 5x)</button>
+              <button class="prod-btn" data-prod="CNC">CNC (Delivery 1x)</button>
+            </div>
+
+            <!-- Order Type -->
+            <div class="ticket-field">
+              <div class="field-header">
+                <span>Order Type</span>
+                <span>TIF: DAY</span>
+              </div>
+              <select id="order-type-select" class="ticket-input" style="background: var(--bg-canvas); border: 1px solid var(--border-medium); border-radius: 6px;">
+                <option value="MARKET">MARKET</option>
+                <option value="LIMIT">LIMIT</option>
+                <option value="SL">STOP LOSS (SL)</option>
+              </select>
+            </div>
+
+            <!-- Quantity with Steppers -->
+            <div class="ticket-field">
+              <div class="field-header">
+                <span>Quantity</span>
+                <span id="lot-size-label">Units / Lots</span>
+              </div>
+              <div class="input-with-stepper">
+                <button class="stepper-btn" id="qty-minus" onclick="window.terminal && window.terminal.adjustQty(-1)">−</button>
+                <input type="number" id="order-qty-input" class="ticket-input num" value="25" min="1" step="1">
+                <button class="stepper-btn" id="qty-plus" onclick="window.terminal && window.terminal.adjustQty(1)">+</button>
+              </div>
+              <div class="quick-qty-pills">
+                <div class="qty-pill" data-lot="1">1 Lot</div>
+                <div class="qty-pill" data-lot="2">2 Lots</div>
+                <div class="qty-pill" data-lot="5">5 Lots</div>
+                <div class="qty-pill" data-lot="10">10 Lots</div>
+              </div>
+            </div>
+
+            <!-- Price Input -->
+            <div class="ticket-field">
+              <div class="field-header">
+                <span>Price (₹)</span>
+                <span>Tick: 0.05</span>
+              </div>
+              <input type="number" id="order-price-input" class="ticket-input num" style="background: var(--bg-canvas); border: 1px solid var(--border-medium); border-radius: 6px;" value="25144.30" step="0.05" disabled>
+            </div>
+
+            <!-- Tight SL & Pre-Reversal TP Inputs -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+              <div class="ticket-field">
+                <div class="field-header">
+                  <span style="color: var(--bear-red);">Tight SL (₹)</span>
+                </div>
+                <input type="number" id="order-sl-input" class="ticket-input num" style="background: var(--bg-canvas); border: 1px solid var(--border-medium); border-radius: 6px; font-size: 11px;" placeholder="Optional SL" step="0.05">
+              </div>
+              <div class="ticket-field">
+                <div class="field-header">
+                  <span style="color: var(--bull-green);">Pre-Rev TP (₹)</span>
+                </div>
+                <input type="number" id="order-tp-input" class="ticket-input num" style="background: var(--bg-canvas); border: 1px solid var(--border-medium); border-radius: 6px; font-size: 11px;" placeholder="Optional TP" step="0.05">
+              </div>
+            </div>
+
+            <!-- Margin & Indian Taxes Summary -->
+            <div class="margin-summary">
+              <div class="margin-row">
+                <span>Margin Required</span>
+                <span class="margin-val num" id="margin-required">₹0.00</span>
+              </div>
+              <div class="margin-row">
+                <span>Max Risk Cap</span>
+                <span class="margin-val num" style="color: var(--bear-red);">₹2,500.00 / lot</span>
+              </div>
+              <div class="margin-row">
+                <span>Est. Charges (STT + GST)</span>
+                <span class="margin-val num" id="tax-breakdown">₹0.00</span>
+              </div>
+            </div>
+
+            <!-- Execute Button -->
+            <button class="btn-execute buy" id="btn-execute-order" onclick="window.terminal && window.terminal.submitOrder()">
+              BUY NIFTY 50
+            </button>
+            <div style="font-size: 10px; color: var(--text-muted); text-align: center;">
+              Shortcut: <kbd style="background: var(--border-subtle); padding: 1px 4px; border-radius: 3px;">Shift + Enter</kbd>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+
+    <!-- ======================================================================= -->
+    <!-- VIEW 2: DEDICATED FULL-PAGE POSITIONS & 2+2+2 SEATS WORKSPACE           -->
+    <!-- "sare position ke liye alag se page" • Minimal, Spacious & Uncongested  -->
+    <!-- ======================================================================= -->
+    <section class="page-view" id="view-positions" style="display: none;">
+      
+      <!-- Top Title Bar with Actions -->
+      <div class="section-title-bar" style="margin-bottom: 16px;">
+        <div>
+          <div class="section-title-text" style="font-size: 16px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <span>Institutional Paper Trading Workspace (2+2+2 Architecture)</span>
+          </div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">
+            Base Capital ₹1,00,000 INR • 09:15–03:30 IST Regular Session • Strict ₹2,500 Max Risk Cap / lot
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button class="action-btn-sm" onclick="window.terminal && window.terminal.triggerAutoSquareOff()" style="background: rgba(255, 69, 96, 0.15); border-color: rgba(255, 69, 96, 0.5); color: #ff4560; font-weight: 800; padding: 7px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>03:18 PM Auto Square-Off All</span>
+          </button>
+          <button class="action-btn-sm" onclick="window.terminal && window.terminal.resetPortfolio()" style="background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.2); color: #fff; font-weight: 700; padding: 7px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+              <path d="M3 3v5h5"></path>
+            </svg>
+            <span>Reset Capital to ₹1,00,000</span>
+          </button>
+          <button class="action-btn-sm" onclick="window.terminal && window.terminal.switchView('terminal')" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.5); color: #38bdf8; font-weight: 700; padding: 7px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span>Return to Terminal</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Institutional Rules Badges Bar -->
+      <div class="positions-rules-bar">
+        <span class="rule-badge green">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+          Base Capital: <strong>₹1,00,000 INR</strong>
+        </span>
+        <span class="rule-badge cyan">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle></svg>
+          Daily Goal: <strong>₹20,000+ (20%)</strong>
+        </span>
+        <span class="rule-badge red">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          Max Risk Cap: <strong>₹2,500 / lot</strong>
+        </span>
+        <span class="rule-badge amber">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          ORB Warm-Up: <strong>09:15–09:25 AM</strong>
+        </span>
+        <span class="rule-badge red">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          Auto Square-Off: <strong>03:18 PM IST</strong>
+        </span>
+        <span class="rule-badge green">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          Trailing Locks: <strong>BE @ 35% | Lock 55% @ 70%</strong>
+        </span>
+      </div>
+
+      <!-- 6 KPI Scorecard Cards -->
+      <div class="positions-kpi-grid">
+        <div class="positions-kpi-card">
+          <span style="font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Base Capital</span>
+          <span class="num" style="font-size: 20px; font-weight: 800; color: #fff;">₹1,00,000</span>
+          <span style="font-size: 9.5px; color: var(--text-muted);">Max Risk: ₹2,500 / lot</span>
+        </div>
+        <div class="positions-kpi-card">
+          <span style="font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Available Margin</span>
+          <span class="num" style="font-size: 20px; font-weight: 800; color: #38bdf8;" id="pos-page-avail-margin">₹1,00,000.00</span>
+          <span style="font-size: 9.5px; color: var(--text-muted);">Intraday MIS 5x Active</span>
+        </div>
+        <div class="positions-kpi-card">
+          <span style="font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Portfolio Equity (MTM)</span>
+          <span class="num" style="font-size: 20px; font-weight: 800; color: #fff;" id="pos-page-equity">₹1,00,000.00</span>
+          <span style="font-size: 9.5px; color: var(--bull-green);" id="pos-page-total-return">+0.00%</span>
+        </div>
+        <div class="positions-kpi-card">
+          <span style="font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Realized Net P&L</span>
+          <span class="num" style="font-size: 20px; font-weight: 800; color: var(--bull-green);" id="pos-page-realized-pnl">+₹0.00</span>
+          <span style="font-size: 9.5px; color: var(--text-muted);" id="pos-page-closed-cnt">0 Closed Trades</span>
+        </div>
+        <div class="positions-kpi-card">
+          <span style="font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Live Floating P&L</span>
+          <span class="num" style="font-size: 20px; font-weight: 800; color: #fff;" id="pos-page-floating-pnl">₹0.00</span>
+          <span style="font-size: 9.5px; color: var(--text-muted);" id="pos-page-open-cnt">0 Open Seats</span>
+        </div>
+        <div class="positions-kpi-card" style="border-color: rgba(56, 189, 248, 0.3);">
+          <span style="font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Daily Goal (₹20,000)</span>
+          <span class="num" style="font-size: 20px; font-weight: 800; color: #38bdf8;" id="pos-page-goal-pct">0.0%</span>
+          <div class="target-track" style="margin-top: 4px; height: 5px;">
+            <div class="target-fill" id="pos-page-goal-bar" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2+2+2 Concurrent Institutional Seats Grid -->
+      <div style="margin-bottom: 24px;">
+        <div class="section-title-bar">
+          <div class="section-title-text">
+            <span style="color: #00FFA3;">⚡</span> 2+2+2 Concurrent Institutional Seats (6 Concurrent Seats)
+          </div>
+          <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted);">
+            2 Chopping Ping-Pong (R:R 1:1.8) • 2 Trend Runners (R:R 1:3.0) • 2 Option Mirrors (0.60Δ)
+          </span>
+        </div>
+        <div class="positions-seats-grid" id="seats-container">
+          <!-- Injected via JavaScript renderSeatsGrid() -->
+          <div style="grid-column: span 3; text-align: center; color: var(--text-muted); padding: 24px;">
+            Initializing 2+2+2 Institutional Seats Architecture...
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Open Positions Table -->
+      <div style="margin-bottom: 24px; background: #0c1017; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 16px;">
+        <div class="section-title-bar">
+          <div class="section-title-text">
+            <span style="color: #38bdf8;">📊</span> Active Open Positions
+          </div>
+          <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted);" id="pos-page-open-table-count">0 Open Positions</span>
+        </div>
+        <table class="data-table" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Instrument</th>
+              <th>Seat / Product</th>
+              <th>Side</th>
+              <th>Qty</th>
+              <th>Entry Price</th>
+              <th>Current LTP</th>
+              <th>Tight SL</th>
+              <th>Pre-Rev TP</th>
+              <th>Trailing Stage</th>
+              <th style="text-align: right;">Floating P&L (₹)</th>
+              <th style="text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="positions-table-body">
+            <tr><td colspan="11" style="text-align: center; color: var(--text-muted); padding: 24px;">No active open positions in 2+2+2 seats.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Order Blotter & Closed Trades Table -->
+      <div style="background: #0c1017; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 16px;">
+        <div class="section-title-bar">
+          <div class="section-title-text">
+            <span style="color: #a855f7;">📜</span> Order Blotter & Closed Trades Ledger
+          </div>
+          <span style="font-size: 11px; font-family: var(--font-mono); color: var(--text-muted);" id="pos-page-closed-table-count">0 Trades Logged</span>
+        </div>
+        <table class="data-table" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>Order ID / Time</th>
+              <th>Symbol</th>
+              <th>Seat</th>
+              <th>Side</th>
+              <th>Type</th>
+              <th>Qty</th>
+              <th>Price (₹)</th>
+              <th style="color: #00FFA3;">Filled Amount (₹)</th>
+              <th>Exit Price (₹)</th>
+              <th style="text-align: right;">Realized P&L (₹)</th>
+              <th style="text-align: right;">Status</th>
+            </tr>
+          </thead>
+          <tbody id="orders-table-body">
+            <tr><td colspan="11" style="text-align: center; color: var(--text-muted); padding: 24px;">No trades logged yet.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- ======================================================================= -->
+    <!-- VIEW 3: DEDICATED FULL-PAGE SNIPER RADAR WORKSPACE                      -->
+    <!-- High-Conviction Institutional Setups (Score >= 88/100)                  -->
+    <!-- ======================================================================= -->
+    <section class="page-view" id="view-radar" style="display: none;">
+      
+      <!-- Top Title Bar with Actions -->
+      <div class="section-title-bar" style="margin-bottom: 16px;">
+        <div>
+          <div class="section-title-text" style="font-size: 16px;">
+            <span style="color: #00FFA3;">🎯</span> Institutional Sniper Radar (>=88 Conviction Score)
+          </div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">
+            5-Layer Confluence Filter: VWAP + EMA 9/21/50 + Momentum RVOL + Pre-Reversal Wall TP + Tight SL Cap
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button class="action-btn-sm" onclick="window.terminal && window.terminal.loadSniperRadar()" style="background: rgba(0, 255, 163, 0.15); border-color: rgba(0, 255, 163, 0.5); color: #00FFA3; font-weight: 700; padding: 7px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+            <span>🔄</span> <span>Rescan Universe</span>
+          </button>
+          <button class="action-btn-sm" onclick="window.terminal && window.terminal.switchView('terminal')" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.5); color: #38bdf8; font-weight: 700; padding: 7px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+            <span>📊</span> <span>Return to Chart Terminal</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Radar Setup Grid -->
+      <div class="radar-page-grid" id="sniper-radar-container">
+        <div style="grid-column: span 3; text-align: center; color: var(--text-muted); padding: 40px;">
+          Scanning NSE F&O universe for 5-layer confluence setups...
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======================================================================= -->
+    <!-- VIEW 4: FULL-PAGE DEDICATED TIME-MACHINE LIVE SIMULATOR                 -->
+    <!-- Select ANY Past Date (60 Days) • Starts 09:15:00 AM IST • 1s Accuracy   -->
+    <!-- ======================================================================= -->
+    <section class="time-machine-fullpage page-view" id="time-machine-fullpage" style="display: none; padding: 14px 18px; width: 100%; box-sizing: border-box;">
+      
+      <!-- SECTION A: GIANT PAST DATE TIME-TRAVEL COMMAND CONSOLE -->
+      <div style="background: #090e14; border: 1px solid rgba(0, 255, 163, 0.4); border-radius: 14px; padding: 16px 20px; margin-bottom: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.85); backdrop-filter: blur(16px);">
+        
+        <!-- Row 1: Date Selector & Quick Day Presets -->
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.5); display: flex; align-items: center; justify-content: center; color: #38bdf8;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <div>
+              <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">
+                Select Historical Trading Day (60 Days NSE Cache):
+              </div>
+              <!-- Dropdown with all 60 trading days -->
+              <div style="display: flex; align-items: center; gap: 8px; margin-top: 3px;">
+                <select id="tm-date-select" style="background: #0f172a; border: 1px solid rgba(0, 255, 163, 0.5); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; outline: none; min-width: 320px;">
+                  <option value="2026-11-13">Loading 60 Historical Days...</option>
+                </select>
+                <button id="tm-btn-load-date" onclick="window.terminal && window.terminal.applySelectedDate()" style="background: #00FFA3; color: #000; font-weight: 800; font-size: 12px; padding: 7px 16px; border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 0 16px rgba(0, 255, 163, 0.4);">
+                  <span>▶</span> <span>START DAY AT 09:15:00 AM IST</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Date Preset Chips -->
+          <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 10px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Quick Jump:</span>
+            <button class="action-btn-sm tm-date-chip" data-date="2026-11-13" style="font-size: 11px; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer;">📌 Latest (13 Nov)</button>
+            <button class="action-btn-sm tm-date-chip" data-date="2026-11-12" style="font-size: 11px; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer;">⚡ Expiry (12 Nov)</button>
+            <button class="action-btn-sm tm-date-chip" data-date="2026-10-15" style="font-size: 11px; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer;">🚀 Bull Run (15 Oct)</button>
+            <button class="action-btn-sm tm-date-chip" data-date="2026-11-04" style="font-size: 11px; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer;">🔻 Bear Selloff (04 Nov)</button>
+            <button class="action-btn-sm tm-date-chip" data-date="2026-10-28" style="font-size: 11px; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer;">↔️ Chop Range (28 Oct)</button>
+          </div>
+        </div>
+
+        <!-- Row 2: Clock Telemetry, Session Gates & Playback Controls -->
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+          <!-- Left: Big Digital IST Clock & Dynamic Session Gate -->
+          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <div style="width: 44px; height: 44px; border-radius: 10px; background: rgba(0, 255, 163, 0.15); border: 1px solid rgba(0, 255, 163, 0.5); display: flex; align-items: center; justify-content: center; color: #00FFA3; box-shadow: 0 0 16px rgba(0, 255, 163, 0.3);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;">
+                <span style="font-size: 13px; font-weight: 800; color: #fff; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.15); padding: 3px 10px; border-radius: 6px; font-family: 'JetBrains Mono', monospace;" id="tm-ist-clock">
+                  🕒 09:15:00 AM IST
+                </span>
+                <span style="font-size: 12px; font-weight: 800; color: #00FFA3; background: rgba(0, 255, 163, 0.15); border: 1px solid rgba(0, 255, 163, 0.4); padding: 3px 10px; border-radius: 6px; font-family: 'JetBrains Mono', monospace;" id="tm-date-badge">
+                  📅 13 NOV 2026 (FRIDAY)
+                </span>
+                <span style="font-size: 11px; font-weight: 800; color: #fbbf24; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.4); padding: 3px 10px; border-radius: 6px; font-family: 'JetBrains Mono', monospace;" id="tm-session-gate-pill">
+                  🟡 WARM-UP (09:15 - 09:25 AM)
+                </span>
+                <span style="font-size: 11px; font-weight: 700; color: #38bdf8; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px;" id="tm-status-pill">
+                  🟢 REPLAY ACTIVE (5x)
+                </span>
+              </div>
+              <div style="font-size: 11.5px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;" id="tm-session-desc-text">
+                <span style="color: #fbbf24;">●</span> <span>09:15-09:25 Warm-Up: Observing ORH/ORL (600s left, No Blind Trades)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Play / Pause / Reset & Exit -->
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <button id="tm-btn-play" onclick="window.terminal && window.terminal.sendReplayControl('PLAY')" style="background: rgba(0, 255, 163, 0.25); border: 1px solid rgba(0, 255, 163, 0.6); color: #00FFA3; font-weight: 800; padding: 8px 16px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 12px; box-shadow: 0 0 16px rgba(0, 255, 163, 0.3);">
+              <span>▶</span> <span>PLAY / RESUME</span>
+            </button>
+            <button id="tm-btn-pause" onclick="window.terminal && window.terminal.sendReplayControl('PAUSE')" style="background: rgba(245, 158, 11, 0.2); border: 1px solid rgba(245, 158, 11, 0.5); color: #fbbf24; font-weight: 800; padding: 8px 16px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 12px;">
+              <span>⏸</span> <span>PAUSE</span>
+            </button>
+            <button id="tm-btn-reset" onclick="window.terminal && window.terminal.sendReplayControl('RESET_DAY')" style="background: rgba(255, 69, 96, 0.15); border: 1px solid rgba(255, 69, 96, 0.4); color: #ff4560; font-weight: 700; padding: 8px 14px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 12px;">
+              <span>🔄</span> <span>RESTART DAY (09:15 AM)</span>
+            </button>
+            <button id="tm-btn-exit" onclick="window.terminal && window.terminal.exitTimeMachineFullPage()" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; font-weight: 700; padding: 8px 14px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 12px; margin-left: 6px;">
+              <span>✕</span> <span>Terminal</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Row 3: High-Precision Intraday Timeline Scrubber (09:15:00 AM to 03:30:00 PM IST) -->
+        <div style="margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); margin-bottom: 4px;">
+            <span>Current Time: <strong style="color: #fff;" id="tm-scrub-time-label">09:15:00 AM IST</strong> (<span id="tm-second-counter">0</span> / 22,500s)</span>
+            <span style="color: #00FFA3; font-weight: 800;" id="tm-prog-pct-text">0.0% of Trading Day</span>
+          </div>
+          <input type="range" id="tm-second-slider" min="0" max="22500" value="0" style="width: 100%; height: 7px; accent-color: #00FFA3; cursor: pointer;">
+        </div>
+
+        <!-- Row 4: Session Milestones & Speed Selector Pills -->
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06);">
+          <!-- Milestone Jump Buttons -->
+          <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 10px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Milestones:</span>
+            <button class="action-btn-sm tm-jump-sec" data-sec="0" style="cursor: pointer; padding: 3px 8px; font-size: 10.5px; font-family: 'JetBrains Mono', monospace;">09:15 AM Open</button>
+            <button class="action-btn-sm tm-jump-sec" data-sec="600" style="cursor: pointer; padding: 3px 8px; font-size: 10.5px; font-family: 'JetBrains Mono', monospace; color: #00FFA3; border-color: rgba(0,255,163,0.3);">09:25 AM Sniper</button>
+            <button class="action-btn-sm tm-jump-sec" data-sec="8100" style="cursor: pointer; padding: 3px 8px; font-size: 10.5px; font-family: 'JetBrains Mono', monospace;">11:30 AM Mid-day</button>
+            <button class="action-btn-sm tm-jump-sec" data-sec="14400" style="cursor: pointer; padding: 3px 8px; font-size: 10.5px; font-family: 'JetBrains Mono', monospace;">01:15 PM Euro Open</button>
+            <button class="action-btn-sm tm-jump-sec" data-sec="21000" style="cursor: pointer; padding: 3px 8px; font-size: 10.5px; font-family: 'JetBrains Mono', monospace; color: #fbbf24; border-color: rgba(245,158,11,0.3);">03:10 PM Pre-Square</button>
+            <button class="action-btn-sm tm-jump-sec" data-sec="21780" style="cursor: pointer; padding: 3px 8px; font-size: 10.5px; font-family: 'JetBrains Mono', monospace; color: #ff4560; border-color: rgba(255,69,96,0.3);">03:18 PM Auto Square-Off</button>
+          </div>
+
+          <!-- Speed Selector Pills (1x, 5x, 10x, 30x, 60x, 150x, 300x, 600x Turbo) -->
+          <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+            <span style="font-size: 10px; font-weight: 800; color: var(--text-muted); text-transform: uppercase;">Speed:</span>
+            <button class="action-btn-sm tm-speed-btn" data-speed="1" style="font-size: 11px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer;">1x (Live 1s)</button>
+            <button class="action-btn-sm tm-speed-btn" data-speed="5" style="font-size: 11px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer; background: #00FFA3; color: #000;">5x</button>
+            <button class="action-btn-sm tm-speed-btn" data-speed="10" style="font-size: 11px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer;">10x</button>
+            <button class="action-btn-sm tm-speed-btn" data-speed="30" style="font-size: 11px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer;">30x</button>
+            <button class="action-btn-sm tm-speed-btn" data-speed="60" style="font-size: 11px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer;">60x (1m/s)</button>
+            <button class="action-btn-sm tm-speed-btn" data-speed="150" style="font-size: 11px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer;">150x</button>
+            <button class="action-btn-sm tm-speed-btn" data-speed="300" style="font-size: 11px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer;">300x (5m/s)</button>
+            <button class="action-btn-sm tm-speed-btn" data-speed="600" style="font-size: 11px; font-weight: 800; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; cursor: pointer; color: #fbbf24; border-color: rgba(245, 158, 11, 0.5);">600x Turbo</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION B: LIVE HISTORICAL PRICE TICKER RIBBON (ALL 14 SYMBOLS) -->
+      <div style="background: #090e14; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 8px 12px; margin-bottom: 12px; overflow-x: auto; white-space: nowrap;">
+        <div style="display: flex; align-items: center; gap: 8px; min-width: max-content;" id="tm-live-ticker-strip">
+          <!-- Populated in JS: NIFTY, BANKNIFTY, SENSEX, RELIANCE, etc. -->
+        </div>
+      </div>
+
+      <!-- SECTION C: LIVE DAY SCOREBOARD & KPI CARDS -->
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 12px;">
+        <div style="background: #090e14; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 12px 14px;">
+          <span style="font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; display: block;">Base Capital</span>
+          <span class="num" style="font-size: 20px; font-weight: 900; color: #fff;">₹1,00,000</span>
+          <span style="font-size: 9.5px; color: var(--text-muted); display: block;">Max Risk Cap: ₹2,500 / lot</span>
+        </div>
+        <div style="background: #090e14; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 12px 14px;">
+          <span style="font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; display: block;">Day Account Balance</span>
+          <span class="num" style="font-size: 20px; font-weight: 900; color: #fff;" id="tm-kpi-balance">₹1,00,000.00</span>
+          <span style="font-size: 9.5px; color: #00FFA3; display: block;" id="tm-kpi-return-pct">Day Return: 0.0%</span>
+        </div>
+        <div style="background: #090e14; border: 1px solid rgba(0, 255, 163, 0.3); border-radius: 10px; padding: 12px 14px;">
+          <span style="font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; display: block;">Day Net P&L (₹20K Target)</span>
+          <span class="num" style="font-size: 20px; font-weight: 900; color: #00FFA3;" id="tm-kpi-realized">+₹0.00</span>
+          <div style="background: rgba(255,255,255,0.1); height: 4px; border-radius: 2px; margin-top: 4px; overflow: hidden;">
+            <div id="tm-target-progress-bar" style="background: #00FFA3; width: 0%; height: 100%; transition: width 0.3s ease;"></div>
+          </div>
+        </div>
+        <div style="background: #090e14; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 12px 14px;">
+          <span style="font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; display: block;">Live Floating P&L</span>
+          <span class="num" style="font-size: 20px; font-weight: 900; color: #00FFA3;" id="tm-kpi-floating">+₹0.00</span>
+          <span style="font-size: 9.5px; color: var(--text-muted); display: block;" id="tm-kpi-open-count">0 Open Concurrent Seats</span>
+        </div>
+        <div style="background: #090e14; border: 1px solid rgba(0, 255, 163, 0.3); border-radius: 10px; padding: 12px 14px;">
+          <span style="font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; display: block;">Win Rate & Outcomes</span>
+          <span class="num" style="font-size: 20px; font-weight: 900; color: #00FFA3;" id="tm-kpi-winrate">0.0%</span>
+          <div style="display: flex; gap: 6px; font-size: 9.5px; font-family: 'JetBrains Mono', monospace; padding-top: 2px;">
+            <span style="color: #00FFA3;" id="tm-kpi-tp-cnt">🚀 0 Trend Runs</span>
+            <span style="color: #38bdf8;" id="tm-kpi-lock-cnt">🛡️ 0 Shields</span>
+            <span style="color: #ff4560;" id="tm-kpi-sl-cnt">🛑 0 Cut SL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION D: LIVE 2+2+2 CONCURRENT SEATS (2 CHOP + 2 NORMAL + 2 OPTIONS) -->
+      <div style="background: #090e14; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: #fff; display: flex; align-items: center; gap: 6px;">
+              <span style="color: #00FFA3;">⚡</span> 2+2+2 Institutional Concurrent Seats (<span id="tm-active-seats-count">0</span>/6 Occupied)
+            </span>
+            <span style="font-size: 10.5px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">2 Chop Ping-Pong + 2 Trend Runners + 2 Index Options</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 10px; color: #00FFA3; font-weight: 700; background: rgba(0,255,163,0.1); border: 1px solid rgba(0,255,163,0.3); padding: 3px 8px; border-radius: 4px;">
+              🎯 TP 1 (+₹500 Lock) ➔ TP 2 (+₹1K Lock) ➔ TP 3 (+₹1.5K Lock) ➔ TP 4 (+₹2K Lock) ➔ TP 5 (+₹2.5K Lock) ➔ TP 6 (+₹3K Target) • 🛡️ Smart SL (Max Cap ₹1,500)
+            </span>
+            <span style="font-size: 10.5px; color: #38bdf8; font-weight: 700;">03:18 PM Square-Off</span>
+          </div>
+        </div>
+
+        <div id="tm-active-positions-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+          <!-- Active position cards dynamically injected here -->
+        </div>
+      </div>
+
+      <!-- SECTION E: SIDE-BY-SIDE SYMBOL SCORECARD & LIVE CLOSED TRADES LEDGER -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <!-- Left Column: Symbol Trade Counter Scorecard -->
+        <div style="background: #090e14; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+            <span style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: #fff; display: flex; align-items: center; gap: 6px;">
+              <span>📊</span> 14 NSE Instruments Scorecard (Day Performance)
+            </span>
+            <span style="font-size: 10px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">Real Historical Day Ticks</span>
+          </div>
+          <div style="max-height: 400px; overflow-y: auto;">
+            <table class="data-table" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th style="text-align: right;">Day Open</th>
+                  <th style="text-align: right;">Live LTP</th>
+                  <th style="text-align: right;">Day Chg%</th>
+                  <th style="text-align: center;">Trades</th>
+                  <th style="text-align: right;">Net PnL (₹)</th>
+                </tr>
+              </thead>
+              <tbody id="tm-scorecard-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Right Column: Live Scrolling Closed Trades Feed -->
+        <div style="background: #090e14; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 14px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+            <span style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: #fff; display: flex; align-items: center; gap: 6px;">
+              <span>📜</span> Historical Day Closed Trades Ledger
+            </span>
+            <span style="font-size: 10px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;" id="tm-closed-count-badge">0 Closed</span>
+          </div>
+          <div style="max-height: 400px; overflow-y: auto;">
+            <table class="data-table" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Symbol</th>
+                  <th>Side</th>
+                  <th style="text-align: right;">Entry → Exit</th>
+                  <th style="text-align: right;">Net PnL (₹)</th>
+                  <th style="text-align: right;">Exit Reason</th>
+                </tr>
+              </thead>
+              <tbody id="tm-closed-ledger-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toast Notification Overlay -->
+    <div id="toast-container"></div>
+  </div>
+
+  <!-- Vendor TradingView Lightweight Charts (Standalone Local Bundle) -->
+  <script src="/static/js/vendor/lightweight-charts.standalone.js"></script>
+  <!-- Chart Orchestrator -->
+  <script src="/static/js/chart.js"></script>
+  <!-- Main Terminal Controller -->
+  <script src="/static/js/app.js?v=6.2.0"></script>
+</body>
+</html>

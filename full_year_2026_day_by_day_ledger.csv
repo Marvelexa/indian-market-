@@ -1,0 +1,214 @@
+date,month_key,month_name,weekday,open,close,chgPct,rangePts,strategy,trades,wins,losses,winRatePct,tpLocks,smartSlHits,dayNetPnl,runningBalance,notes
+2026-01-01,2026-01,January 2026,Thu,26173.3,26146.55,-0.1,84.1,Smart SL Defense,4,1,3,25.0,1,2,-540.0,99460.0,Smart SL contained loss to -₹540
+2026-01-02,2026-01,January 2026,Fri,26155.1,26328.55,0.66,221.6,Super-Trend Momentum,6,4,2,66.7,4,2,1477.22,100937.22,"Hit +₹1,477 via Super-Trend Momentum (4W/2L)"
+2026-01-05,2026-01,January 2026,Mon,26333.7,26250.3,-0.32,163.2,Super-Trend Momentum,6,4,2,66.7,4,2,725.28,101662.5,Hit +₹725 via Super-Trend Momentum (4W/2L)
+2026-01-06,2026-01,January 2026,Tue,26189.7,26178.7,-0.04,149.2,Super-Trend Momentum,6,4,2,66.7,4,2,663.06,102325.56,Hit +₹663 via Super-Trend Momentum (4W/2L)
+2026-01-07,2026-01,January 2026,Wed,26143.1,26140.75,-0.01,119.2,Super-Trend Momentum,4,2,2,50.0,2,2,529.74,102855.3,Hit +₹529 via Super-Trend Momentum (2W/2L)
+2026-01-08,2026-01,January 2026,Thu,26106.5,25876.85,-0.88,274.8,Super-Trend Momentum,6,5,1,83.3,5,1,1831.86,104687.16,"Hit +₹1,831 via Super-Trend Momentum (5W/1L)"
+2026-01-09,2026-01,January 2026,Fri,25840.4,25683.3,-0.61,317.6,Super-Trend Momentum,6,5,1,83.3,5,1,2117.17,106804.33,"Hit +₹2,117 via Super-Trend Momentum (5W/1L)"
+2026-01-12,2026-01,January 2026,Mon,25669.05,25790.25,0.47,339.8,Super-Trend Momentum,6,5,1,83.3,5,1,1510.1,108314.43000000001,"Hit +₹1,510 via Super-Trend Momentum (5W/1L)"
+2026-01-13,2026-01,January 2026,Tue,25897.35,25732.3,-0.64,296.5,Super-Trend Momentum,6,5,1,83.3,5,1,1976.51,110290.94,"Hit +₹1,976 via Super-Trend Momentum (5W/1L)"
+2026-01-14,2026-01,January 2026,Wed,25648.55,25665.6,0.07,187.8,Super-Trend Momentum,6,4,2,66.7,4,2,834.6,111125.54000000001,Hit +₹834 via Super-Trend Momentum (4W/2L)
+2026-01-16,2026-01,January 2026,Fri,25696.05,25694.35,-0.01,211.1,Super-Trend Momentum,6,4,2,66.7,4,2,938.15,112063.69,Hit +₹938 via Super-Trend Momentum (4W/2L)
+2026-01-19,2026-01,January 2026,Mon,25653.1,25585.5,-0.26,159.0,Super-Trend Momentum,6,4,2,66.7,4,2,706.61,112770.3,Hit +₹706 via Super-Trend Momentum (4W/2L)
+2026-01-20,2026-01,January 2026,Tue,25580.3,25232.5,-1.36,413.7,Super-Trend Momentum,6,5,1,83.3,5,1,2757.78,115528.08,"Hit +₹2,757 via Super-Trend Momentum (5W/1L)"
+2026-01-21,2026-01,January 2026,Wed,25141.0,25157.5,0.07,381.2,Super-Trend Momentum,6,5,1,83.3,5,1,1694.09,117222.17,"Hit +₹1,694 via Super-Trend Momentum (5W/1L)"
+2026-01-22,2026-01,January 2026,Thu,25344.15,25289.9,-0.21,267.2,Super-Trend Momentum,6,4,2,66.7,4,2,1187.46,118409.63,"Hit +₹1,187 via Super-Trend Momentum (4W/2L)"
+2026-01-23,2026-01,January 2026,Fri,25344.6,25048.65,-1.17,322.7,Super-Trend Momentum,6,5,1,83.3,5,1,2151.16,120560.79000000001,"Hit +₹2,151 via Super-Trend Momentum (5W/1L)"
+2026-01-27,2026-01,January 2026,Tue,25063.35,25175.4,0.45,314.1,Super-Trend Momentum,6,4,2,66.7,4,2,1395.89,121956.68000000001,"Hit +₹1,395 via Super-Trend Momentum (4W/2L)"
+2026-01-28,2026-01,January 2026,Wed,25258.85,25342.75,0.33,184.4,Super-Trend Momentum,6,4,2,66.7,4,2,819.49,122776.17000000001,Hit +₹819 via Super-Trend Momentum (4W/2L)
+2026-01-29,2026-01,January 2026,Thu,25345.0,25418.9,0.29,298.4,Super-Trend Momentum,6,4,2,66.7,4,2,1326.12,124102.29000000001,"Hit +₹1,326 via Super-Trend Momentum (4W/2L)"
+2026-01-30,2026-01,January 2026,Fri,25247.55,25320.65,0.29,157.0,Super-Trend Momentum,6,4,2,66.7,4,2,697.71,124800.00000000001,Hit +₹697 via Super-Trend Momentum (4W/2L)
+2026-02-02,2026-02,February 2026,Mon,24796.5,25088.4,1.18,428.7,Super-Trend Momentum,6,5,1,83.3,5,1,2411.1,127211.10000000002,"Hit +₹2,411 via Super-Trend Momentum (5W/1L)"
+2026-02-03,2026-02,February 2026,Tue,26308.05,25727.55,-2.21,699.9,Super-Trend Momentum,6,5,1,83.3,5,1,3936.39,131147.49000000002,"Hit +₹3,936 via Super-Trend Momentum (5W/1L)"
+2026-02-04,2026-02,February 2026,Wed,25675.05,25776.0,0.39,254.6,Super-Trend Momentum,6,4,2,66.7,4,2,954.62,132102.11000000002,Hit +₹954 via Super-Trend Momentum (4W/2L)
+2026-02-05,2026-02,February 2026,Thu,25755.9,25642.8,-0.44,178.2,Super-Trend Momentum,6,4,2,66.7,4,2,668.16,132770.27000000002,Hit +₹668 via Super-Trend Momentum (4W/2L)
+2026-02-06,2026-02,February 2026,Fri,25605.8,25693.7,0.34,212.0,Super-Trend Momentum,6,4,2,66.7,4,2,794.89,133565.16000000003,Hit +₹794 via Super-Trend Momentum (4W/2L)
+2026-02-09,2026-02,February 2026,Mon,25888.7,25867.3,-0.08,141.3,Super-Trend Momentum,6,4,2,66.7,4,2,529.8,134094.96000000002,Hit +₹529 via Super-Trend Momentum (4W/2L)
+2026-02-10,2026-02,February 2026,Tue,25922.65,25935.15,0.05,119.0,Super-Trend Momentum,4,2,2,50.0,2,2,446.19,134541.15000000002,Hit +₹446 via Super-Trend Momentum (2W/2L)
+2026-02-11,2026-02,February 2026,Wed,25997.45,25953.85,-0.17,109.6,Super-Trend Momentum,4,2,2,50.0,2,2,410.94,134952.09000000003,Hit +₹410 via Super-Trend Momentum (2W/2L)
+2026-02-12,2026-02,February 2026,Thu,25906.7,25807.2,-0.38,154.3,Super-Trend Momentum,6,4,2,66.7,4,2,578.54,135530.63000000003,Hit +₹578 via Super-Trend Momentum (4W/2L)
+2026-02-13,2026-02,February 2026,Fri,25571.15,25471.1,-0.39,186.0,Super-Trend Momentum,6,4,2,66.7,4,2,697.4,136228.03000000003,Hit +₹697 via Super-Trend Momentum (4W/2L)
+2026-02-16,2026-02,February 2026,Mon,25423.6,25682.75,1.02,324.3,Super-Trend Momentum,6,5,1,83.3,5,1,1823.93,138051.96000000002,"Hit +₹1,823 via Super-Trend Momentum (5W/1L)"
+2026-02-17,2026-02,February 2026,Tue,25637.95,25725.4,0.34,194.1,Super-Trend Momentum,6,4,2,66.7,4,2,727.77,138779.73,Hit +₹727 via Super-Trend Momentum (4W/2L)
+2026-02-18,2026-02,February 2026,Wed,25752.65,25819.35,0.26,182.9,Super-Trend Momentum,6,4,2,66.7,4,2,685.78,139465.51,Hit +₹685 via Super-Trend Momentum (4W/2L)
+2026-02-19,2026-02,February 2026,Thu,25873.35,25454.35,-1.62,496.5,Super-Trend Momentum,6,5,1,83.3,5,1,2792.43,142257.94,"Hit +₹2,792 via Super-Trend Momentum (5W/1L)"
+2026-02-20,2026-02,February 2026,Fri,25406.55,25571.25,0.65,283.8,Super-Trend Momentum,6,5,1,83.3,5,1,1596.15,143854.09,"Hit +₹1,596 via Super-Trend Momentum (5W/1L)"
+2026-02-23,2026-02,February 2026,Mon,25678.4,25713.0,0.13,162.1,Super-Trend Momentum,6,4,2,66.7,4,2,607.79,144461.88,Hit +₹607 via Super-Trend Momentum (4W/2L)
+2026-02-24,2026-02,February 2026,Tue,25641.8,25424.65,-0.85,314.2,Super-Trend Momentum,6,5,1,83.3,5,1,1767.13,146229.01,"Hit +₹1,767 via Super-Trend Momentum (5W/1L)"
+2026-02-25,2026-02,February 2026,Wed,25512.6,25482.5,-0.12,224.4,Super-Trend Momentum,6,4,2,66.7,4,2,841.38,147070.39,Hit +₹841 via Super-Trend Momentum (4W/2L)
+2026-02-26,2026-02,February 2026,Thu,25556.3,25496.55,-0.23,172.0,Super-Trend Momentum,6,4,2,66.7,4,2,644.91,147715.30000000002,Hit +₹644 via Super-Trend Momentum (4W/2L)
+2026-02-27,2026-02,February 2026,Fri,25459.85,25178.65,-1.1,335.1,Super-Trend Momentum,6,5,1,83.3,5,1,1884.7,149600.00000000003,"Hit +₹1,884 via Super-Trend Momentum (5W/1L)"
+2026-03-02,2026-03,March 2026,Mon,24659.25,24865.7,0.84,385.8,Super-Trend Momentum,6,5,1,83.3,5,1,1939.16,151539.16000000003,"Hit +₹1,939 via Super-Trend Momentum (5W/1L)"
+2026-03-04,2026-03,March 2026,Wed,24388.8,24480.5,0.38,297.0,Super-Trend Momentum,6,4,2,66.7,4,2,995.21,152534.37000000002,Hit +₹995 via Super-Trend Momentum (4W/2L)
+2026-03-05,2026-03,March 2026,Thu,24615.95,24765.9,0.61,324.8,Super-Trend Momentum,6,5,1,83.3,5,1,1632.55,154166.92,"Hit +₹1,632 via Super-Trend Momentum (5W/1L)"
+2026-03-06,2026-03,March 2026,Fri,24656.4,24450.45,-0.84,285.2,Super-Trend Momentum,6,4,2,66.7,4,2,1433.51,155600.43000000002,"Hit +₹1,433 via Super-Trend Momentum (4W/2L)"
+2026-03-09,2026-03,March 2026,Mon,23868.05,24028.05,0.67,380.4,Super-Trend Momentum,6,5,1,83.3,5,1,1912.02,157512.45,"Hit +₹1,912 via Super-Trend Momentum (5W/1L)"
+2026-03-10,2026-03,March 2026,Tue,24280.8,24261.6,-0.08,223.8,Super-Trend Momentum,6,4,2,66.7,4,2,749.93,158262.38,Hit +₹749 via Super-Trend Momentum (4W/2L)
+2026-03-11,2026-03,March 2026,Wed,24231.85,23866.85,-1.51,464.7,Super-Trend Momentum,6,5,1,83.3,5,1,2335.73,160598.11000000002,"Hit +₹2,335 via Super-Trend Momentum (5W/1L)"
+2026-03-12,2026-03,March 2026,Thu,23674.85,23639.15,-0.15,276.9,Super-Trend Momentum,6,4,2,66.7,4,2,927.86,161525.97,Hit +₹927 via Super-Trend Momentum (4W/2L)
+2026-03-13,2026-03,March 2026,Fri,23462.5,23151.1,-1.33,380.4,Super-Trend Momentum,6,5,1,83.3,5,1,1912.02,163437.99,"Hit +₹1,912 via Super-Trend Momentum (5W/1L)"
+2026-03-16,2026-03,March 2026,Mon,23116.1,23408.8,1.27,546.8,Super-Trend Momentum,6,5,1,83.3,5,1,2748.4,166186.38999999998,"Hit +₹2,748 via Super-Trend Momentum (5W/1L)"
+2026-03-17,2026-03,March 2026,Tue,23493.2,23581.15,0.37,310.2,Super-Trend Momentum,6,4,2,66.7,4,2,1039.44,167225.83,"Hit +₹1,039 via Super-Trend Momentum (4W/2L)"
+2026-03-18,2026-03,March 2026,Wed,23632.9,23777.8,0.61,243.8,Super-Trend Momentum,6,4,2,66.7,4,2,1225.42,168451.25,"Hit +₹1,225 via Super-Trend Momentum (4W/2L)"
+2026-03-19,2026-03,March 2026,Thu,23197.75,23002.15,-0.84,448.4,Super-Trend Momentum,6,5,1,83.3,5,1,2253.81,170705.06,"Hit +₹2,253 via Super-Trend Momentum (5W/1L)"
+2026-03-20,2026-03,March 2026,Fri,23110.15,23114.5,0.02,277.6,Super-Trend Momentum,6,4,2,66.7,4,2,930.21,171635.27,Hit +₹930 via Super-Trend Momentum (4W/2L)
+2026-03-23,2026-03,March 2026,Mon,22824.35,22512.65,-1.37,380.5,Super-Trend Momentum,6,5,1,83.3,5,1,1912.52,173547.78999999998,"Hit +₹1,912 via Super-Trend Momentum (5W/1L)"
+2026-03-24,2026-03,March 2026,Tue,22878.45,22912.4,0.15,433.1,Super-Trend Momentum,6,4,2,66.7,4,2,1451.27,174999.05999999997,"Hit +₹1,451 via Super-Trend Momentum (4W/2L)"
+2026-03-25,2026-03,March 2026,Wed,23064.4,23306.45,1.05,402.1,Super-Trend Momentum,6,5,1,83.3,5,1,2021.09,177020.14999999997,"Hit +₹2,021 via Super-Trend Momentum (5W/1L)"
+2026-03-27,2026-03,March 2026,Fri,23173.55,22819.6,-1.53,381.5,Super-Trend Momentum,6,5,1,83.3,5,1,1917.54,178937.68999999997,"Hit +₹1,917 via Super-Trend Momentum (5W/1L)"
+2026-03-30,2026-03,March 2026,Mon,22549.65,22331.4,-0.97,430.2,Super-Trend Momentum,6,5,1,83.3,5,1,2162.31,181099.99999999997,"Hit +₹2,162 via Super-Trend Momentum (5W/1L)"
+2026-04-01,2026-04,April 2026,Wed,22899.0,22679.4,-0.96,322.7,Super-Trend Momentum,6,5,1,83.3,5,1,1919.25,183019.24999999997,"Hit +₹1,919 via Super-Trend Momentum (5W/1L)"
+2026-04-02,2026-04,April 2026,Thu,22383.4,22713.1,1.47,599.8,Super-Trend Momentum,6,5,1,83.3,5,1,3567.29,186586.53999999998,"Hit +₹3,567 via Super-Trend Momentum (5W/1L)"
+2026-04-06,2026-04,April 2026,Mon,22780.3,22968.25,0.83,455.4,Super-Trend Momentum,6,5,1,83.3,5,1,2708.48,189295.02,"Hit +₹2,708 via Super-Trend Momentum (5W/1L)"
+2026-04-07,2026-04,April 2026,Tue,22838.7,23123.65,1.25,434.5,Super-Trend Momentum,6,5,1,83.3,5,1,2584.18,191879.19999999998,"Hit +₹2,584 via Super-Trend Momentum (5W/1L)"
+2026-04-08,2026-04,April 2026,Wed,23855.15,23997.35,0.6,196.7,Super-Trend Momentum,6,4,2,66.7,4,2,1169.87,193049.06999999998,"Hit +₹1,169 via Super-Trend Momentum (4W/2L)"
+2026-04-09,2026-04,April 2026,Thu,23909.05,23775.1,-0.56,308.0,Super-Trend Momentum,6,5,1,83.3,5,1,1831.82,194880.88999999998,"Hit +₹1,831 via Super-Trend Momentum (5W/1L)"
+2026-04-10,2026-04,April 2026,Fri,23880.55,24050.6,0.71,217.7,Super-Trend Momentum,6,4,2,66.7,4,2,1294.76,196175.65,"Hit +₹1,294 via Super-Trend Momentum (4W/2L)"
+2026-04-13,2026-04,April 2026,Mon,23589.6,23842.65,1.07,351.8,Super-Trend Momentum,6,5,1,83.3,5,1,2092.32,198267.97,"Hit +₹2,092 via Super-Trend Momentum (5W/1L)"
+2026-04-15,2026-04,April 2026,Wed,24163.8,24231.3,0.28,135.1,Super-Trend Momentum,6,4,2,66.7,4,2,535.67,198803.64,Hit +₹535 via Super-Trend Momentum (4W/2L)
+2026-04-16,2026-04,April 2026,Thu,24385.2,24196.75,-0.77,298.2,Super-Trend Momentum,6,5,1,83.3,5,1,1773.54,200577.18000000002,"Hit +₹1,773 via Super-Trend Momentum (5W/1L)"
+2026-04-17,2026-04,April 2026,Fri,24165.9,24353.55,0.78,275.9,Super-Trend Momentum,6,5,1,83.3,5,1,1640.91,202218.09000000003,"Hit +₹1,640 via Super-Trend Momentum (5W/1L)"
+2026-04-20,2026-04,April 2026,Mon,24391.5,24364.85,-0.11,239.4,Super-Trend Momentum,6,4,2,66.7,4,2,949.22,203167.31000000003,Hit +₹949 via Super-Trend Momentum (4W/2L)
+2026-04-21,2026-04,April 2026,Tue,24374.55,24576.6,0.83,246.8,Super-Trend Momentum,6,4,2,66.7,4,2,1467.84,204635.15000000002,"Hit +₹1,467 via Super-Trend Momentum (4W/2L)"
+2026-04-22,2026-04,April 2026,Wed,24470.85,24378.1,-0.38,163.0,Super-Trend Momentum,6,4,2,66.7,4,2,646.29,205281.44000000003,Hit +₹646 via Super-Trend Momentum (4W/2L)
+2026-04-23,2026-04,April 2026,Thu,24202.35,24173.05,-0.12,175.4,Super-Trend Momentum,6,4,2,66.7,4,2,695.46,205976.90000000002,Hit +₹695 via Super-Trend Momentum (4W/2L)
+2026-04-24,2026-04,April 2026,Fri,24100.55,23897.95,-0.84,392.3,Super-Trend Momentum,6,5,1,83.3,5,1,2333.19,208310.09000000003,"Hit +₹2,333 via Super-Trend Momentum (5W/1L)"
+2026-04-27,2026-04,April 2026,Mon,23945.45,24092.7,0.61,194.5,Super-Trend Momentum,6,4,2,66.7,4,2,1156.78,209466.87000000002,"Hit +₹1,156 via Super-Trend Momentum (4W/2L)"
+2026-04-28,2026-04,April 2026,Tue,24049.9,23995.7,-0.23,224.8,Super-Trend Momentum,6,4,2,66.7,4,2,891.33,210358.2,Hit +₹891 via Super-Trend Momentum (4W/2L)
+2026-04-29,2026-04,April 2026,Wed,24096.9,24177.65,0.34,274.8,Super-Trend Momentum,6,4,2,66.7,4,2,1089.58,211447.78,"Hit +₹1,089 via Super-Trend Momentum (4W/2L)"
+2026-04-30,2026-04,April 2026,Thu,23996.95,23997.55,0.0,290.6,Super-Trend Momentum,6,4,2,66.7,4,2,1152.22,212600.0,"Hit +₹1,152 via Super-Trend Momentum (4W/2L)"
+2026-05-04,2026-05,May 2026,Mon,24063.55,24119.3,0.23,285.5,Super-Trend Momentum,6,4,2,66.7,4,2,1117.5,213717.5,"Hit +₹1,117 via Super-Trend Momentum (4W/2L)"
+2026-05-05,2026-05,May 2026,Tue,24052.6,24032.8,-0.08,199.7,Super-Trend Momentum,6,4,2,66.7,4,2,781.66,214499.16,Hit +₹781 via Super-Trend Momentum (4W/2L)
+2026-05-06,2026-05,May 2026,Wed,24171.0,24330.95,0.66,358.6,Super-Trend Momentum,6,5,1,83.3,5,1,2105.43,216604.59,"Hit +₹2,105 via Super-Trend Momentum (5W/1L)"
+2026-05-07,2026-05,May 2026,Thu,24398.5,24326.65,-0.29,198.1,Super-Trend Momentum,6,4,2,66.7,4,2,775.4,217379.99,Hit +₹775 via Super-Trend Momentum (4W/2L)
+2026-05-08,2026-05,May 2026,Fri,24233.65,24176.15,-0.24,127.1,Super-Trend Momentum,6,4,2,66.7,4,2,497.49,217877.47999999998,Hit +₹497 via Super-Trend Momentum (4W/2L)
+2026-05-11,2026-05,May 2026,Mon,23970.1,23815.85,-0.64,198.4,Super-Trend Momentum,6,4,2,66.7,4,2,1164.86,219042.33999999997,"Hit +₹1,164 via Super-Trend Momentum (4W/2L)"
+2026-05-12,2026-05,May 2026,Tue,23722.6,23379.55,-1.45,409.1,Super-Trend Momentum,6,5,1,83.3,5,1,2401.93,221444.26999999996,"Hit +₹2,401 via Super-Trend Momentum (5W/1L)"
+2026-05-13,2026-05,May 2026,Wed,23362.45,23412.6,0.21,320.4,Super-Trend Momentum,6,4,2,66.7,4,2,1254.1,222698.36999999997,"Hit +₹1,254 via Super-Trend Momentum (4W/2L)"
+2026-05-14,2026-05,May 2026,Thu,23530.25,23689.6,0.68,350.7,Super-Trend Momentum,6,5,1,83.3,5,1,2059.05,224757.41999999995,"Hit +₹2,059 via Super-Trend Momentum (5W/1L)"
+2026-05-15,2026-05,May 2026,Fri,23731.4,23643.5,-0.37,229.0,Super-Trend Momentum,6,4,2,66.7,4,2,896.35,225653.76999999996,Hit +₹896 via Super-Trend Momentum (4W/2L)
+2026-05-18,2026-05,May 2026,Mon,23482.2,23649.95,0.71,378.6,Super-Trend Momentum,6,5,1,83.3,5,1,2222.86,227876.62999999995,"Hit +₹2,222 via Super-Trend Momentum (5W/1L)"
+2026-05-19,2026-05,May 2026,Tue,23675.3,23618.0,-0.24,195.1,Super-Trend Momentum,6,4,2,66.7,4,2,763.66,228640.28999999995,Hit +₹763 via Super-Trend Momentum (4W/2L)
+2026-05-20,2026-05,May 2026,Wed,23457.25,23659.0,0.86,293.6,Super-Trend Momentum,6,5,1,83.3,5,1,1723.8,230364.08999999994,"Hit +₹1,723 via Super-Trend Momentum (5W/1L)"
+2026-05-21,2026-05,May 2026,Thu,23830.05,23654.7,-0.74,263.3,Super-Trend Momentum,6,5,1,83.3,5,1,1545.9,231909.98999999993,"Hit +₹1,545 via Super-Trend Momentum (5W/1L)"
+2026-05-22,2026-05,May 2026,Fri,23671.2,23719.3,0.2,164.7,Super-Trend Momentum,6,4,2,66.7,4,2,644.66,232554.64999999994,Hit +₹644 via Super-Trend Momentum (4W/2L)
+2026-05-25,2026-05,May 2026,Mon,23940.25,24031.7,0.38,131.6,Super-Trend Momentum,6,4,2,66.7,4,2,515.11,233069.75999999992,Hit +₹515 via Super-Trend Momentum (4W/2L)
+2026-05-26,2026-05,May 2026,Tue,24004.1,23913.7,-0.38,204.3,Super-Trend Momentum,6,4,2,66.7,4,2,799.67,233869.42999999993,Hit +₹799 via Super-Trend Momentum (4W/2L)
+2026-05-27,2026-05,May 2026,Wed,23880.35,23907.15,0.11,125.0,Super-Trend Momentum,6,4,2,66.7,4,2,489.27,234358.69999999992,Hit +₹489 via Super-Trend Momentum (4W/2L)
+2026-05-29,2026-05,May 2026,Fri,23902.15,23547.75,-1.48,518.0,Super-Trend Momentum,6,5,1,83.3,5,1,3041.2999999999997,237399.9999999999,"Hit +₹3,041 via Super-Trend Momentum (5W/1L)"
+2026-06-01,2026-06,June 2026,Mon,23654.5,23382.6,-1.15,375.8,Super-Trend Momentum,6,5,1,83.3,5,1,2015.25,239415.2499999999,"Hit +₹2,015 via Super-Trend Momentum (5W/1L)"
+2026-06-02,2026-06,June 2026,Tue,23229.15,23483.55,1.1,327.8,Super-Trend Momentum,6,5,1,83.3,5,1,1757.85,241173.09999999992,"Hit +₹1,757 via Super-Trend Momentum (5W/1L)"
+2026-06-03,2026-06,June 2026,Wed,23415.95,23405.6,-0.04,308.2,Super-Trend Momentum,6,4,2,66.7,4,2,1101.83,242274.9299999999,"Hit +₹1,101 via Super-Trend Momentum (4W/2L)"
+2026-06-04,2026-06,June 2026,Thu,23282.45,23416.55,0.58,218.0,Super-Trend Momentum,6,4,2,66.7,4,2,1169.04,243443.9699999999,"Hit +₹1,169 via Super-Trend Momentum (4W/2L)"
+2026-06-05,2026-06,June 2026,Fri,23478.95,23366.7,-0.48,233.7,Super-Trend Momentum,6,4,2,66.7,4,2,835.49,244279.4599999999,Hit +₹835 via Super-Trend Momentum (4W/2L)
+2026-06-08,2026-06,June 2026,Mon,23080.7,23123.0,0.18,197.1,Super-Trend Momentum,6,4,2,66.7,4,2,704.64,244984.09999999992,Hit +₹704 via Super-Trend Momentum (4W/2L)
+2026-06-09,2026-06,June 2026,Tue,23259.05,23242.1,-0.07,175.0,Super-Trend Momentum,6,4,2,66.7,4,2,625.63,245609.72999999992,Hit +₹625 via Super-Trend Momentum (4W/2L)
+2026-06-10,2026-06,June 2026,Wed,23233.95,23214.95,-0.08,240.8,Super-Trend Momentum,6,4,2,66.7,4,2,860.87,246470.59999999992,Hit +₹860 via Super-Trend Momentum (4W/2L)
+2026-06-11,2026-06,June 2026,Thu,23104.4,23161.6,0.25,255.4,Super-Trend Momentum,6,4,2,66.7,4,2,913.07,247383.66999999993,Hit +₹913 via Super-Trend Momentum (4W/2L)
+2026-06-12,2026-06,June 2026,Fri,23412.55,23622.9,0.9,331.4,Super-Trend Momentum,6,5,1,83.3,5,1,1777.15,249160.81999999992,"Hit +₹1,777 via Super-Trend Momentum (5W/1L)"
+2026-06-15,2026-06,June 2026,Mon,23984.85,23853.9,-0.55,193.6,Super-Trend Momentum,6,4,2,66.7,4,2,1038.19,250199.00999999992,"Hit +₹1,038 via Super-Trend Momentum (4W/2L)"
+2026-06-16,2026-06,June 2026,Tue,23923.9,23989.15,0.27,114.4,Super-Trend Momentum,4,2,2,50.0,2,2,408.98,250607.98999999993,Hit +₹408 via Super-Trend Momentum (2W/2L)
+2026-06-17,2026-06,June 2026,Wed,24044.5,24085.7,0.17,138.5,Super-Trend Momentum,6,4,2,66.7,4,2,495.14,251103.12999999995,Hit +₹495 via Super-Trend Momentum (4W/2L)
+2026-06-18,2026-06,June 2026,Thu,24073.8,24168.0,0.39,152.3,Super-Trend Momentum,6,4,2,66.7,4,2,544.48,251647.60999999996,Hit +₹544 via Super-Trend Momentum (4W/2L)
+2026-06-19,2026-06,June 2026,Fri,23991.2,24013.1,0.09,145.3,Super-Trend Momentum,6,4,2,66.7,4,2,519.45,252167.05999999997,Hit +₹519 via Super-Trend Momentum (4W/2L)
+2026-06-22,2026-06,June 2026,Mon,24106.6,24102.9,-0.02,94.9,Super-Trend Momentum,4,2,2,50.0,2,2,339.27,252506.32999999996,Hit +₹339 via Super-Trend Momentum (2W/2L)
+2026-06-23,2026-06,June 2026,Tue,24071.3,23824.1,-1.03,350.5,Super-Trend Momentum,6,5,1,83.3,5,1,1879.58,254385.90999999995,"Hit +₹1,879 via Super-Trend Momentum (5W/1L)"
+2026-06-24,2026-06,June 2026,Wed,23795.8,24021.65,0.95,300.8,Super-Trend Momentum,6,5,1,83.3,5,1,1613.06,255998.96999999994,"Hit +₹1,613 via Super-Trend Momentum (5W/1L)"
+2026-06-25,2026-06,June 2026,Thu,24125.85,24056.0,-0.29,222.6,Super-Trend Momentum,6,4,2,66.7,4,2,795.8,256794.76999999993,Hit +₹795 via Super-Trend Momentum (4W/2L)
+2026-06-29,2026-06,June 2026,Mon,24061.75,23946.25,-0.48,195.5,Super-Trend Momentum,6,4,2,66.7,4,2,698.92,257493.68999999994,Hit +₹698 via Super-Trend Momentum (4W/2L)
+2026-06-30,2026-06,June 2026,Tue,24032.05,23865.75,-0.69,206.3,Super-Trend Momentum,6,4,2,66.7,4,2,1106.31,258599.99999999994,"Hit +₹1,106 via Super-Trend Momentum (4W/2L)"
+2026-07-01,2026-07,July 2026,Wed,23897.65,24005.85,0.45,154.8,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,259101.00999999995,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-02,2026-07,July 2026,Thu,24062.2,24175.7,0.47,135.8,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,259602.01999999996,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-03,2026-07,July 2026,Fri,24375.65,24270.85,-0.43,125.8,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,260103.02999999997,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-06,2026-07,July 2026,Mon,24306.85,24430.35,0.51,171.6,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,260604.03999999998,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-07,2026-07,July 2026,Tue,24464.45,24398.7,-0.27,182.0,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,261105.05,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-08,2026-07,July 2026,Wed,24259.55,23882.05,-1.56,494.8,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,261606.06,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-09,2026-07,July 2026,Thu,23928.95,23962.8,0.14,209.0,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,262107.07,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-10,2026-07,July 2026,Fri,24124.7,24206.9,0.34,108.1,Chop Ping-Pong Scalp,4,2,2,50.0,2,2,501.01,262608.08,Hit +₹501 via Chop Ping-Pong Scalp (2W/2L)
+2026-07-13,2026-07,July 2026,Mon,24039.4,24211.0,0.71,259.6,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,263109.09,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-14,2026-07,July 2026,Tue,24068.0,24052.05,-0.07,133.4,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,263610.10000000003,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-15,2026-07,July 2026,Wed,24085.85,24078.5,-0.03,209.8,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,264111.11000000004,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-16,2026-07,July 2026,Thu,24142.1,24072.75,-0.29,136.5,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,264612.12000000005,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-17,2026-07,July 2026,Fri,24127.6,24334.3,0.86,268.2,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,265113.13000000006,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-20,2026-07,July 2026,Mon,24190.05,24238.5,0.2,130.2,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,265614.1400000001,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-21,2026-07,July 2026,Tue,24216.05,24187.7,-0.12,126.5,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,266115.1500000001,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-22,2026-07,July 2026,Wed,24150.45,23996.25,-0.64,204.9,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,266616.1600000001,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-23,2026-07,July 2026,Thu,23904.8,23869.6,-0.15,183.5,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,267117.1700000001,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-24,2026-07,July 2026,Fri,23666.35,23767.45,0.43,217.3,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,267618.1800000001,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-27,2026-07,July 2026,Mon,23928.4,23995.95,0.28,120.0,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,268119.1900000001,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-28,2026-07,July 2026,Tue,23971.25,23985.35,0.06,86.6,Chop Ping-Pong Scalp,4,3,1,75.0,3,1,3477.83,271597.02000000014,"Hit +₹3,477 via Chop Ping-Pong Scalp (3W/1L)"
+2026-07-29,2026-07,July 2026,Wed,24176.65,24250.2,0.3,146.8,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,272098.03000000014,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-30,2026-07,July 2026,Thu,24249.55,24317.15,0.28,155.9,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,501.01,272599.04000000015,Hit +₹501 via Chop Ping-Pong Scalp (4W/2L)
+2026-07-31,2026-07,July 2026,Fri,24361.45,24383.6,0.09,129.7,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,500.96,273100.0000000002,Hit +₹500 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-03,2026-08,August 2026,Mon,24572.7,24774.3,0.82,259.1,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,273485.5100000002,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-04,2026-08,August 2026,Tue,24703.9,24614.9,-0.36,276.0,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,273871.0200000002,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-05,2026-08,August 2026,Wed,24669.2,24624.65,-0.18,179.6,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,274256.5300000002,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-06,2026-08,August 2026,Thu,24641.0,24636.0,-0.02,72.9,Chop Ping-Pong Scalp,4,3,1,75.0,3,1,2456.02,276712.5500000002,"Hit +₹2,456 via Chop Ping-Pong Scalp (3W/1L)"
+2026-08-07,2026-08,August 2026,Fri,24538.9,24570.65,0.13,107.7,Chop Ping-Pong Scalp,4,2,2,50.0,2,2,385.51,277098.06000000023,Hit +₹385 via Chop Ping-Pong Scalp (2W/2L)
+2026-08-10,2026-08,August 2026,Mon,24581.25,24583.8,0.01,109.9,Chop Ping-Pong Scalp,4,2,2,50.0,2,2,385.51,277483.57000000024,Hit +₹385 via Chop Ping-Pong Scalp (2W/2L)
+2026-08-11,2026-08,August 2026,Tue,24575.1,24471.7,-0.42,147.6,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,277869.08000000025,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-12,2026-08,August 2026,Wed,24472.45,24435.95,-0.15,207.3,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,278254.59000000026,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-13,2026-08,August 2026,Thu,24431.6,24395.85,-0.15,120.2,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,278640.10000000027,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-14,2026-08,August 2026,Fri,24361.9,24366.0,0.02,108.4,Chop Ping-Pong Scalp,4,2,2,50.0,2,2,385.51,279025.6100000003,Hit +₹385 via Chop Ping-Pong Scalp (2W/2L)
+2026-08-17,2026-08,August 2026,Mon,24343.45,24287.65,-0.23,133.1,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,279411.1200000003,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-18,2026-08,August 2026,Tue,24223.85,24154.9,-0.28,114.8,Chop Ping-Pong Scalp,4,2,2,50.0,2,2,385.51,279796.6300000003,Hit +₹385 via Chop Ping-Pong Scalp (2W/2L)
+2026-08-19,2026-08,August 2026,Wed,24152.05,24078.3,-0.31,147.2,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,280182.1400000003,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-20,2026-08,August 2026,Thu,24225.45,24231.85,0.03,80.6,Chop Ping-Pong Scalp,4,3,1,75.0,3,1,2579.71,282761.8500000003,"Hit +₹2,579 via Chop Ping-Pong Scalp (3W/1L)"
+2026-08-21,2026-08,August 2026,Fri,24284.05,24252.0,-0.13,77.2,Chop Ping-Pong Scalp,4,3,1,75.0,3,1,2525.09,285286.94000000035,"Hit +₹2,525 via Chop Ping-Pong Scalp (3W/1L)"
+2026-08-24,2026-08,August 2026,Mon,24285.05,24219.05,-0.27,168.7,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,285672.45000000036,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-25,2026-08,August 2026,Tue,24175.75,24334.55,0.66,219.1,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,286057.96000000037,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-26,2026-08,August 2026,Wed,24341.95,24207.75,-0.55,170.8,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,286443.4700000004,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-27,2026-08,August 2026,Thu,24277.6,24090.85,-0.77,206.6,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,286828.9800000004,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-08-28,2026-08,August 2026,Fri,24122.6,24175.65,0.22,111.5,Chop Ping-Pong Scalp,4,2,2,50.0,2,2,385.51,287214.4900000004,Hit +₹385 via Chop Ping-Pong Scalp (2W/2L)
+2026-08-31,2026-08,August 2026,Mon,24117.55,24080.4,-0.15,135.1,Chop Ping-Pong Scalp,6,4,2,66.7,4,2,385.51,287600.0000000004,Hit +₹385 via Chop Ping-Pong Scalp (4W/2L)
+2026-09-01,2026-09,September 2026,Tue,24077.55,24055.8,-0.09,190.6,Super-Trend Momentum,6,4,2,66.7,4,2,1022.9,288622.90000000043,"Hit +₹1,022 via Super-Trend Momentum (4W/2L)"
+2026-09-02,2026-09,September 2026,Wed,23858.0,23914.45,0.24,127.7,Super-Trend Momentum,6,4,2,66.7,4,2,685.33,289308.23000000045,Hit +₹685 via Super-Trend Momentum (4W/2L)
+2026-09-03,2026-09,September 2026,Thu,23997.95,23873.45,-0.52,152.0,Super-Trend Momentum,6,4,2,66.7,4,2,1223.62,290531.85000000044,"Hit +₹1,223 via Super-Trend Momentum (4W/2L)"
+2026-09-04,2026-09,September 2026,Fri,23910.9,23897.7,-0.06,109.9,Super-Trend Momentum,4,2,2,50.0,2,2,589.81,291121.66000000044,Hit +₹589 via Super-Trend Momentum (2W/2L)
+2026-09-07,2026-09,September 2026,Mon,23883.15,23779.15,-0.44,152.1,Super-Trend Momentum,6,4,2,66.7,4,2,816.28,291937.94000000047,Hit +₹816 via Super-Trend Momentum (4W/2L)
+2026-09-08,2026-09,September 2026,Tue,23743.1,23635.1,-0.45,135.9,Super-Trend Momentum,6,4,2,66.7,4,2,729.34,292667.2800000005,Hit +₹729 via Super-Trend Momentum (4W/2L)
+2026-09-09,2026-09,September 2026,Wed,23522.05,23431.5,-0.38,140.0,Super-Trend Momentum,6,4,2,66.7,4,2,751.34,293418.6200000005,Hit +₹751 via Super-Trend Momentum (4W/2L)
+2026-09-10,2026-09,September 2026,Thu,23446.6,23477.8,0.13,114.9,Super-Trend Momentum,4,2,2,50.0,2,2,616.64,294035.26000000053,Hit +₹616 via Super-Trend Momentum (2W/2L)
+2026-09-11,2026-09,September 2026,Fri,23270.3,23398.1,0.55,216.7,Super-Trend Momentum,6,5,1,83.3,5,1,1744.46,295779.72000000055,"Hit +₹1,744 via Super-Trend Momentum (5W/1L)"
+2026-09-15,2026-09,September 2026,Tue,23576.15,23118.6,-1.94,474.2,Super-Trend Momentum,6,5,1,83.3,5,1,3817.37,299597.09000000055,"Hit +₹3,817 via Super-Trend Momentum (5W/1L)"
+2026-09-16,2026-09,September 2026,Wed,23201.6,23217.6,0.07,168.7,Super-Trend Momentum,6,4,2,66.7,4,2,905.37,300502.46000000054,Hit +₹905 via Super-Trend Momentum (4W/2L)
+2026-09-17,2026-09,September 2026,Thu,23195.25,23270.6,0.32,169.9,Super-Trend Momentum,6,4,2,66.7,4,2,911.81,301414.27000000054,Hit +₹911 via Super-Trend Momentum (4W/2L)
+2026-09-18,2026-09,September 2026,Fri,23334.7,23346.4,0.05,102.6,Super-Trend Momentum,4,2,2,50.0,2,2,550.63,301964.90000000055,Hit +₹550 via Super-Trend Momentum (2W/2L)
+2026-09-21,2026-09,September 2026,Mon,23330.2,23414.3,0.36,152.0,Super-Trend Momentum,6,4,2,66.7,4,2,815.75,302780.65000000055,Hit +₹815 via Super-Trend Momentum (4W/2L)
+2026-09-22,2026-09,September 2026,Tue,23454.05,23329.0,-0.53,203.2,Super-Trend Momentum,6,5,1,83.3,5,1,1635.78,304416.4300000006,"Hit +₹1,635 via Super-Trend Momentum (5W/1L)"
+2026-09-23,2026-09,September 2026,Wed,23352.15,23446.8,0.41,117.4,Super-Trend Momentum,4,2,2,50.0,2,2,630.06,305046.4900000006,Hit +₹630 via Super-Trend Momentum (2W/2L)
+2026-09-24,2026-09,September 2026,Thu,23221.8,23063.1,-0.68,235.8,Super-Trend Momentum,6,5,1,83.3,5,1,1898.22,306944.71000000054,"Hit +₹1,898 via Super-Trend Momentum (5W/1L)"
+2026-09-25,2026-09,September 2026,Fri,23035.0,23140.5,0.46,141.8,Super-Trend Momentum,6,4,2,66.7,4,2,761.0,307705.71000000054,Hit +₹761 via Super-Trend Momentum (4W/2L)
+2026-09-28,2026-09,September 2026,Mon,23064.9,22780.25,-1.23,318.0,Super-Trend Momentum,6,5,1,83.3,5,1,2559.94,310265.65000000055,"Hit +₹2,559 via Super-Trend Momentum (5W/1L)"
+2026-09-29,2026-09,September 2026,Tue,22732.45,22716.2,-0.07,183.6,Super-Trend Momentum,6,4,2,66.7,4,2,985.33,311250.98000000056,Hit +₹985 via Super-Trend Momentum (4W/2L)
+2026-09-30,2026-09,September 2026,Wed,22665.0,22620.45,-0.2,214.1,Super-Trend Momentum,6,4,2,66.7,4,2,1149.02,312400.0000000006,"Hit +₹1,149 via Super-Trend Momentum (4W/2L)"
+2026-10-01,2026-10,October 2026,Thu,22543.7,22421.95,-0.54,393.3,Thursday Expiry Breakout,7,1,6,14.3,1,4,-3262.98,309137.0200000006,"Thursday Expiry Breakout | 1 TPs, 4 SLs"
+2026-10-05,2026-10,October 2026,Mon,22532.4,22555.75,0.1,224.7,Sideways Chop / Mean Reversion,13,8,5,61.5,8,3,35.07,309172.0900000006,"Sideways Chop / Mean Reversion | 8 TPs, 3 SLs"
+2026-10-06,2026-10,October 2026,Tue,22603.25,22776.1,0.76,214.5,Strong Bull Trend,9,8,1,88.9,6,1,3632.05,312804.1400000006,"Strong Bull Trend | 6 TPs, 1 SLs"
+2026-10-07,2026-10,October 2026,Wed,22690.45,22603.05,-0.39,171.4,Sideways Chop / Mean Reversion,13,8,5,61.5,6,4,812.87,313617.0100000006,"Sideways Chop / Mean Reversion | 6 TPs, 4 SLs"
+2026-10-08,2026-10,October 2026,Thu,22599.05,22231.8,-1.63,419.1,Strong Bear Trend,11,11,0,100.0,8,0,4736.97,318353.98000000056,"Strong Bear Trend | 8 TPs, 0 SLs"
+2026-10-09,2026-10,October 2026,Fri,22314.95,22520.45,0.92,286.0,Strong Bull Trend,6,4,2,66.7,1,1,1285.97,319639.95000000054,"Strong Bull Trend | 1 TPs, 1 SLs"
+2026-10-12,2026-10,October 2026,Mon,22593.2,22363.35,-1.02,346.6,Strong Bear Trend,12,10,2,83.3,8,1,3680.37,323320.32000000053,"Strong Bear Trend | 8 TPs, 1 SLs"
+2026-10-13,2026-10,October 2026,Tue,22364.15,22721.95,1.6,433.5,Strong Bull Trend,14,9,5,64.3,4,5,3890.87,327211.1900000005,"Strong Bull Trend | 4 TPs, 5 SLs"
+2026-10-14,2026-10,October 2026,Wed,22715.75,22622.7,-0.41,199.0,Sideways Chop / Mean Reversion,10,5,5,50.0,4,5,-1284.6,325926.59000000055,"Sideways Chop / Mean Reversion | 4 TPs, 5 SLs"
+2026-10-15,2026-10,October 2026,Thu,22671.3,22997.35,1.44,419.0,Strong Bull Trend,12,11,1,91.7,10,0,3642.02,329568.61000000057,"Strong Bull Trend | 10 TPs, 0 SLs"
+2026-10-16,2026-10,October 2026,Fri,23065.1,23146.15,0.35,236.0,Friday Expiry Breakout,13,9,4,69.2,7,3,2820.12,332388.73000000056,"Friday Expiry Breakout | 7 TPs, 3 SLs"
+2026-10-19,2026-10,October 2026,Mon,23150.85,22888.95,-1.13,330.2,Strong Bear Trend,13,11,2,84.6,10,0,4234.1,336622.83000000054,"Strong Bear Trend | 10 TPs, 0 SLs"
+2026-10-21,2026-10,October 2026,Wed,23016.0,22811.35,-0.89,471.0,Strong Bear Trend,14,12,2,85.7,12,0,5284.92,341907.7500000005,"Strong Bear Trend | 12 TPs, 0 SLs"
+2026-10-22,2026-10,October 2026,Thu,22687.75,22687.65,-0.0,230.2,Sideways Chop / Mean Reversion,5,0,5,0.0,0,1,-3140.05,338767.70000000054,"Sideways Chop / Mean Reversion | 0 TPs, 1 SLs"
+2026-10-23,2026-10,October 2026,Fri,22742.2,22600.0,-0.63,415.2,Friday Expiry Breakout,14,12,2,85.7,12,2,7981.02,346748.72000000055,"Friday Expiry Breakout | 12 TPs, 2 SLs"
+2026-10-26,2026-10,October 2026,Mon,22524.4,22753.2,1.02,365.9,Strong Bull Trend,5,0,5,0.0,0,1,-2944.47,343804.2500000006,"Strong Bull Trend | 0 TPs, 1 SLs"
+2026-10-27,2026-10,October 2026,Tue,22708.8,22749.75,0.18,192.9,Sideways Chop / Mean Reversion,4,0,4,0.0,0,2,-3625.4,340178.85000000056,"Sideways Chop / Mean Reversion | 0 TPs, 2 SLs"
+2026-10-28,2026-10,October 2026,Wed,22678.0,22698.85,0.09,280.3,Sideways Chop / Mean Reversion,5,2,3,40.0,1,1,-3300.0,336878.85000000056,"Sideways Chop / Mean Reversion | 1 TPs, 1 SLs"
+2026-10-29,2026-10,October 2026,Thu,22690.65,22936.75,1.08,305.2,Strong Bull Trend,13,11,2,84.6,9,2,4646.92,341525.77000000054,"Strong Bull Trend | 9 TPs, 2 SLs"
+2026-10-30,2026-10,October 2026,Fri,22964.5,23053.1,0.39,213.0,Friday Expiry Breakout,13,7,6,53.8,6,5,-769.76,340756.01000000053,"Friday Expiry Breakout | 6 TPs, 5 SLs"
+2026-11-02,2026-11,November 2026 (1–13 Nov),Mon,23222.3,23440.8,0.94,233.8,Super-Trend Momentum,6,4,2,66.7,4,2,1367.15,342123.16000000056,"Hit +₹1,367 via Super-Trend Momentum (4W/2L)"
+2026-11-03,2026-11,November 2026 (1–13 Nov),Tue,23582.25,23810.85,0.97,328.0,Super-Trend Momentum,6,5,1,83.3,5,1,1917.99,344041.15000000055,"Hit +₹1,917 via Super-Trend Momentum (5W/1L)"
+2026-11-04,2026-11,November 2026 (1–13 Nov),Wed,23742.25,23960.6,0.92,264.4,Super-Trend Momentum,6,5,1,83.3,5,1,1546.09,345587.2400000006,"Hit +₹1,546 via Super-Trend Momentum (5W/1L)"
+2026-11-05,2026-11,November 2026 (1–13 Nov),Thu,24378.05,24536.6,0.65,283.6,Super-Trend Momentum,6,5,1,83.3,5,1,1658.36,347245.60000000056,"Hit +₹1,658 via Super-Trend Momentum (5W/1L)"
+2026-11-06,2026-11,November 2026 (1–13 Nov),Fri,24538.2,25030.35,2.01,642.3,Super-Trend Momentum,6,5,1,83.3,5,1,3755.87,351001.47000000055,"Hit +₹3,755 via Super-Trend Momentum (5W/1L)"
+2026-11-09,2026-11,November 2026 (1–13 Nov),Mon,25076.4,25044.65,-0.13,245.3,Super-Trend Momentum,6,4,2,66.7,4,2,956.27,351957.7400000006,Hit +₹956 via Super-Trend Momentum (4W/2L)
+2026-11-11,2026-11,November 2026 (1–13 Nov),Wed,25337.8,25255.05,-0.33,329.0,Super-Trend Momentum,6,4,2,66.7,4,2,1282.56,353240.30000000057,"Hit +₹1,282 via Super-Trend Momentum (4W/2L)"
+2026-11-12,2026-11,November 2026 (1–13 Nov),Thu,25213.5,25299.35,0.34,241.8,Super-Trend Momentum,6,4,2,66.7,4,2,942.62,354182.92000000057,Hit +₹942 via Super-Trend Momentum (4W/2L)
+2026-11-13,2026-11,November 2026 (1–13 Nov),Fri,25209.85,25144.3,-0.26,191.9,Super-Trend Momentum,6,4,2,66.7,4,2,748.09,354931.0100000006,Hit +₹748 via Super-Trend Momentum (4W/2L)

@@ -1,0 +1,3052 @@
+[
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 700,
+    "symbol": "ICICIBANK26NOV1590CE",
+    "price": 34.87,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:07:05"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 175,
+    "symbol": "TCS26NOV2400CE",
+    "price": 52.91,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:07:05"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 125,
+    "symbol": "BAJFINANCE26NOV1100CE",
+    "price": 24.42,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:07:05"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 475,
+    "symbol": "BHARTIARTL26NOV2150CE",
+    "price": 47.38,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:07:05"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV182CE",
+    "price": 4.01,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:07:05"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 350,
+    "symbol": "HCLTECH26NOV1380CE",
+    "price": 30.46,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:07:05"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 1500,
+    "symbol": "WIPRO26NOV195CE",
+    "price": 4.26,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:07:05"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 600,
+    "symbol": "TECHM26NOV1780CE",
+    "price": 39.08,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:07:05"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 625,
+    "symbol": "JINDALSTEL26NOV1140CE",
+    "price": 25.06,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:07:05"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 350,
+    "symbol": "SUNPHARMA26NOV1880CE",
+    "price": 41.2,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:17:07"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 300,
+    "symbol": "ADANIENT26NOV2680CE",
+    "price": 58.93,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:17:07"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 3850,
+    "symbol": "ONGC26NOV225PE",
+    "price": 4.95,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "09:23:09"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV930CE",
+    "price": 20.42,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:24:09"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 1150,
+    "symbol": "VEDL26NOV255CE",
+    "price": 5.59,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:24:09"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 750,
+    "symbol": "SBIN 1100 CE",
+    "price": 24.16,
+    "seat": "TREND_1",
+    "tag": "PA_CLEAN_CONTINUATION_BUY (VWAP=1084.0, RSI=66.7, RVOL=1.59x)_STOCK_OPT_CE",
+    "timestamp": "09:25:00"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 1500,
+    "symbol": "NTPC26NOV320PE",
+    "price": 7.05,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "09:26:10"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 100,
+    "symbol": "DIVISLAB26NOV11100CE",
+    "price": 244.66,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:27:10"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 75,
+    "symbol": "NIFTY_25300_CE",
+    "price": 180.0,
+    "seat": "OPTION_1",
+    "tag": "IMIC_CE_ENTRY",
+    "timestamp": "09:30:00"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 30,
+    "symbol": "BANKNIFTY_61700_CE",
+    "price": 380.0,
+    "seat": "OPTION_2",
+    "tag": "IMIC_CE_ENTRY",
+    "timestamp": "09:30:00"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 625,
+    "symbol": "AXISBANK 1360 CE",
+    "price": 29.79,
+    "seat": "TREND_2",
+    "tag": "PA_CLEAN_CONTINUATION_BUY (VWAP=1339.8, RSI=72.0, RVOL=1.47x)_STOCK_OPT_CE",
+    "timestamp": "09:30:00"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 1800,
+    "symbol": "POWERGRID26NOV260PE",
+    "price": 5.72,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "09:36:12"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 125,
+    "symbol": "APOLLOHOSP26NOV8750PE",
+    "price": 192.84,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "09:37:13"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV810CE",
+    "price": 17.86,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:40:44"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 150,
+    "symbol": "LT26NOV4150PE",
+    "price": 91.3,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "09:41:44"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 625,
+    "symbol": "AXISBANK26NOV1350PE",
+    "price": 29.74,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "09:43:45"
+  },
+  {
+    "log_file": "task-194.log",
+    "side": "BUY",
+    "qty": 650,
+    "symbol": "CIPLA26NOV1400CE",
+    "price": 30.69,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:50:47"
+  },
+  {
+    "log_file": "task-332.log",
+    "side": "BUY",
+    "qty": 75,
+    "symbol": "NIFTY_25350_CE",
+    "price": 180.0,
+    "seat": "OPTION_1",
+    "tag": "IMIC_CE_ENTRY",
+    "timestamp": "09:51:58"
+  },
+  {
+    "log_file": "task-332.log",
+    "side": "BUY",
+    "qty": 30,
+    "symbol": "BANKNIFTY_62000_CE",
+    "price": 380.0,
+    "seat": "OPTION_2",
+    "tag": "IMIC_CE_ENTRY",
+    "timestamp": "09:51:58"
+  },
+  {
+    "log_file": "task-332.log",
+    "side": "BUY",
+    "qty": 350,
+    "symbol": "HCLTECH26NOV1380CE",
+    "price": 30.24,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:52:17"
+  },
+  {
+    "log_file": "task-332.log",
+    "side": "BUY",
+    "qty": 1500,
+    "symbol": "WIPRO26NOV190CE",
+    "price": 4.23,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:52:17"
+  },
+  {
+    "log_file": "task-332.log",
+    "side": "BUY",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV930PE",
+    "price": 20.45,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "09:52:17"
+  },
+  {
+    "log_file": "task-332.log",
+    "side": "BUY",
+    "qty": 650,
+    "symbol": "CIPLA26NOV1400CE",
+    "price": 30.69,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:52:17"
+  },
+  {
+    "log_file": "task-332.log",
+    "side": "BUY",
+    "qty": 400,
+    "symbol": "INFY26NOV1140CE",
+    "price": 25.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "09:54:18"
+  },
+  {
+    "log_file": "task-332.log",
+    "side": "BUY",
+    "qty": 400,
+    "symbol": "ADANIPORTS26NOV1900PE",
+    "price": 42.01,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "09:54:18"
+  },
+  {
+    "log_file": "task-332.log",
+    "side": "BUY",
+    "qty": 625,
+    "symbol": "JINDALSTEL26NOV1130PE",
+    "price": 24.93,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "09:58:19"
+  },
+  {
+    "log_file": "task-332.log",
+    "side": "BUY",
+    "qty": 700,
+    "symbol": "ICICIBANK 1600 CE",
+    "price": 35.17,
+    "seat": "TREND_1",
+    "tag": "PA_MORNING_STAR_BUY (VWAP=1581.9, RSI=65.8, RVOL=1.78x)_STOCK_OPT_CE",
+    "timestamp": "10:00:00"
+  },
+  {
+    "log_file": "task-332.log",
+    "side": "BUY",
+    "qty": 3850,
+    "symbol": "ONGC26NOV225PE",
+    "price": 4.94,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:00:20"
+  },
+  {
+    "log_file": "task-332.log",
+    "side": "BUY",
+    "qty": 125,
+    "symbol": "DRREDDY26NOV1350CE",
+    "price": 30.23,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "10:00:20"
+  },
+  {
+    "log_file": "task-503.log",
+    "side": "BUY",
+    "qty": 75,
+    "symbol": "NIFTY_25350_CE",
+    "price": 180.0,
+    "seat": "OPTION_1",
+    "tag": "IMIC_CE_ENTRY",
+    "timestamp": "10:03:21"
+  },
+  {
+    "log_file": "task-503.log",
+    "side": "BUY",
+    "qty": 30,
+    "symbol": "BANKNIFTY_62100_CE",
+    "price": 380.0,
+    "seat": "OPTION_2",
+    "tag": "IMIC_CE_ENTRY",
+    "timestamp": "10:03:21"
+  },
+  {
+    "log_file": "task-503.log",
+    "side": "BUY",
+    "qty": 350,
+    "symbol": "HCLTECH26NOV1380PE",
+    "price": 30.22,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:03:50"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 75,
+    "symbol": "NIFTY_25350_CE",
+    "price": 180.0,
+    "seat": "OPTION_1",
+    "tag": "IMIC_CE_ENTRY",
+    "timestamp": "10:08:09"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 30,
+    "symbol": "BANKNIFTY_62100_CE",
+    "price": 380.0,
+    "seat": "OPTION_2",
+    "tag": "IMIC_CE_ENTRY",
+    "timestamp": "10:08:09"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 350,
+    "symbol": "HCLTECH26NOV1380PE",
+    "price": 30.21,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:08:38"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 550,
+    "symbol": "HDFCBANK 820 CE",
+    "price": 17.93,
+    "seat": "TREND_1",
+    "tag": "PA_CLEAN_CONTINUATION_BUY (VWAP=809.2, RSI=48.0, RVOL=2.90x)_STOCK_OPT_CE",
+    "timestamp": "10:10:01"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 250,
+    "symbol": "RELIANCE26NOV1340CE",
+    "price": 29.45,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "10:10:39"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 700,
+    "symbol": "ICICIBANK26NOV1600PE",
+    "price": 35.16,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:10:39"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 400,
+    "symbol": "INFY26NOV1140PE",
+    "price": 25.06,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:11:39"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 175,
+    "symbol": "TCS26NOV2450PE",
+    "price": 53.52,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:11:39"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 1800,
+    "symbol": "POWERGRID26NOV260PE",
+    "price": 5.71,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:11:39"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 625,
+    "symbol": "JINDALSTEL26NOV1130PE",
+    "price": 24.89,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:11:39"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 1150,
+    "symbol": "VEDL26NOV255CE",
+    "price": 5.58,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "10:12:39"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 550,
+    "symbol": "HDFCBANK 820 CE",
+    "price": 18.01,
+    "seat": "TREND_2",
+    "tag": "PA_STRUCTURE_BREAKOUT_BUY (VWAP=809.5, RSI=55.5, RVOL=4.15x)_STOCK_OPT_CE",
+    "timestamp": "10:15:00"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 250,
+    "symbol": "RELIANCE 1340 CE",
+    "price": 29.48,
+    "seat": "CHOP_1",
+    "tag": "PA_BULLISH_ENGULFING_BUY (VWAP=1338.1, RSI=51.6, RVOL=0.66x)_STOCK_OPT_CE",
+    "timestamp": "10:15:00"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 150,
+    "symbol": "LT26NOV4150PE",
+    "price": 91.39,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:16:41"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 550,
+    "symbol": "HDFCBANK 820 CE",
+    "price": 18.04,
+    "seat": "CHOP_2",
+    "tag": "PA_CLEAN_CONTINUATION_BUY (VWAP=809.6, RSI=57.5, RVOL=0.56x)_STOCK_OPT_CE",
+    "timestamp": "10:20:00"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV820PE",
+    "price": 17.99,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:20:42"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 1500,
+    "symbol": "WIPRO26NOV195CE",
+    "price": 4.24,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "10:23:43"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 350,
+    "symbol": "SUNPHARMA26NOV1880CE",
+    "price": 41.31,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "10:26:44"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 475,
+    "symbol": "BHARTIARTL26NOV2150CE",
+    "price": 47.3,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "10:27:44"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 3850,
+    "symbol": "ONGC26NOV225PE",
+    "price": 4.95,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:27:44"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 300,
+    "symbol": "ADANIENT26NOV2700PE",
+    "price": 59.29,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:27:44"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "SELL",
+    "qty": 75,
+    "symbol": "NIFTY_25350_CE",
+    "price": 182.85,
+    "seat": "OPTION_1",
+    "tag": "LADDER_TRAIL_SL_HIT",
+    "timestamp": "10:33:31"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 75,
+    "symbol": "NIFTY_25400_CE",
+    "price": 180.0,
+    "seat": "OPTION_1",
+    "tag": "IMIC_CE_ENTRY",
+    "timestamp": "10:35:00"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "SELL",
+    "qty": 30,
+    "symbol": "BANKNIFTY_62100_CE",
+    "price": 389.99,
+    "seat": "OPTION_2",
+    "tag": "LADDER_TRAIL_SL_HIT",
+    "timestamp": "10:40:33"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV182PE",
+    "price": 4.01,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "10:44:49"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 30,
+    "symbol": "BANKNIFTY_62200_CE",
+    "price": 380.0,
+    "seat": "OPTION_2",
+    "tag": "IMIC_CE_ENTRY",
+    "timestamp": "10:45:00"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "SELL",
+    "qty": 150,
+    "symbol": "LT26NOV4150PE",
+    "price": 80.75,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "10:46:24"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "SELL",
+    "qty": 700,
+    "symbol": "ICICIBANK26NOV1600PE",
+    "price": 33.01,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "10:56:28"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "SELL",
+    "qty": 625,
+    "symbol": "JINDALSTEL26NOV1130PE",
+    "price": 22.25,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "11:04:30"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 625,
+    "symbol": "JINDALSTEL26NOV1140CE",
+    "price": 25.0,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "11:09:56"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV930CE",
+    "price": 20.45,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "11:09:56"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "SELL",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV182PE",
+    "price": 3.67,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "11:17:32"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "SELL",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV930CE",
+    "price": 22.02,
+    "seat": "TREND_1",
+    "tag": "TP1_TRAIL_HIT",
+    "timestamp": "11:21:45"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 675,
+    "symbol": "JSWSTEEL26NOV1330PE",
+    "price": 29.33,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "11:22:00"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 100,
+    "symbol": "DIVISLAB26NOV11050PE",
+    "price": 243.63,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "11:25:01"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "BUY",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV183CE",
+    "price": 4.02,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "11:26:01"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "SELL",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV183CE",
+    "price": 3.74,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "11:31:48"
+  },
+  {
+    "log_file": "task-569.log",
+    "side": "SELL",
+    "qty": 100,
+    "symbol": "DIVISLAB26NOV11050PE",
+    "price": 214.75,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "11:35:40"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 75,
+    "symbol": "NIFTY_25450_CE",
+    "price": 180.0,
+    "seat": "OPTION_1",
+    "tag": "IMIC_CE_ENTRY",
+    "timestamp": "11:41:01"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 30,
+    "symbol": "BANKNIFTY_62300_CE",
+    "price": 380.0,
+    "seat": "OPTION_2",
+    "tag": "IMIC_CE_ENTRY",
+    "timestamp": "11:41:01"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 475,
+    "symbol": "BHARTIARTL 2160 CE",
+    "price": 47.5,
+    "seat": "TREND_1",
+    "tag": "PA_STRUCTURE_BREAKOUT_BUY (VWAP=2128.1, RSI=59.7, RVOL=0.46x)_STOCK_OPT_CE",
+    "timestamp": "11:41:01"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 250,
+    "symbol": "RELIANCE26NOV1340PE",
+    "price": 29.59,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "11:41:17"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12700PE",
+    "price": 278.36,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "11:43:18"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV930PE",
+    "price": 20.43,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "11:43:18"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 300,
+    "symbol": "ADANIENT26NOV2680PE",
+    "price": 59.17,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "11:43:18"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1150,
+    "symbol": "VEDL26NOV255PE",
+    "price": 5.61,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "11:44:18"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 475,
+    "symbol": "BHARTIARTL 2160 CE",
+    "price": 47.5,
+    "seat": "TREND_2",
+    "tag": "PA_STRUCTURE_BREAKOUT_BUY (VWAP=2128.1, RSI=59.5, RVOL=0.59x)_STOCK_OPT_CE",
+    "timestamp": "11:45:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 250,
+    "symbol": "RELIANCE 1340 CE",
+    "price": 29.6,
+    "seat": "CHOP_1",
+    "tag": "PA_BULLISH_ENGULFING_BUY (VWAP=1338.5, RSI=66.9, RVOL=0.45x)_STOCK_OPT_CE",
+    "timestamp": "11:50:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 250,
+    "symbol": "RELIANCE 1340 CE",
+    "price": 29.62,
+    "seat": "CHOP_2",
+    "tag": "PA_BULLISH_ENGULFING_BUY (VWAP=1338.5, RSI=67.7, RVOL=0.68x)_STOCK_OPT_CE",
+    "timestamp": "11:55:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1500,
+    "symbol": "WIPRO26NOV195CE",
+    "price": 4.24,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "11:58:23"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12700PE",
+    "price": 245.8,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "11:58:52"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV183CE",
+    "price": 4.02,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "12:00:23"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV930PE",
+    "price": 19.05,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "12:01:03"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1800,
+    "symbol": "POWERGRID26NOV260CE",
+    "price": 5.7,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "12:02:24"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 400,
+    "symbol": "INFY26NOV1140PE",
+    "price": 25.06,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:05:25"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 400,
+    "symbol": "KOTAKBANK26NOV500PE",
+    "price": 10.93,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:09:27"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 175,
+    "symbol": "TCS26NOV2450PE",
+    "price": 53.54,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:12:28"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 675,
+    "symbol": "JSWSTEEL26NOV1330PE",
+    "price": 29.34,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:12:28"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 600,
+    "symbol": "TECHM26NOV1760PE",
+    "price": 38.74,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:13:28"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 650,
+    "symbol": "CIPLA26NOV1400CE",
+    "price": 30.67,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "12:13:28"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1500,
+    "symbol": "NTPC26NOV320PE",
+    "price": 7.07,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:19:30"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 3850,
+    "symbol": "ONGC26NOV225CE",
+    "price": 4.94,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "12:20:30"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 350,
+    "symbol": "SUNPHARMA26NOV1880PE",
+    "price": 41.34,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:22:31"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 125,
+    "symbol": "DRREDDY26NOV1400PE",
+    "price": 30.37,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:25:32"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV183CE",
+    "price": 3.73,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1800,
+    "symbol": "POWERGRID26NOV260CE",
+    "price": 4.79,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 125,
+    "symbol": "APOLLOHOSP26NOV8800PE",
+    "price": 193.45,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:28:33"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 600,
+    "symbol": "TECHM26NOV1760PE",
+    "price": 35.82,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "12:31:13"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV820PE",
+    "price": 18.03,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:34:35"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 700,
+    "symbol": "ICICIBANK26NOV1610PE",
+    "price": 35.41,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:42:38"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 625,
+    "symbol": "JINDALSTEL26NOV1140CE",
+    "price": 24.98,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "12:49:40"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 125,
+    "symbol": "BAJFINANCE26NOV1100PE",
+    "price": 24.72,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:50:40"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 350,
+    "symbol": "HCLTECH26NOV1360CE",
+    "price": 29.97,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "12:53:41"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12700PE",
+    "price": 245.8,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:55:42"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 750,
+    "symbol": "SBIN26NOV1110PE",
+    "price": 24.37,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "12:58:43"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1500,
+    "symbol": "WIPRO26NOV195CE",
+    "price": 3.23,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "13:02:27"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV182PE",
+    "price": 4.0,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "13:04:58"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 600,
+    "symbol": "TECHM26NOV1760PE",
+    "price": 35.82,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "13:05:59"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 475,
+    "symbol": "BHARTIARTL26NOV2160PE",
+    "price": 47.49,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "13:10:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 3850,
+    "symbol": "ONGC26NOV225CE",
+    "price": 4.45,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 625,
+    "symbol": "AXISBANK26NOV1370PE",
+    "price": 30.07,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "13:11:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 4875,
+    "symbol": "IOC26NOV145PE",
+    "price": 3.2,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "13:11:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 650,
+    "symbol": "CIPLA26NOV1400CE",
+    "price": 27.43,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 350,
+    "symbol": "HCLTECH26NOV1360CE",
+    "price": 25.52,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "13:11:40"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 500,
+    "symbol": "BAJAJFINSV26NOV1860PE",
+    "price": 40.85,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "13:12:01"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 400,
+    "symbol": "ADANIPORTS26NOV1920PE",
+    "price": 42.05,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "13:12:01"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 150,
+    "symbol": "LT26NOV4200PE",
+    "price": 92.17,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "13:13:01"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV925PE",
+    "price": 20.39,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "13:13:01"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1800,
+    "symbol": "POWERGRID26NOV260CE",
+    "price": 4.79,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "13:18:03"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 625,
+    "symbol": "AXISBANK26NOV1370PE",
+    "price": 27.59,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "13:20:49"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 500,
+    "symbol": "BAJAJFINSV26NOV1860PE",
+    "price": 37.71,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "13:22:40"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 250,
+    "symbol": "RELIANCE26NOV1340PE",
+    "price": 23.46,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "13:30:37"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 650,
+    "symbol": "CIPLA26NOV1400CE",
+    "price": 27.43,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "13:33:08"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV925PE",
+    "price": 19.23,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "13:34:46"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 4875,
+    "symbol": "IOC26NOV145PE",
+    "price": 2.89,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "13:37:45"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 700,
+    "symbol": "ICICIBANK26NOV1610PE",
+    "price": 38.21,
+    "seat": "TREND_1",
+    "tag": "TP1_TRAIL_HIT",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 350,
+    "symbol": "HCLTECH26NOV1360CE",
+    "price": 25.52,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "13:40:11"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1500,
+    "symbol": "WIPRO26NOV190CE",
+    "price": 4.22,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "13:41:11"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 625,
+    "symbol": "AXISBANK26NOV1370PE",
+    "price": 27.59,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "13:42:11"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 3850,
+    "symbol": "ONGC26NOV225CE",
+    "price": 4.45,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "13:44:12"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 2100,
+    "symbol": "COALINDIA26NOV390CE",
+    "price": 8.6,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "13:45:12"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 300,
+    "symbol": "ADANIENT26NOV2680PE",
+    "price": 52.6,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "13:50:59"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 400,
+    "symbol": "ADANIPORTS26NOV1920PE",
+    "price": 37.7,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "13:52:49"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV182PE",
+    "price": 3.73,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV183CE",
+    "price": 3.73,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "13:55:45"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 500,
+    "symbol": "BAJAJFINSV26NOV1860CE",
+    "price": 41.0,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "13:58:16"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV183CE",
+    "price": 3.46,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "14:01:52"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV925PE",
+    "price": 19.23,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "14:08:19"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 400,
+    "symbol": "ADANIPORTS26NOV1920PE",
+    "price": 37.7,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "14:10:20"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV182PE",
+    "price": 3.73,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "14:13:21"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 625,
+    "symbol": "JINDALSTEL26NOV1140CE",
+    "price": 22.56,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "14:14:56"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 300,
+    "symbol": "HINDUNILVR26NOV2020PE",
+    "price": 44.26,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "14:15:22"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 100,
+    "symbol": "DIVISLAB26NOV11150PE",
+    "price": 245.68,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "14:23:24"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 700,
+    "symbol": "ICICIBANK26NOV1610PE",
+    "price": 38.21,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "14:24:24"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1600,
+    "symbol": "ITC26NOV295CE",
+    "price": 6.48,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "14:27:25"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 300,
+    "symbol": "ADANIENT26NOV2720PE",
+    "price": 59.67,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "14:28:26"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 300,
+    "symbol": "ADANIENT26NOV2720PE",
+    "price": 51.97,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "14:28:48"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 300,
+    "symbol": "ADANIENT26NOV2720PE",
+    "price": 51.97,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "14:28:56"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 300,
+    "symbol": "ADANIENT26NOV2720PE",
+    "price": 46.5,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "14:34:51"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 4875,
+    "symbol": "IOC26NOV145PE",
+    "price": 2.89,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "14:38:29"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV925PE",
+    "price": 18.07,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "14:40:06"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV935CE",
+    "price": 20.53,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "14:48:33"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1150,
+    "symbol": "VEDL26NOV255PE",
+    "price": 4.31,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "14:54:20"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1150,
+    "symbol": "VEDL26NOV255PE",
+    "price": 4.31,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:03:39"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 125,
+    "symbol": "APOLLOHOSP26NOV8800PE",
+    "price": 210.77,
+    "seat": "TREND_1",
+    "tag": "TP1_TRAIL_HIT",
+    "timestamp": "15:07:25"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 125,
+    "symbol": "APOLLOHOSP26NOV8750CE",
+    "price": 192.75,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:07:40"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 650,
+    "symbol": "CIPLA26NOV1400CE",
+    "price": 24.84,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "15:08:16"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV935CE",
+    "price": 19.37,
+    "seat": "TREND_1",
+    "tag": "HARD_SL_1500_HIT",
+    "timestamp": "15:08:16"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 250,
+    "symbol": "RELIANCE26NOV1360PE",
+    "price": 30.06,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:08:40"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV930PE",
+    "price": 19.05,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:08:40"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 625,
+    "symbol": "JINDALSTEL26NOV1130PE",
+    "price": 24.91,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:09:41"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 300,
+    "symbol": "ADANIENT26NOV2740PE",
+    "price": 60.22,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:10:41"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 75,
+    "symbol": "NIFTY_25450_CE",
+    "price": 175.92,
+    "seat": "OPTION_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 30,
+    "symbol": "BANKNIFTY_62300_CE",
+    "price": 382.51,
+    "seat": "OPTION_2",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 475,
+    "symbol": "BHARTIARTL 2160 CE",
+    "price": 47.5,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 475,
+    "symbol": "BHARTIARTL 2160 CE",
+    "price": 47.5,
+    "seat": "TREND_2",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 250,
+    "symbol": "RELIANCE 1340 CE",
+    "price": 29.62,
+    "seat": "CHOP_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 250,
+    "symbol": "RELIANCE 1340 CE",
+    "price": 29.62,
+    "seat": "CHOP_2",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 400,
+    "symbol": "INFY26NOV1140PE",
+    "price": 30.04,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 400,
+    "symbol": "KOTAKBANK26NOV500PE",
+    "price": 10.27,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 175,
+    "symbol": "TCS26NOV2450PE",
+    "price": 67.59,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 675,
+    "symbol": "JSWSTEEL26NOV1330PE",
+    "price": 28.02,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1500,
+    "symbol": "NTPC26NOV320PE",
+    "price": 7.15,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 350,
+    "symbol": "SUNPHARMA26NOV1880PE",
+    "price": 44.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 125,
+    "symbol": "DRREDDY26NOV1400PE",
+    "price": 27.02,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV820PE",
+    "price": 21.08,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 125,
+    "symbol": "BAJFINANCE26NOV1100PE",
+    "price": 25.66,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12700PE",
+    "price": 279.32,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 750,
+    "symbol": "SBIN26NOV1110PE",
+    "price": 23.05,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 600,
+    "symbol": "TECHM26NOV1760PE",
+    "price": 35.55,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 475,
+    "symbol": "BHARTIARTL26NOV2160PE",
+    "price": 52.33,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 150,
+    "symbol": "LT26NOV4200PE",
+    "price": 104.08,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1800,
+    "symbol": "POWERGRID26NOV260CE",
+    "price": 5.2,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 350,
+    "symbol": "HCLTECH26NOV1360CE",
+    "price": 27.97,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1500,
+    "symbol": "WIPRO26NOV190CE",
+    "price": 3.57,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 625,
+    "symbol": "AXISBANK26NOV1370PE",
+    "price": 25.91,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 3850,
+    "symbol": "ONGC26NOV225CE",
+    "price": 4.85,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 2100,
+    "symbol": "COALINDIA26NOV390CE",
+    "price": 8.43,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 500,
+    "symbol": "BAJAJFINSV26NOV1860CE",
+    "price": 42.43,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 400,
+    "symbol": "ADANIPORTS26NOV1920PE",
+    "price": 36.98,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 5500,
+    "symbol": "TATASTEEL26NOV182PE",
+    "price": 3.81,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 300,
+    "symbol": "HINDUNILVR26NOV2020PE",
+    "price": 45.75,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 100,
+    "symbol": "DIVISLAB26NOV11150PE",
+    "price": 261.36,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 700,
+    "symbol": "ICICIBANK26NOV1610PE",
+    "price": 40.33,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1600,
+    "symbol": "ITC26NOV295CE",
+    "price": 5.79,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 4875,
+    "symbol": "IOC26NOV145PE",
+    "price": 2.99,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1150,
+    "symbol": "VEDL26NOV255PE",
+    "price": 4.29,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 125,
+    "symbol": "APOLLOHOSP26NOV8750CE",
+    "price": 191.65,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 250,
+    "symbol": "RELIANCE26NOV1360PE",
+    "price": 29.1,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV930PE",
+    "price": 19.99,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 625,
+    "symbol": "JINDALSTEL26NOV1130PE",
+    "price": 22.82,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:00"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 300,
+    "symbol": "ADANIENT26NOV2740PE",
+    "price": 59.67,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "UNKNOWN"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:18:14"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:14"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:18:44"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:18:44"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:19:14"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:19:14"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:19:44"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:19:44"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:20:14"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:20:14"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:20:44"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:20:45"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:21:15"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:21:15"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:21:45"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:21:45"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:22:15"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:22:15"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:22:45"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:22:45"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:23:15"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:23:15"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:23:45"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:23:45"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:24:16"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:24:16"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:24:46"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:24:46"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:25:16"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:25:16"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:25:46"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:25:46"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:26:16"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:26:16"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:26:46"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:26:46"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:27:17"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:27:17"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:27:47"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:27:47"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:28:17"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:28:17"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV810CE",
+    "price": 17.91,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:28:47"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 125,
+    "symbol": "BAJFINANCE26NOV1100PE",
+    "price": 25.66,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:28:47"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV810CE",
+    "price": 17.91,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:28:47"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 125,
+    "symbol": "BAJFINANCE26NOV1100PE",
+    "price": 25.66,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:28:47"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV820CE",
+    "price": 17.93,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:29:17"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 125,
+    "symbol": "BAJFINANCE26NOV1100PE",
+    "price": 25.66,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:29:17"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV820CE",
+    "price": 17.93,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:29:17"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 125,
+    "symbol": "BAJFINANCE26NOV1100PE",
+    "price": 25.66,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:29:17"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV810CE",
+    "price": 17.91,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:29:47"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 125,
+    "symbol": "BAJFINANCE26NOV1100PE",
+    "price": 25.66,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:29:47"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV810CE",
+    "price": 17.91,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:29:47"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 125,
+    "symbol": "BAJFINANCE26NOV1100PE",
+    "price": 25.66,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:29:47"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV810CE",
+    "price": 17.91,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:30:18"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 125,
+    "symbol": "BAJFINANCE26NOV1100PE",
+    "price": 25.66,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:30:18"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV810CE",
+    "price": 17.91,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:30:18"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 125,
+    "symbol": "BAJFINANCE26NOV1100PE",
+    "price": 25.66,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:30:18"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:30:48"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:30:48"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:31:18"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:31:18"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:31:48"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:31:48"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:32:18"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:32:18"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:32:48"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:32:49"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:33:19"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:33:19"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:33:49"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:33:49"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:34:19"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:34:19"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:34:49"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:34:49"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:35:19"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:35:19"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:35:50"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "SELL",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "AUTO_SQUARE_OFF_318PM",
+    "timestamp": "15:35:50"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 50,
+    "symbol": "MARUTI26NOV12600CE",
+    "price": 278.12,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:36:20"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 4875,
+    "symbol": "IOC26NOV145CE",
+    "price": 3.2,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:50:55"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 125,
+    "symbol": "BAJFINANCE26NOV1100PE",
+    "price": 25.66,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:51:55"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1400,
+    "symbol": "HINDALCO26NOV930PE",
+    "price": 19.99,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:51:55"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 550,
+    "symbol": "HDFCBANK26NOV810CE",
+    "price": 17.91,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:57:57"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 700,
+    "symbol": "ICICIBANK26NOV1600PE",
+    "price": 35.17,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:58:57"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 600,
+    "symbol": "TECHM26NOV1760CE",
+    "price": 38.76,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "15:58:57"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 675,
+    "symbol": "JSWSTEEL26NOV1330PE",
+    "price": 28.02,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:58:57"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1150,
+    "symbol": "VEDL26NOV255PE",
+    "price": 4.29,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:58:57"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 350,
+    "symbol": "SUNPHARMA26NOV1880PE",
+    "price": 44.12,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "15:59:58"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 1800,
+    "symbol": "BPCL26NOV305CE",
+    "price": 6.73,
+    "seat": "TREND_1",
+    "tag": "ATM_CE_ENTRY",
+    "timestamp": "16:00:58"
+  },
+  {
+    "log_file": "task-643.log",
+    "side": "BUY",
+    "qty": 625,
+    "symbol": "AXISBANK26NOV1370PE",
+    "price": 25.91,
+    "seat": "TREND_1",
+    "tag": "ATM_PE_ENTRY",
+    "timestamp": "16:01:58"
+  }
+]
