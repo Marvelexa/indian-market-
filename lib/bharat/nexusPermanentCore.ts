@@ -14,6 +14,10 @@
 
 import fs from 'fs';
 import path from 'path';
+import {
+  UnlimitedBreathingTrailEngine,
+  type DualShieldTrailState,
+} from './unlimitedBreathingTrailEngine.ts';
 
 export interface PersistentOpenPosition {
   id: string;
@@ -33,6 +37,10 @@ export interface PersistentOpenPosition {
   floatingPnl: number;
   peakFloatingPnl: number;
   ladderStage: number;
+  softCloseLockInr?: number;
+  hardTickAirbagInr?: number;
+  softSlPremium?: number;
+  hardSlPremium?: number;
   openedAtIst: string;
   openedTimestampMs: number;
 }
@@ -293,7 +301,11 @@ export class NexusPermanentCore {
     }
 
     const maxLossDropPts = 2200 / spec.lotSize;
-    const slPremium = Number(Math.max(0.5, params.entryPremium - maxLossDropPts).toFixed(2));
+    const initialDualShield = UnlimitedBreathingTrailEngine.createInitialState(
+      params.entryPremium,
+      spec.lotSize,
+      2200
+    );
 
     const newPos: PersistentOpenPosition = {
       id: `${sym}-${strike}-${params.optionType}-${Date.now()}`,
@@ -313,7 +325,11 @@ export class NexusPermanentCore {
       entryPremium: Number(params.entryPremium.toFixed(2)),
       currentPremium: Number(params.entryPremium.toFixed(2)),
       peakPremium: Number(params.entryPremium.toFixed(2)),
-      slPremium,
+      slPremium: initialDualShield.hardSlPremium,
+      softCloseLockInr: initialDualShield.softCloseLockInr,
+      hardTickAirbagInr: initialDualShield.hardTickAirbagInr,
+      softSlPremium: initialDualShield.softSlPremium,
+      hardSlPremium: initialDualShield.hardSlPremium,
       floatingPnl: 0,
       peakFloatingPnl: 0,
       ladderStage: 0,
@@ -330,7 +346,10 @@ export class NexusPermanentCore {
   /**
    * 6. REAL-TIME TICK UPDATE FOR FLOATING POSITIONS + AUTO CAPITAL ADDITION ON CLOSE
    */
-  public static updatePositionsOnTick(liveSpotMap: Record<string, number>): void {
+  public static updatePositionsOnTick(
+    liveSpotMap: Record<string, number>,
+    isFiveMinuteCandleClose = false
+  ): void {
     let stateChanged = false;
 
     for (let i = this.db.openPositions.length - 1; i >= 0; i--) {
@@ -355,41 +374,33 @@ export class NexusPermanentCore {
       );
       pos.peakFloatingPnl = Math.max(pos.peakFloatingPnl, pos.floatingPnl);
 
-      // Update Breathing Profit Ladder (Stage 1 starts at +₹1,500 -> Locks +₹850)
-      if (pos.peakFloatingPnl >= 6000) {
-        pos.ladderStage = 4;
-        const lockInr = Math.max(4500, pos.peakFloatingPnl - 1400);
-        pos.slPremium = Math.max(
-          pos.slPremium,
-          Number((pos.entryPremium + lockInr / pos.qty).toFixed(2))
-        );
-      } else if (pos.peakFloatingPnl >= 4000 && pos.ladderStage < 3) {
-        pos.ladderStage = 3;
-        pos.slPremium = Math.max(
-          pos.slPremium,
-          Number((pos.entryPremium + 2800 / pos.qty).toFixed(2))
-        );
-      } else if (pos.peakFloatingPnl >= 2500 && pos.ladderStage < 2) {
-        pos.ladderStage = 2;
-        pos.slPremium = Math.max(
-          pos.slPremium,
-          Number((pos.entryPremium + 1650 / pos.qty).toFixed(2))
-        );
-      } else if (pos.peakFloatingPnl >= 1500 && pos.ladderStage < 1) {
-        pos.ladderStage = 1;
-        pos.slPremium = Math.max(
-          pos.slPremium,
-          Number((pos.entryPremium + 850 / pos.qty).toFixed(2))
-        );
-      }
+      // Evaluate Dual-Shield Breathing Engine (Shield 1 Soft Close Lock + Shield 2 Hard Tick Airbag)
+      const prevState: DualShieldTrailState = {
+        stage: pos.ladderStage || 0,
+        peakPnlInr: pos.peakFloatingPnl || 0,
+        softCloseLockInr: pos.softCloseLockInr ?? -2200,
+        hardTickAirbagInr: pos.hardTickAirbagInr ?? -2200,
+        softSlPremium: pos.softSlPremium ?? pos.slPremium,
+        hardSlPremium: pos.hardSlPremium ?? pos.slPremium,
+      };
 
-      // Check Stop-Loss or Trailing Profit Lock Exit
-      if (pos.currentPremium <= pos.slPremium || pos.floatingPnl <= -2500) {
-        const reason =
-          pos.ladderStage > 0
-            ? `Stage ${pos.ladderStage} Profit Trail (+₹${pos.floatingPnl.toFixed(0)})`
-            : 'Strict -₹2,500 Shield SL';
-        this.closePositionAndAddCapital(pos.id, pos.currentPremium, reason);
+      const evalResult = UnlimitedBreathingTrailEngine.evaluateTickOrCandle({
+        entryPremium: pos.entryPremium,
+        currentPremium: updatedPremium,
+        lotSize: pos.qty,
+        prevState,
+        isFiveMinuteCandleClose,
+      });
+
+      pos.ladderStage = evalResult.updatedState.stage;
+      pos.softCloseLockInr = evalResult.updatedState.softCloseLockInr;
+      pos.hardTickAirbagInr = evalResult.updatedState.hardTickAirbagInr;
+      pos.softSlPremium = evalResult.updatedState.softSlPremium;
+      pos.hardSlPremium = evalResult.updatedState.hardSlPremium;
+      pos.slPremium = evalResult.updatedState.hardSlPremium;
+
+      if (evalResult.shouldExit) {
+        this.closePositionAndAddCapital(pos.id, evalResult.exitPremium, evalResult.exitReason);
         stateChanged = true;
       }
     }

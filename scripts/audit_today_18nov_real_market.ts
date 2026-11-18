@@ -20,6 +20,10 @@ import {
 } from '../lib/bharat/mtf15mSupportResistanceOptionEngine.ts';
 import { StrictRealOptionChainFeed } from '../lib/bharat/strictRealOptionChainFeed.ts';
 import { NexusPermanentCore } from '../lib/bharat/nexusPermanentCore.ts';
+import {
+  UnlimitedBreathingTrailEngine,
+  type DualShieldTrailState,
+} from '../lib/bharat/unlimitedBreathingTrailEngine.ts';
 
 interface SymbolConfig {
   symbol: string;
@@ -59,10 +63,7 @@ interface SimPosition {
   entryOptionPrice: number;
   currentOptionPrice: number;
   peakOptionPrice: number;
-  slOptionPrice: number;
-  ladderStage: number;
-  lockedProfitInr: number;
-  peakPnlInr: number;
+  dualShieldState: DualShieldTrailState;
   patternTag: string;
 }
 
@@ -280,88 +281,47 @@ async function runAudit() {
       const calculatedOptionPrice = Math.max(0.10, Number((pos.entryOptionPrice + spotMove * delta).toFixed(2)));
       pos.currentOptionPrice = calculatedOptionPrice;
 
+      // Calculate intra-bar worst wick option premium:
+      const worstSpot = pos.optionType === 'CE' ? curBar.low : curBar.high;
+      const worstSpotMove = pos.optionType === 'CE' ? worstSpot - pos.entrySpot : pos.entrySpot - worstSpot;
+      const worstOptionPrice = Math.max(0.10, Number((pos.entryOptionPrice + worstSpotMove * delta).toFixed(2)));
+
       if (pos.currentOptionPrice > pos.peakOptionPrice) {
         pos.peakOptionPrice = pos.currentOptionPrice;
       }
 
-      const grossPnl = Number(((pos.currentOptionPrice - pos.entryOptionPrice) * pos.lotSize).toFixed(2));
-      if (grossPnl > pos.peakPnlInr) {
-        pos.peakPnlInr = grossPnl;
-      }
+      // Compute EMA9 for trend confirmation on 5m close
+      const curBarIdx = symCandles.indexOf(curBar);
+      const historyBars = symCandles.slice(0, curBarIdx + 1);
+      const closes = historyBars.map((b) => b.close);
+      const ema9 = Mtf15mSupportResistanceOptionEngine.computeEma(closes, 9);
+      const isEma9Broken = pos.optionType === 'CE' ? spotPrice < ema9 * 0.999 : spotPrice > ema9 * 1.001;
 
-      // Check Extended Trailing Ladder:
-      // Stage 1: +₹500 -> Lock +₹300
-      // Stage 2: +₹1,000 -> Lock +₹700
-      // Stage 3: +₹1,500 -> Lock +₹1,150
-      // Stage 4: +₹2,000 -> Lock +₹1,600
-      // Stage 5: +₹3,000 -> Lock +₹2,400
-      // Stage 6: +₹4,500 -> Lock +₹3,600
-      // Stage 7: +₹6,000 -> Lock +₹4,800
-      // Stage 8: +₹8,000 -> Exit Max Target
-      if (grossPnl >= 8000) {
-        // Exit Stage 8
-        const friction = 55;
-        completedTrades.push({
-          time: pos.entryTime,
-          symbol: pos.symbol,
-          spotAtEntry: pos.entrySpot,
-          contract: `${pos.symbol} ${pos.strike} ${pos.optionType}`,
-          lotSize: pos.lotSize,
-          entryPrice: pos.entryOptionPrice,
-          exitPrice: pos.currentOptionPrice,
-          exitTime: currentTimeStr,
-          exitReason: 'MAX_PROFIT_STAGE8_TARGET (+₹8,000)',
-          grossPnl,
-          friction,
-          netPnl: grossPnl - friction,
-          patternTag: pos.patternTag,
-        });
-        openPositions.splice(pIdx, 1);
-        symbolCooldowns.set(pos.symbol, currentTs + 30 * 60 * 1000);
-        continue;
-      } else if (grossPnl >= 6000 && pos.ladderStage < 7) {
-        pos.ladderStage = 7;
-        pos.lockedProfitInr = 4800;
-        pos.slOptionPrice = Number((pos.entryOptionPrice + 4800 / pos.lotSize).toFixed(2));
-      } else if (grossPnl >= 4500 && pos.ladderStage < 6) {
-        pos.ladderStage = 6;
-        pos.lockedProfitInr = 3600;
-        pos.slOptionPrice = Number((pos.entryOptionPrice + 3600 / pos.lotSize).toFixed(2));
-      } else if (grossPnl >= 3000 && pos.ladderStage < 5) {
-        pos.ladderStage = 5;
-        pos.lockedProfitInr = 2400;
-        pos.slOptionPrice = Number((pos.entryOptionPrice + 2400 / pos.lotSize).toFixed(2));
-      } else if (grossPnl >= 2000 && pos.ladderStage < 4) {
-        pos.ladderStage = 4;
-        pos.lockedProfitInr = 1600;
-        pos.slOptionPrice = Number((pos.entryOptionPrice + 1600 / pos.lotSize).toFixed(2));
-      } else if (grossPnl >= 1500 && pos.ladderStage < 3) {
-        pos.ladderStage = 3;
-        pos.lockedProfitInr = 1150;
-        pos.slOptionPrice = Number((pos.entryOptionPrice + 1150 / pos.lotSize).toFixed(2));
-      } else if (grossPnl >= 1000 && pos.ladderStage < 2) {
-        pos.ladderStage = 2;
-        pos.lockedProfitInr = 700;
-        pos.slOptionPrice = Number((pos.entryOptionPrice + 700 / pos.lotSize).toFixed(2));
-      } else if (grossPnl >= 500 && pos.ladderStage < 1) {
-        pos.ladderStage = 1;
-        pos.lockedProfitInr = 300;
-        pos.slOptionPrice = Number((pos.entryOptionPrice + 300 / pos.lotSize).toFixed(2));
-      }
+      // Check Dual-Shield Breathing Engine (Shield 1 Soft Close Lock + Shield 2 Hard Tick Airbag)
+      const evalResult = UnlimitedBreathingTrailEngine.evaluateTickOrCandle({
+        entryPremium: pos.entryOptionPrice,
+        currentPremium: calculatedOptionPrice,
+        candleLowPremium: worstOptionPrice,
+        lotSize: pos.lotSize,
+        prevState: pos.dualShieldState,
+        isFiveMinuteCandleClose: true,
+        isEma9BrokenAgainstTrend: isEma9Broken,
+      });
 
-      // Check Stop Loss or Trailing Stop Trigger
-      const hardMaxLoss = -2500;
+      pos.dualShieldState = evalResult.updatedState;
+
       let exitReason = '';
-      if (grossPnl <= hardMaxLoss) {
-        exitReason = 'HARD_SL_CAPPED (-₹2,500)';
-      } else if (pos.ladderStage >= 1 && pos.currentOptionPrice <= pos.slOptionPrice) {
-        exitReason = `TRAILING_STOP_LOCKED (Stage ${pos.ladderStage}: +₹${pos.lockedProfitInr})`;
+      let exitOptionPrice = calculatedOptionPrice;
+
+      if (evalResult.shouldExit) {
+        exitReason = evalResult.exitReason;
+        exitOptionPrice = evalResult.exitPremium;
       } else if (currentTimeStr >= '15:18:00') {
         exitReason = 'MANDATORY_INTRADAY_AUTO_SQUARE_OFF (03:18 PM)';
+        exitOptionPrice = calculatedOptionPrice;
       }
 
       if (exitReason) {
-        const exitOptionPrice = pos.currentOptionPrice;
         const actualGross = Number(((exitOptionPrice - pos.entryOptionPrice) * pos.lotSize).toFixed(2));
         const friction = 55;
         completedTrades.push({
@@ -441,8 +401,11 @@ async function runAudit() {
 
       // Open Position
       const entryOptionPrice = baseOptionLtp;
-      const maxLossDropPts = 2200 / item.lotSize;
-      const initialSl = Number(Math.max(0.1, entryOptionPrice - maxLossDropPts).toFixed(2));
+      const initialDualShield = UnlimitedBreathingTrailEngine.createInitialState(
+        entryOptionPrice,
+        item.lotSize,
+        2200
+      );
 
       openPositions.push({
         id: `${item.symbol}-${decision.atmStrike}-${optionType}-${currentTs}`,
@@ -457,10 +420,7 @@ async function runAudit() {
         entryOptionPrice,
         currentOptionPrice: entryOptionPrice,
         peakOptionPrice: entryOptionPrice,
-        slOptionPrice: initialSl,
-        ladderStage: 0,
-        lockedProfitInr: 0,
-        peakPnlInr: 0,
+        dualShieldState: initialDualShield,
         patternTag: decision.patternTag,
       });
     }

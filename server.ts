@@ -753,7 +753,8 @@ async function startDaemon(): Promise<void> {
     try {
       const liveSpotPrices = await NexusPermanentCore.fetchRealTimeBatchPrices();
       if (Object.keys(liveSpotPrices).length > 0) {
-        NexusPermanentCore.updatePositionsOnTick(liveSpotPrices);
+        const is5mClose = Math.abs(Date.now() % 300000) < 1200;
+        NexusPermanentCore.updatePositionsOnTick(liveSpotPrices, is5mClose);
         for (const [sym, price] of Object.entries(liveSpotPrices)) {
           liveLtpMap[sym] = price;
           liveLtpMap[`${sym}.NS`] = price;
