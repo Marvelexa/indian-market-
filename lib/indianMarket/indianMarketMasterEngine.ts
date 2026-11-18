@@ -463,7 +463,7 @@ export class IndianMarketMasterEngine {
     currentPnlInr: number;
     currentLockedInr: number;
     currentStage: number;
-    hardSlInr?: number; // default -1800
+    hardSlInr?: number; // default -2500
   }): {
     shouldExit: boolean;
     exitReason: string;
@@ -471,7 +471,7 @@ export class IndianMarketMasterEngine {
     newLockedInr: number;
     newStage: number;
   } {
-    const hardSl = params.hardSlInr ?? -1800;
+    const hardSl = params.hardSlInr ?? -2500;
 
     // 1. Check Hard SL if no profit locked yet
     if (params.currentLockedInr <= 0 && params.currentPnlInr <= hardSl) {

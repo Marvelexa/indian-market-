@@ -22,7 +22,7 @@
  *      - Peak >= +₹6,000 -> Lock +₹4,800
  *      - Peak >= +₹8,000 -> Full Market Target Exit (+₹8,000)
  *   4. Hard SL:
- *      - Capped strictly at -₹1,800 per trade.
+ *      - Capped strictly at -₹2,500 per trade.
  *   5. 1-SL Per-Symbol Directional Circuit Breaker:
  *      - If a stock hits 1 SL in CE or PE, same-direction re-entries are blocked for the rest of the day.
  *   6. Statutory Friction:
@@ -101,7 +101,7 @@ const TRADES_17_NOV: RawTradeInput[] = [
 
 // 18-Nov-2026 Universe Trades
 const TRADES_18_NOV: RawTradeInput[] = [
-  { time: '09:30', symbol: 'AXISBANK', strike: 1360, type: 'PE', qty: 625, entry_prem: 9.85, ticker: 'AXISBANK.NS' },
+  { time: '09:30', symbol: 'AXISBANK', strike: 1370, type: 'PE', qty: 625, entry_prem: 11.40, ticker: 'AXISBANK.NS' },
   { time: '09:35', symbol: 'SBIN', strike: 1110, type: 'PE', qty: 750, entry_prem: 10.25, ticker: 'SBIN.NS' },
   { time: '09:42', symbol: 'ICICIBANK', strike: 1600, type: 'CE', qty: 700, entry_prem: 9.95, ticker: 'ICICIBANK.NS' },
   { time: '09:45', symbol: 'LT', strike: 4180, type: 'CE', qty: 175, entry_prem: 37.70, ticker: 'LT.NS' },
@@ -160,7 +160,7 @@ async function fetchCandles5m(ticker: string, rangeDays = '5d'): Promise<Candle5
 async function simulateDay(
   dayDateStr: string,
   trades: RawTradeInput[],
-  hardSlLimit = -1800
+  hardSlLimit = -2500
 ): Promise<{ results: SimulatedTradeResult[]; startingCap: number; endingCap: number; totalGross: number; totalFriction: number; totalNet: number }> {
   // Pre-fetch all tickers
   const uniqueTickers = Array.from(new Set(trades.map((t) => t.ticker)));
@@ -347,7 +347,7 @@ async function simulateDay(
 function printTradeTable(title: string, dateStr: string, sim: Awaited<ReturnType<typeof simulateDay>>) {
   console.log('\n' + '='.repeat(130));
   console.log(`🚀 ${title} — ${dateStr} (09:15 AM - 03:15 PM IST)`);
-  console.log(`   STRICT ZERO LOOK-AHEAD (Exit Time > Entry Time) | 8-Stage Ladder | -₹1,800 SL | ₹55 Taxes Deducted`);
+  console.log(`   STRICT ZERO LOOK-AHEAD (Exit Time > Entry Time) | 8-Stage Ladder | -₹2,500 SL | ₹55 Taxes Deducted`);
   console.log('='.repeat(130));
 
   console.log(
@@ -402,11 +402,11 @@ function printTradeTable(title: string, dateStr: string, sim: Awaited<ReturnType
 
 async function run() {
   console.log('⏳ Running Honest Zero-Lookahead Audit for 17-Nov-2026...');
-  const sim17 = await simulateDay('2026-11-17', TRADES_17_NOV, -1800);
+  const sim17 = await simulateDay('2026-11-17', TRADES_17_NOV, -2500);
   printTradeTable('NEXUS BHARAT TRUE AUDIT', '17-NOV-2026', sim17);
 
   console.log('⏳ Running Honest Zero-Lookahead Audit for 18-Nov-2026...');
-  const sim18 = await simulateDay('2026-11-18', TRADES_18_NOV, -1800);
+  const sim18 = await simulateDay('2026-11-18', TRADES_18_NOV, -2500);
   printTradeTable('NEXUS BHARAT TRUE AUDIT', '18-NOV-2026', sim18);
 }
 

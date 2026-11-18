@@ -218,13 +218,13 @@ async function runIndianMarketBacktest() {
           const diff = pos.action === 'BUY' ? tick - pos.entryPrice : pos.entryPrice - tick;
           const currentPnl = Math.round(diff * pos.quantity * delta);
 
-          // Evaluate 8-Stage Rupee Profit Ladder & Hard SL (-₹1,800)
+          // Evaluate 8-Stage Rupee Profit Ladder & Hard SL (-₹2,500)
           const ladderResult = IndianMarketMasterEngine.evaluateEightStageRupeeLadder({
             peakPnlInr: Math.max(pos.peakPnlInr, currentPnl),
             currentPnlInr: currentPnl,
             currentLockedInr: pos.lockedPnlInr,
             currentStage: pos.stage,
-            hardSlInr: -1800,
+            hardSlInr: -2500,
           });
 
           pos.peakPnlInr = Math.max(pos.peakPnlInr, currentPnl);

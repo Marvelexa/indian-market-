@@ -477,13 +477,13 @@ export class TimeMachineReplayEngine {
         continue;
       }
 
-      // B. 8-STAGE RUPEE PROFIT LADDER + HARD SL (-₹1,800) EVALUATION
+      // B. 8-STAGE RUPEE PROFIT LADDER + HARD SL (-₹2,500) EVALUATION
       const ladderResult = IndianMarketMasterEngine.evaluateEightStageRupeeLadder({
         peakPnlInr: pos.peakPnlInr || 0,
         currentPnlInr: floatingPnlInr,
         currentLockedInr: pos.lockedPnlInr || 0,
         currentStage: pos.stage,
-        hardSlInr: -1800,
+        hardSlInr: -2500,
       });
 
       pos.lockedPnlInr = ladderResult.newLockedInr;
@@ -516,7 +516,7 @@ export class TimeMachineReplayEngine {
     const delta = pos.isOption ? 0.60 : 1.0;
     const priceDiff = isBuy ? exitPrice - pos.entryPrice : pos.entryPrice - exitPrice;
     let rawPnl = pnlOverride !== undefined ? pnlOverride : Math.round(priceDiff * pos.quantity * delta);
-    if (rawPnl < -1800) rawPnl = -1800;
+    if (rawPnl < -2500) rawPnl = -2500;
 
     // Deduct ₹55/trade real brokerage & STT statutory friction
     const netPnlInr = rawPnl - 55;
