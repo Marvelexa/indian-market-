@@ -41,6 +41,7 @@ import {
 } from './lib/bharat/nexusPermanentCore.ts';
 import { StrictRealOptionChainFeed } from './lib/bharat/strictRealOptionChainFeed.ts';
 import { TimeMachineReplayEngine } from './lib/replay/timeMachineReplayEngine.ts';
+import { OpenAlgoGatewayServer } from './lib/paper/openalgoGatewayServer.ts';
 
 const PY_BACKEND_URL = 'http://127.0.0.1:8000';
 const PORT = 3005;
@@ -751,6 +752,9 @@ async function startDaemon(): Promise<void> {
   }
 
   console.log(`[Daemon] Ready with ${Object.keys(stockCandles5m).length} stocks loaded. Starting cycle loop.`);
+
+  // Start OpenAlgo Paper Trading Gateway (Analyzer Mode on Port 5000)
+  OpenAlgoGatewayServer.getInstance().start(5000);
 
   // Initialize unified TimeMachineReplayEngine in background
   TimeMachineReplayEngine.getInstance().initialize().catch((err: any) => {
